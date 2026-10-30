@@ -1,0 +1,1656 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guía Informática Aplicada II</title>
+<meta name="description" content="Guía didáctica de Informática Aplicada II para 1.er año de la Tecnicatura en Marketing: fotografía, video, sitio web y redes sociales de la campaña, con herramientas online gratuitas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Misma familia visual que la guía de Informática Aplicada I. Cada unidad lleva un color: Fotografía = cian, Video = magenta, Web = ocre, Redes = verde, Proyecto final = negro. */
+:root{
+  --paper:#FAFAF7; --card:#FFFFFF; --ink:#1A1E24; --muted:#59606C; --line:#DADBD3;
+  --cyan:#0080B3; --magenta:#B8006F; --yellow:#8A6A00; --yellow-mark:#F2C200; --green:#1D7A4C; --key:#1A1E24;
+  --cyan-soft:#E4F2F8; --mag-soft:#F9E7F1; --yel-soft:#FFF5D3; --green-soft:#E3F3EA; --key-soft:#ECEDE8;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Atkinson Hyperlegible",Verdana,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+  --shell:1160px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#13161A; --card:#1A1E23; --ink:#ECEDE7; --muted:#A4AAB3; --line:#2E333A;
+  --cyan:#4CC3EF; --magenta:#FF6BB8; --yellow:#F5CC45; --yellow-mark:#F5CC45; --green:#5FD39A; --key:#ECEDE7;
+  --cyan-soft:#10283280; --mag-soft:#3A162B80; --yel-soft:#352B0C80; --green-soft:#0F2E1F80; --key-soft:#262A30;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#13161A; --card:#1A1E23; --ink:#ECEDE7; --muted:#A4AAB3; --line:#2E333A;
+  --cyan:#4CC3EF; --magenta:#FF6BB8; --yellow:#F5CC45; --yellow-mark:#F5CC45; --green:#5FD39A; --key:#ECEDE7;
+  --cyan-soft:#10283280; --mag-soft:#3A162B80; --yel-soft:#352B0C80; --green-soft:#0F2E1F80; --key-soft:#262A30;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+img{max-width:100%}
+[hidden]{display:none!important}
+a{color:var(--cyan);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible,textarea:focus-visible{outline:3px solid var(--magenta);outline-offset:2px;border-radius:4px}
+h1,h2,h3,h4,h5{font-family:var(--display);text-wrap:balance;line-height:1.15;margin:0}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;letter-spacing:-.01em}
+h3{font-size:1.3rem;font-weight:700}
+h4{font-size:1.05rem;font-weight:700;margin-top:1.4rem}
+p,ul,ol{margin:.7rem 0}
+li{margin:.3rem 0}
+code{font-family:var(--mono);font-size:.84em;background:var(--key-soft);padding:.05em .35em;border-radius:4px;overflow-wrap:anywhere}
+kbd{font-family:var(--mono);font-size:.82em;background:var(--key-soft);border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:.05em .4em;white-space:nowrap}
+.ruta{font-family:var(--mono);font-size:.85em;background:var(--key-soft);padding:.1em .4em;border-radius:4px}
+.shell{max-width:var(--shell);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.dot{width:.7rem;height:.7rem;border-radius:50%;flex:0 0 auto;display:inline-block}
+
+/* colores por unidad */
+.nv-campana{--nv:var(--muted);--nv-fill:var(--muted);--nv-t:var(--key-soft);--nv-on:var(--paper)}
+.nv-foto{--nv:var(--cyan);--nv-fill:var(--cyan);--nv-t:var(--cyan-soft);--nv-on:var(--paper)}
+.nv-video{--nv:var(--magenta);--nv-fill:var(--magenta);--nv-t:var(--mag-soft);--nv-on:var(--paper)}
+.nv-web{--nv:var(--yellow);--nv-fill:var(--yellow-mark);--nv-t:var(--yel-soft);--nv-on:#1A1E24}
+.nv-redes{--nv:var(--green);--nv-fill:var(--green);--nv-t:var(--green-soft);--nv-on:var(--paper)}
+.nv-final{--nv:var(--ink);--nv-fill:var(--key);--nv-t:var(--key-soft);--nv-on:var(--paper)}
+
+/* franja de colores */
+.strip{display:flex;height:10px;margin-top:1.4rem;max-width:320px}
+.strip span{flex:1}
+
+/* barra fija */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--ink);color:var(--paper)}
+.bar .shell{display:flex;align-items:center;gap:.4rem 1rem;flex-wrap:wrap;padding-block:.55rem}
+.brand{font-family:var(--display);font-weight:800;font-size:.98rem;color:inherit;text-decoration:none;white-space:nowrap;display:flex;align-items:center;gap:.5rem}
+.brand .strip{margin:0;height:12px;width:48px;max-width:48px}
+.bar nav{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto}
+.bar nav a{color:inherit;text-decoration:none;font-size:.9rem;font-weight:700;padding:.28rem .65rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem}
+.bar nav a .dot{width:.55rem;height:.55rem;background:var(--nv-fill)}
+.bar nav a.nv-final .dot{background:var(--paper);box-shadow:0 0 0 1px var(--ink)}
+.bar nav a:hover{background:color-mix(in srgb,var(--paper) 16%,transparent)}
+.bar nav a[aria-current="true"]{background:var(--paper);color:var(--ink)}
+@media (max-width:700px){
+  .bar nav{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:.15rem}
+  .bar nav::-webkit-scrollbar{display:none}
+  .bar nav a{flex:0 0 auto}
+  .topic,details.exd,.block{scroll-margin-top:6.2rem}
+}
+
+/* portada */
+.portada{padding-block:clamp(2rem,6vw,3.6rem) 1.6rem}
+.byline{font-family:var(--display);font-weight:700;font-size:1rem;margin-bottom:.35rem;padding-bottom:.5rem;border-bottom:1px solid var(--line);display:inline-block}
+.portada h1{font-size:clamp(2.3rem,7vw,4.2rem);font-weight:800;letter-spacing:-.02em;max-width:17ch;margin-top:.4rem}
+.portada .lead{font-size:1.15rem;max-width:62ch}
+.ficha{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:1.2rem 0 0}
+.ficha li{margin:0;font-size:.88rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .75rem}
+.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:1.8rem}
+.lv-card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--nv-fill);border-radius:10px;padding:.9rem 1rem 1rem;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.lv-card:hover{box-shadow:0 0 0 2px var(--nv-fill)}
+.lv-card b{font-family:var(--display);font-size:1.2rem;color:var(--nv)}
+.lv-card small{color:var(--muted);font-size:.9rem;line-height:1.4}
+.meter{height:7px;border-radius:99px;background:var(--nv-t);overflow:hidden;margin-top:auto}
+.meter i{display:block;height:100%;width:0;background:var(--nv-fill);transition:width .4s}
+.meter-label{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+@media (max-width:820px){.levels{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.levels{grid-template-columns:minmax(0,1fr)}}
+
+/* calendario de entregas */
+.cal{margin-top:2rem}
+.cal-next{font-family:var(--display);font-weight:700;font-size:1.1rem;margin:.3rem 0 .8rem}
+.cal-next span{color:var(--magenta)}
+.cal ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;counter-reset:c}
+.cal li{margin:0;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--nv-fill);border-radius:10px;padding:.7rem .8rem;display:flex;flex-direction:column;gap:.15rem;min-width:0;position:relative}
+.cal li a{color:var(--ink);text-decoration:none;font-family:var(--display);font-weight:700;line-height:1.25}
+.cal li a:hover{text-decoration:underline}
+.cal .when{font-family:var(--mono);font-size:.78rem;color:var(--nv);text-transform:uppercase;letter-spacing:.04em}
+.nv-web .when{color:var(--yellow)}
+.cal .st-mini{font-size:.8rem;color:var(--muted);margin-top:auto}
+.cal li.is-next{box-shadow:0 0 0 2px var(--nv-fill)}
+@media (max-width:900px){.cal ol{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}}
+
+/* bloques */
+.block{padding-block:2.6rem;border-top:1px solid var(--line);scroll-margin-top:4rem}
+.block .lead{max-width:64ch;color:var(--muted)}
+.routes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:.8rem;margin-top:1.2rem}
+.route{background:var(--card);border:1px solid var(--line);border-top:5px solid var(--nv-fill);border-radius:10px;padding:1rem 1.1rem;min-width:0;display:flex;flex-direction:column}
+.route h3{margin:0;font-size:1.2rem;color:var(--nv)}
+.route .who{font-size:.92rem;color:var(--muted);margin:.3rem 0 .6rem}
+.route ol{padding-left:1.2rem;margin:0 0 .7rem;font-size:.95rem}
+.route .btn{margin-top:auto;align-self:flex-start}
+.howto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1rem}
+.howto>div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;min-width:0}
+.howto h3{margin:0 0 .4rem;font-size:1.1rem}
+.howto ul,.howto ol{margin:0;padding-left:1.2rem}
+@media (max-width:700px){.howto{grid-template-columns:minmax(0,1fr)}}
+.map-box{overflow-x:auto;margin-top:1rem;background:var(--card);border:1px solid var(--line);border-radius:10px}
+table.map{min-width:620px}
+table.map td:first-child{font-family:var(--mono);font-size:.8rem;color:var(--muted);white-space:nowrap}
+.pill{display:inline-block;font-size:.8rem;font-weight:700;padding:.12rem .6rem;border-radius:999px;background:var(--nv-t);color:var(--nv);text-decoration:none;white-space:nowrap;border:1px solid var(--nv-fill);margin:.1rem 0}
+
+/* tablas */
+.tw{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.55rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);background:var(--key-soft)}
+tr:last-child td{border-bottom:0}
+td.k{white-space:nowrap}
+
+/* recuadros */
+.tip,.warn,.idea{border-radius:6px;padding:.8rem 1rem;margin:1.1rem 0}
+.tip{background:var(--cyan-soft);border-left:4px solid var(--cyan)}
+.warn{background:var(--mag-soft);border-left:4px solid var(--magenta)}
+.idea{background:var(--yel-soft);border-left:4px solid var(--yellow-mark)}
+.tip b,.warn b,.idea b{font-family:var(--display)}
+ol.pasos{counter-reset:p;list-style:none;padding:0}
+ol.pasos>li{counter-increment:p;position:relative;padding-left:2.4rem;margin:.75rem 0}
+ol.pasos>li::before{content:counter(p);position:absolute;left:0;top:.05rem;width:1.7rem;height:1.7rem;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:.9rem;background:var(--ink);color:var(--paper)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:.8rem;margin:1rem 0}
+.grid2>div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.9rem 1rem;min-width:0}
+.topic .grid2>div{background:var(--paper)}
+.grid2 b{font-family:var(--display)}
+.grid2 p{margin:.3rem 0 0;font-size:.94rem}
+.grid2 ul{margin:.4rem 0 0;padding-left:1.1rem;font-size:.93rem}
+.more{font-size:.92rem;color:var(--muted);border-top:1px dashed var(--line);padding-top:.7rem;margin-top:1.4rem}
+.more b{font-family:var(--display);color:var(--ink)}
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:.2rem 1rem;margin:.6rem 0}
+details summary{cursor:pointer;font-family:var(--display);font-weight:700;padding:.6rem 0}
+details[open] summary{border-bottom:1px solid var(--line);margin-bottom:.4rem}
+
+/* figuras propias de IA II */
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,130px),1fr));gap:.6rem;margin:1rem 0}
+.figs figure{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.6rem;text-align:center;min-width:0}
+.figs svg{width:100%;max-width:150px;height:auto;display:block;margin:0 auto .3rem}
+.figs figcaption{font-family:var(--display);font-weight:700;font-size:.95rem}
+.figs small{display:block;color:var(--muted);font-family:var(--body);font-weight:400;font-size:.8rem;line-height:1.3}
+.fr{fill:none;stroke:var(--ink);stroke-width:1.5}
+.pp{fill:var(--magenta)}
+.gl3{stroke:var(--cyan);stroke-width:1;stroke-dasharray:3 3}
+.url{font-family:var(--mono);font-size:clamp(.82rem,2.6vw,1.05rem);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:.8rem;margin:1rem 0;overflow-wrap:anywhere;line-height:2.1}
+.url span{padding:.15rem .25rem;border-radius:4px}
+.u1{background:var(--cyan-soft);border-bottom:3px solid var(--cyan)}
+.u2{background:var(--mag-soft);border-bottom:3px solid var(--magenta)}
+.u3{background:var(--yel-soft);border-bottom:3px solid var(--yellow-mark)}
+.u4{background:var(--green-soft);border-bottom:3px solid var(--green)}
+.url-key{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:.5rem;font-size:.9rem;margin:.4rem 0 1rem}
+.url-key div{display:flex;gap:.5rem;align-items:flex-start}
+.url-key i{width:1rem;height:1rem;border-radius:3px;flex:0 0 auto;margin-top:.25rem}
+.wire-wrap{display:grid;grid-template-columns:minmax(0,230px) 1fr;gap:1.2rem;align-items:start;margin:1rem 0}
+.wire{border:2px solid var(--ink);border-radius:6px;background:var(--paper);display:grid;gap:5px;padding:7px;font-family:var(--mono);font-size:.68rem}
+.wire div{border-radius:3px;display:flex;align-items:center;justify-content:center;text-align:center;padding:4px 2px}
+.w-h{background:var(--key-soft);justify-content:space-between!important;padding:4px 6px!important}
+.w-hero{background:var(--yel-soft);border:1px dashed var(--yellow-mark);height:90px;flex-direction:column}
+.w-cta{background:var(--yellow-mark);color:#1A1E24;font-weight:500;width:60%;justify-self:center}
+.w-c{display:grid!important;grid-template-columns:1fr 1fr 1fr;gap:4px;padding:0!important}
+.w-c span{background:var(--cyan-soft);height:34px;border-radius:3px;display:flex;align-items:center;justify-content:center}
+.w-v{background:var(--mag-soft);height:46px}
+.w-f{background:var(--key-soft)}
+@media (max-width:560px){.wire-wrap{grid-template-columns:1fr}.wire{max-width:240px}}
+.ph-frame{position:relative}
+
+/* pestañas y paneles */
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
+.tabs button{font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;border:2px solid var(--nv-fill);color:var(--nv);background:var(--card);padding:.4rem .95rem;border-radius:999px;display:inline-flex;align-items:center;gap:.45rem}
+.tabs button[aria-selected="true"]{background:var(--nv-fill);color:var(--nv-on)}
+.tabs .cnt{font-family:var(--mono);font-size:.72rem;font-weight:500;opacity:.85}
+.panel{padding-top:1.4rem}
+.panel-head{border-top:6px solid var(--nv-fill);padding-top:1rem}
+.panel-head h2{color:var(--nv);margin-top:.2rem}
+.nv-web .panel-head h2{color:var(--yellow)}
+.goal{margin:.5rem 0 0;max-width:68ch}
+.goal b{font-family:var(--display)}
+.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
+.chip{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.15rem .65rem;background:var(--card);color:var(--muted)}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:1.6rem;margin-top:1.4rem;align-items:start}
+.toc{position:sticky;top:calc(3.6rem + env(safe-area-inset-top,0px));background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem;max-height:calc(100vh - 5rem);overflow-y:auto}
+.toc h4{margin:0 0 .5rem;font-size:.9rem}
+.toc ol{list-style:none;margin:0;padding:0;display:grid;gap:.1rem}
+.toc li{margin:0}
+.toc a{display:grid;grid-template-columns:2.2rem 1fr;gap:.3rem;text-decoration:none;color:var(--ink);font-size:.88rem;line-height:1.3;padding:.3rem .35rem;border-radius:6px}
+.toc a:hover{background:var(--nv-t)}
+.toc a span{font-family:var(--mono);font-size:.72rem;color:var(--nv);padding-top:.1rem}
+.nv-web .toc a span{color:var(--yellow)}
+.toc a.done{color:var(--muted)}
+.toc a.done::after{content:"✓ hecho";grid-column:2;color:var(--nv);font-weight:700;font-size:.75rem}
+.nv-web .toc a.done::after{color:var(--yellow)}
+.topics{display:grid;gap:1.1rem;min-width:0}
+.topic{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:clamp(1rem,3vw,1.6rem);scroll-margin-top:4.2rem;min-width:0}
+.topic-head{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;margin-bottom:.4rem}
+.topic-head h3{margin:0;flex:1 1 16rem;font-size:clamp(1.25rem,2.6vw,1.5rem)}
+.unit{font-family:var(--mono);font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:.06em;background:var(--nv-fill);color:var(--nv-on);padding:.12rem .5rem;border-radius:4px}
+.topic-body{max-width:72ch}
+.topic-body>:first-child{margin-top:.4rem}
+.topic-foot{margin-top:1rem;padding-top:.7rem;border-top:1px dashed var(--line)}
+.tick{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;cursor:pointer;font-size:.95rem}
+.tick input{width:1.2rem;height:1.2rem;accent-color:var(--nv-fill,var(--ink))}
+@media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}.toc{position:static;max-height:none}.toc ol{grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}}
+
+/* entregas dentro de cada unidad */
+.exercises{display:grid;gap:.8rem;margin-top:.6rem}
+.ex-h{margin:.6rem 0 0;font-size:1.4rem;color:var(--nv)}
+.nv-web .ex-h{color:var(--yellow)}
+details.exd{border:2px solid var(--line);border-radius:12px;background:var(--card);padding:0;margin:0;scroll-margin-top:4.2rem}
+details.exd[open]{border-color:var(--nv-fill)}
+details.exd>summary,details.exd[open]>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem .7rem;padding:.85rem 1rem;font-family:var(--display);font-weight:700;flex-wrap:wrap;border:0;margin:0}
+details.exd>summary::-webkit-details-marker{display:none}
+details.exd>summary::before{content:"+";font-family:var(--mono);width:1.6rem;height:1.6rem;border-radius:5px;display:grid;place-items:center;background:var(--nv-t);color:var(--nv);flex:none}
+details.exd[open]>summary::before{content:"−"}
+.ex-num{font-family:var(--mono);font-size:.75rem;color:var(--nv);text-transform:uppercase;letter-spacing:.06em}
+.nv-web .ex-num{color:var(--yellow)}
+.ex-title{flex:1 1 14rem;font-size:1.1rem}
+.ex-tag{font-family:var(--mono);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:.1rem .45rem;border-radius:4px;border:1px solid var(--nv-fill);color:var(--nv)}
+.nv-web .ex-tag{color:var(--yellow)}
+.ex-due{font-family:var(--body);font-size:.82rem;font-weight:700;background:var(--nv-fill);color:var(--nv-on);padding:.05rem .55rem;border-radius:999px}
+.ex-state{font-family:var(--body);font-size:.82rem;font-weight:700;color:var(--muted)}
+.ex-state.st-done{color:var(--nv)}
+.ex-state.st-sent{color:var(--nv-on);background:var(--nv-fill);padding:.05rem .5rem;border-radius:999px}
+.ex-body{padding:0 1.1rem 1.1rem;max-width:76ch}
+.ex-body h5{font-family:var(--display);font-size:1rem;margin:.6rem 0 0}
+.check{list-style:none;padding:0;margin:.8rem 0 0;border-top:1px dashed var(--line)}
+.check li{margin:0;border-bottom:1px dashed var(--line)}
+.check label{display:flex;gap:.7rem;align-items:flex-start;padding:.55rem 0;cursor:pointer}
+.check input{width:1.2rem;height:1.2rem;margin-top:.2rem;flex:0 0 auto;accent-color:var(--ink)}
+.check input:checked + span{color:var(--muted);text-decoration:line-through}
+.deliver{margin-top:.9rem;font-size:.95rem;background:var(--key-soft);border-radius:6px;padding:.6rem .8rem}
+.deliver b{font-family:var(--display)}
+details.hint,details.hint[open]{background:var(--nv-t);border:0;border-radius:8px;padding:.1rem .9rem;margin:.8rem 0}
+details.hint>summary,details.hint[open]>summary{font-family:var(--display);font-weight:700;color:var(--nv);border:0;margin:0;padding:.5rem 0}
+.nv-web details.hint>summary{color:var(--yellow)}
+.notes{margin-top:.9rem}
+.notes label{font-family:var(--display);font-weight:700;font-size:.95rem;display:block;margin-bottom:.3rem}
+.notes textarea{width:100%;min-height:90px;font:inherit;font-size:.95rem;padding:.6rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);resize:vertical}
+.notes small{color:var(--muted);font-size:.82rem}
+.submit{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--line);display:grid;gap:.7rem}
+.submit-actions,.submit-checks{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:center}
+.btn{font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;border-radius:999px;padding:.45rem 1rem;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn.main{background:var(--nv-fill,var(--ink));border-color:var(--nv-fill,var(--ink));color:var(--nv-on,var(--paper))}
+.btn.ghost{border-color:var(--line)}
+.btn:hover{border-color:var(--nv-fill,var(--ink))}
+.toast{margin:0;font-size:.9rem;font-weight:700;color:var(--magenta);min-height:1.2em}
+
+/* mis entregas */
+.field{display:grid;gap:.3rem;max-width:480px;margin-top:1rem}
+.field label{font-family:var(--display);font-weight:700}
+.field input{font:inherit;padding:.5rem .7rem;border-radius:8px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
+.deliveries{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-top:1.1rem;overflow-x:auto}
+table.dl{min-width:640px}
+table.dl td.st{font-weight:700;white-space:nowrap}
+.st-0{color:var(--muted)} .st-1{color:var(--cyan)} .st-2{color:var(--green)}
+.dl-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
+.formstate{margin-top:1rem}
+#reportFallback{width:100%;min-height:140px;font:inherit;font-size:.9rem;margin-top:.6rem;padding:.6rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+
+/* consulta y glosario */
+.consulta-grid{display:grid;gap:1rem;margin-top:1.2rem}
+.glossary{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:.6rem;margin-top:1rem}
+details.gl,details.gl[open]{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--magenta);border-radius:8px;padding:.1rem .9rem;margin:0}
+details.gl>summary,details.gl[open]>summary{font-family:var(--display);font-weight:700;padding:.6rem 0;border:0;margin:0}
+details.gl p{margin:0 0 .7rem;font-size:.95rem}
+.gl-search{font:inherit;padding:.5rem .8rem;border-radius:8px;border:2px solid var(--line);background:var(--card);color:var(--ink);width:min(100%,360px);margin-top:.4rem}
+.gl-empty{color:var(--muted)}
+footer{padding-block:2rem 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+footer .shell{display:grid;gap:.6rem}
+footer p{margin:0;max-width:80ch}
+
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="shell">
+    <a class="brand" href="#inicio"><span class="strip" aria-hidden="true"><span style="background:var(--cyan)"></span><span style="background:var(--magenta)"></span><span style="background:var(--yellow-mark)"></span><span style="background:var(--green)"></span></span>Informática Aplicada II</a>
+    <nav aria-label="Temas"><a href="#campana" class="nv-campana" data-nav="campana"><span class="dot"></span>Tu campaña</a><a href="#foto" class="nv-foto" data-nav="foto"><span class="dot"></span>Fotografía</a><a href="#video" class="nv-video" data-nav="video"><span class="dot"></span>Video</a><a href="#web" class="nv-web" data-nav="web"><span class="dot"></span>Sitio web</a><a href="#redes" class="nv-redes" data-nav="redes"><span class="dot"></span>Redes</a><a href="#final" class="nv-final" data-nav="final"><span class="dot"></span>Proyecto final</a><a href="#entregas">Entregas</a><a href="#glosario">Glosario</a></nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="shell">
+    <section class="portada">
+      <div class="byline">Ed. Téc. Laura Castro</div>
+      <span class="eyebrow">Tecnicatura en Marketing · 1.er año · 2.º semestre · Informática Aplicada II</span>
+      <h1>Llevá tu campaña al mundo digital</h1>
+      <p class="lead">En equipo, van a convertir la campaña de Publicidad en <b>fotos</b>, un <b>spot de video</b>, un <b>sitio web</b> y un <b>plan de redes</b>, todo publicado y conectado. Cada tema tiene explicaciones paso a paso y una entrega que suben desde acá. Todo se hace en el navegador, gratis y sin instalar nada.</p>
+      <div class="strip" aria-hidden="true"><span style="background:var(--cyan)"></span><span style="background:var(--magenta)"></span><span style="background:var(--yellow-mark)"></span><span style="background:var(--green)"></span></div>
+      <ul class="ficha" aria-label="Datos del curso">
+        <li>Curso Técnico Terciario en Marketing · Plan 2019</li>
+        <li>Área Diseño Gráfico y Web</li>
+        <li>Equipos de 4 · coordinado con Publicidad</li>
+        <li>Defensa final: <span data-fecha-larga="final">viernes 20 de noviembre</span></li>
+      </ul>
+      <div class="cal" id="calendario">
+        <span class="eyebrow">Calendario de entregas</span>
+        <p class="cal-next" id="calNext" role="status"></p>
+        <ol><li class="nv-foto" data-cal="e1"><span class="when" data-fecha-corta="e1">mié 4 nov</span><a href="#ex-e1">Brief y kit fotográfico</a><span class="st-mini">Entrega 1 · <span data-st-mini="e1">Pendiente</span></span></li><li class="nv-video" data-cal="e2"><span class="when" data-fecha-corta="e2">mar 10 nov</span><a href="#ex-e2">Spot de video</a><span class="st-mini">Entrega 2 · <span data-st-mini="e2">Pendiente</span></span></li><li class="nv-web" data-cal="e3"><span class="when" data-fecha-corta="e3">vie 13 nov</span><a href="#ex-e3">Sitio web de la campaña</a><span class="st-mini">Entrega 3 · <span data-st-mini="e3">Pendiente</span></span></li><li class="nv-redes" data-cal="e4"><span class="when" data-fecha-corta="e4">mar 17 nov</span><a href="#ex-e4">Plan de redes y registro de licencias</a><span class="st-mini">Entrega 4 · <span data-st-mini="e4">Pendiente</span></span></li><li class="nv-final" data-cal="final"><span class="when" data-fecha-corta="final">vie 20 nov</span><a href="#ex-final">Campaña integrada y defensa</a><span class="st-mini">Proyecto final · <span data-st-mini="final">Pendiente</span></span></li></ol>
+      </div>
+      <div class="levels"><a class="lv-card nv-campana" href="#campana"><b>Tu campaña</b><small>Equipo, brief y reglas para usar contenido ajeno.</small><div class="meter"><i data-meter="campana"></i></div><span class="meter-label" data-meter-label="campana">0 % hecho</span></a><a class="lv-card nv-foto" href="#foto"><b>Fotografía</b><small>Luz, encuadre, retoque en Photopea y exportar.</small><div class="meter"><i data-meter="foto"></i></div><span class="meter-label" data-meter-label="foto">0 % hecho</span></a><a class="lv-card nv-video" href="#video"><b>Video</b><small>Guion, grabación, edición, sonido y publicación.</small><div class="meter"><i data-meter="video"></i></div><span class="meter-label" data-meter-label="video">0 % hecho</span></a><a class="lv-card nv-web" href="#web"><b>Sitio web</b><small>Internet, buscadores y tu sitio en Google Sites.</small><div class="meter"><i data-meter="web"></i></div><span class="meter-label" data-meter-label="web">0 % hecho</span></a><a class="lv-card nv-redes" href="#redes"><b>Redes</b><small>Plan de contenidos, piezas, licencias y netiqueta.</small><div class="meter"><i data-meter="redes"></i></div><span class="meter-label" data-meter-label="redes">0 % hecho</span></a><a class="lv-card nv-final" href="#final"><b>Proyecto final</b><small>Todo conectado, publicado y defendido.</small><div class="meter"><i data-meter="final"></i></div><span class="meter-label" data-meter-label="final">0 % hecho</span></a></div>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="como-trabajar">
+      <span class="eyebrow">Antes de empezar</span>
+      <h2>Las herramientas</h2>
+      <p class="lead">Todas funcionan en el navegador (mejor Chrome o Edge) y son gratis. No hay que instalar nada. Para casi todas alcanza con una cuenta de Google.</p>
+      <div class="routes">
+        <article class="route nv-foto">
+          <h3>Photopea</h3>
+          <p class="who">Retoque de fotos. Gratis y sin cuenta.</p>
+          <ol><li>Entrá a photopea.com y cerrá la bienvenida.</li><li>Si está en inglés: <span class="ruta">More › Language › Español</span>.</li><li>No guarda solo: <kbd>Ctrl</kbd> + <kbd>S</kbd> seguido.</li></ol>
+          <a class="btn ghost" href="https://www.photopea.com" target="_blank" rel="noopener">Abrir Photopea ↗</a>
+        </article>
+        <article class="route nv-video">
+          <h3>Canva</h3>
+          <p class="who">Edición de video y piezas para redes. Entrás con tu correo.</p>
+          <ol><li>Entrá a canva.com con tu cuenta.</li><li>Usá los elementos sin coronita: son gratis.</li><li>Alternativa para video: Clipchamp, en Chrome o Edge.</li></ol>
+          <a class="btn ghost" href="https://www.canva.com" target="_blank" rel="noopener">Abrir Canva ↗</a>
+        </article>
+        <article class="route nv-web">
+          <h3>Google Sites</h3>
+          <p class="who">El sitio web de la campaña. Con tu cuenta de Google.</p>
+          <ol><li>Entrá a sites.google.com.</li><li>Guarda solo mientras trabajás.</li><li>Los cambios se ven recién cuando tocás <b>Publicar</b>.</li></ol>
+          <a class="btn ghost" href="https://sites.google.com/new" target="_blank" rel="noopener">Abrir Google Sites ↗</a>
+        </article>
+        <article class="route nv-redes">
+          <h3>Google Drive</h3>
+          <p class="who">Carpeta del equipo, documentos y planillas. Con tu cuenta de Google.</p>
+          <ol><li>Una carpeta compartida por equipo.</li><li>Docs para el brief y los guiones.</li><li>Sheets para el calendario y las licencias.</li></ol>
+          <a class="btn ghost" href="https://drive.google.com" target="_blank" rel="noopener">Abrir Drive ↗</a>
+        </article>
+      </div>
+      <div class="howto">
+        <div>
+          <h3>Cómo usar esta guía</h3>
+          <ul>
+            <li>Andá en orden: campaña, fotografía, video, sitio web y redes. Cada tema usa lo del anterior.</li>
+            <li>Cuando termines de leer un tema, marcá <b>Lo leí</b>. Tu avance queda guardado en este navegador.</li>
+            <li>Si cambiás de computadora, las marcas no aparecen. El trabajo sí, porque está en el Drive del equipo.</li>
+            <li>Si te trancás, mirá <a href="#consulta">Consulta</a> y el <a href="#glosario">Glosario</a>.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Cómo entregar</h3>
+          <ol>
+            <li>Escribí el nombre del equipo y los integrantes en <a href="#entregas">Mis entregas</a>.</li>
+            <li>En cada entrega tocá <b>Entregar en Drive</b>: se abre el formulario con el equipo y la entrega ya cargados.</li>
+            <li>Iniciá sesión con tu cuenta de Google, pegá los enlaces, adjuntá los archivos y tocá <b>Enviar</b>. Entrega una sola persona por equipo.</li>
+            <li>Volvé y marcá <b>Ya la subimos al formulario</b>.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="programa">
+      <span class="eyebrow">Programa oficial</span>
+      <h2>Dónde está cada tema del programa</h2>
+      <p class="lead">Empezamos por fotografía, aunque en el programa es la unidad 2, porque las fotos se usan después en el video. Tocá el tema para ir directo.</p>
+      <div class="map-box"><table class="map"><thead><tr><th>Unidad</th><th>Contenido del programa</th><th>Tema</th></tr></thead><tbody><tr><td>1. Videos</td><td>Guion</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Grabación: compresión y normas</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Edición: selección de material, edición básica, efectos y sonido</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Publicación</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>2. Fotografía digital</td><td>Conceptos generales, cámaras y formatos; iluminación; ambiente de trabajo</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Retoque fotográfico básico</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Crear videos con fotografías</td><td><a class="pill nv-foto" href="#foto">Fotografía</a> <a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>3. Marketing web</td><td>Internet: URL, IP, hiperenlace, buscador, PageRank</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Componentes de una página y de un sitio; diseño one click</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Publicación web: página, sitio o revista digital</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>4. Redes sociales</td><td>Conceptos; uso y publicación en redes</td><td><a class="pill nv-redes" href="#redes">Redes</a></td></tr><tr><td>4. Redes sociales</td><td>Derechos de autor; netiquette</td><td><a class="pill nv-redes" href="#redes">Redes</a> <a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Metodología</td><td>Proyecto en equipos de 4, coordinado con Publicidad</td><td><a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Evaluación</td><td>Entregas parciales, devoluciones y defensa final</td><td><a class="pill nv-final" href="#final">Proyecto final</a></td></tr></tbody></table></div>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="temas" aria-label="Contenidos por tema">
+      <div class="tabs" role="tablist" aria-label="Elegí el tema"><button type="button" role="tab" id="tab-campana" class="nv-campana" aria-controls="campana" aria-selected="true" data-tab="campana">Tu campaña <span class="cnt" data-cnt="campana"></span></button><button type="button" role="tab" id="tab-foto" class="nv-foto" aria-controls="foto" aria-selected="false" data-tab="foto">Fotografía <span class="cnt" data-cnt="foto"></span></button><button type="button" role="tab" id="tab-video" class="nv-video" aria-controls="video" aria-selected="false" data-tab="video">Video <span class="cnt" data-cnt="video"></span></button><button type="button" role="tab" id="tab-web" class="nv-web" aria-controls="web" aria-selected="false" data-tab="web">Sitio web <span class="cnt" data-cnt="web"></span></button><button type="button" role="tab" id="tab-redes" class="nv-redes" aria-controls="redes" aria-selected="false" data-tab="redes">Redes <span class="cnt" data-cnt="redes"></span></button><button type="button" role="tab" id="tab-final" class="nv-final" aria-controls="final" aria-selected="false" data-tab="final">Proyecto final <span class="cnt" data-cnt="final"></span></button></div>
+      
+<section class="panel nv-campana" id="campana" data-panel="campana" role="tabpanel" aria-labelledby="tab-campana">
+  <div class="panel-head">
+    <span class="eyebrow">Tema 1 de 6 · Punto de partida</span>
+    <h2>Tu campaña digital</h2>
+    <p class="goal"><b>En este tema vas a:</b> armar el equipo, acordar el brief con Publicidad y conocer las reglas básicas para usar contenido ajeno.</p>
+    <div class="meta"><span class="chip">Proyecto en equipos de 4</span><span class="chip">Coordinado con Publicidad</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Tu campaña">
+      <h4>En este tema</h4>
+      <ol><li><a href="#campana-que-vas-a-hacer" data-toc="campana-que-vas-a-hacer"><span>01</span>La campaña digital que vas a hacer</a></li><li><a href="#campana-equipo" data-toc="campana-equipo"><span>02</span>Trabajar en equipo</a></li><li><a href="#campana-brief" data-toc="campana-brief"><span>03</span>El brief de la campaña</a></li><li><a href="#campana-derechos" data-toc="campana-derechos"><span>04</span>Contenido ajeno: la regla desde el día uno</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="campana-que-vas-a-hacer">
+  <div class="topic-head"><span class="unit">Tu campaña</span><h3>La campaña digital que vas a hacer</h3></div>
+  <div class="topic-body"><p>En Publicidad tu equipo define la campaña. Acá la convertís en piezas digitales que se pueden publicar. Al final del curso, el <b>20 de noviembre</b>, presentan la campaña completa:</p>
+<ol class="pasos">
+  <li><b>Kit fotográfico:</b> 6 fotos propias del producto o servicio, retocadas. <i>Entrega 1.</i></li>
+  <li><b>Spot de video</b> de 30 a 60 segundos, publicado. <i>Entrega 2.</i></li>
+  <li><b>Sitio web</b> de la campaña, con dirección propia. <i>Entrega 3.</i></li>
+  <li><b>Plan de redes</b> con 6 piezas y un <b>registro de licencias</b>. <i>Entrega 4.</i></li>
+  <li><b>Defensa final:</b> muestran todo publicado y conectado. <i>Proyecto final.</i></li>
+</ol>
+<div class="tip"><b>Por qué en este orden:</b> las fotos se usan en el video, el video y las fotos van al sitio, y las redes llevan gente al sitio. Cada entrega es una pieza de la final: nada se hace dos veces.</div>
+<p>La marca puede ser real y cercana: un comercio del barrio, un emprendimiento de alguien que conozcan, una cooperativa, una ONG o un evento del centro. Si es de otra persona, pídanle permiso antes de publicar.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-que-vas-a-hacer"> Lo leí</label></div>
+</article>
+<article class="topic" id="campana-equipo">
+  <div class="topic-head"><span class="unit">Tu campaña</span><h3>Trabajar en equipo</h3></div>
+  <div class="topic-body"><p>El programa propone equipos de <b>unos 4 estudiantes</b>. Repartan roles, pero todos aprenden todo: cada integrante tiene que poder explicar cualquier pieza en la defensa.</p>
+<div class="grid2">
+  <div><b>Coordinación</b><p>Lleva el calendario, revisa que se entregue a tiempo y habla con el docente.</p></div>
+  <div><b>Foto y video</b><p>Organiza las sesiones de fotos y la grabación del spot.</p></div>
+  <div><b>Web</b><p>Arma el sitio y revisa que todos los enlaces funcionen.</p></div>
+  <div><b>Redes y licencias</b><p>Lleva el calendario de publicaciones y el registro de licencias.</p></div>
+</div>
+<h4>Una carpeta compartida para todo</h4>
+<ol class="pasos">
+  <li>Una persona crea en <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a> una carpeta con el nombre del equipo.</li>
+  <li>La comparte con el resto del equipo como <b>Editor</b> y con el docente como <b>Lector</b>.</li>
+  <li>Adentro, una carpeta por entrega: <code>1-fotos</code>, <code>2-video</code>, <code>3-web</code>, <code>4-redes</code>, <code>final</code>.</li>
+</ol>
+<div class="tip"><b>Nombres de archivo:</b> sin espacios ni tildes, en minúscula y con el nombre del equipo: <code>equipo-sol_foto3_web.jpg</code>, no <code>IMG_2026 final FINAL.jpg</code>.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-equipo"> Lo leí</label></div>
+</article>
+<article class="topic" id="campana-brief">
+  <div class="topic-head"><span class="unit">Tu campaña</span><h3>El brief de la campaña</h3></div>
+  <div class="topic-body"><p>El <b>brief</b> es una página que resume la campaña. Lo acuerdan con Publicidad y lo usan en todas las piezas, para que todo hable con la misma voz. Respondan en un <a href="https://docs.new" target="_blank" rel="noopener">documento de Google</a>:</p>
+<div class="grid2">
+  <div><b>Marca</b><p>Nombre y qué ofrece, en una oración.</p></div>
+  <div><b>Público objetivo</b><p>A quién le habla: edad, intereses, dónde está y qué redes usa.</p></div>
+  <div><b>Objetivo</b><p>Qué querés lograr: que conozcan la marca, que compren, que vengan a un evento.</p></div>
+  <div><b>Mensaje y eslogan</b><p>La idea principal y la frase corta que la resume.</p></div>
+  <div><b>Tono</b><p>Tres palabras: por ejemplo cercano, alegre, confiable.</p></div>
+  <div><b>Identidad visual</b><p>Logo, 3 o 4 colores con su código HEX y 1 o 2 tipografías.</p></div>
+  <div><b>Llamado a la acción</b><p>Qué tiene que hacer la persona: escribir por WhatsApp, comprar, seguir la cuenta.</p></div>
+</div>
+<div class="idea"><b>Si hiciste Informática Aplicada I:</b> usá el logo y la paleta que ya tenés guardados en Canva.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-brief"> Lo leí</label></div>
+</article>
+<article class="topic" id="campana-derechos">
+  <div class="topic-head"><span class="unit">Tu campaña</span><h3>Contenido ajeno: la regla desde el día uno</h3></div>
+  <div class="topic-body"><p>Todo lo que no hiciste tu equipo tiene un autor: fotos, música, tipografías, íconos, videos. Que algo aparezca en Google no quiere decir que se pueda usar.</p>
+<ul>
+  <li>Usá material <b>propio</b> siempre que puedas: es lo más seguro y lo que mejor muestra tu trabajo.</li>
+  <li>Si usás algo ajeno, que tenga <b>licencia libre</b> y anotá de dónde salió en el <b>registro de licencias</b> desde el primer día.</li>
+  <li>Si aparece una persona en una foto o video, necesitás su <b>permiso</b>.</li>
+</ul>
+<p>Lo ves en detalle en <a href="#redes-derechos">Derechos de autor</a>, dentro de Redes.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-derechos"> Lo leí</label></div>
+</article>
+      
+    </div>
+  </div>
+</section>
+<section class="panel nv-foto" id="foto" data-panel="foto" role="tabpanel" aria-labelledby="tab-foto" hidden>
+  <div class="panel-head">
+    <span class="eyebrow">Tema 2 de 6 · Unidad 2 · Fotografía digital</span>
+    <h2>Fotografía digital</h2>
+    <p class="goal"><b>En este tema vas a aprender a:</b> sacar fotos de producto con luz natural, retocarlas en Photopea y exportarlas para web y redes.</p>
+    <div class="meta"><span class="chip">Celular + Photopea</span><span class="chip">Entrega 1</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Fotografía">
+      <h4>En este tema</h4>
+      <ol><li><a href="#foto-conceptos" data-toc="foto-conceptos"><span>01</span>Cámaras, resolución y formatos</a></li><li><a href="#foto-luz" data-toc="foto-luz"><span>02</span>Iluminación</a></li><li><a href="#foto-ambiente" data-toc="foto-ambiente"><span>03</span>Ambiente de trabajo y encuadre</a></li><li><a href="#foto-lista" data-toc="foto-lista"><span>04</span>Qué fotos sacar: la lista de tomas</a></li><li><a href="#foto-retoque" data-toc="foto-retoque"><span>05</span>Retoque básico en Photopea</a></li><li><a href="#foto-exportar" data-toc="foto-exportar"><span>06</span>Exportar para web y redes</a></li><li><a href="#foto-a-video" data-toc="foto-a-video"><span>07</span>Crear videos con fotografías</a></li><li><a href="#ex-e1" data-toc-ex="e1"><span>EN</span>Brief y kit fotográfico</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="foto-conceptos">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Cámaras, resolución y formatos</h3></div>
+  <div class="topic-body"><p>Para esta campaña alcanza con la <b>cámara del celular</b>. Lo que hace la diferencia es la luz y el cuidado, no el equipo.</p>
+<ul>
+  <li><b>Resolución:</b> cantidad de píxeles de la foto. Un celular actual saca fotos de unos 4000 × 3000 px (12 megapíxeles): sobra para web, redes e impresión chica.</li>
+  <li><b>Zoom:</b> evitá el zoom digital (pellizcar la pantalla): recorta la foto y pierde calidad. Mejor acercate.</li>
+  <li><b>Lente:</b> limpiala con un paño antes de empezar. Una huella deja todo borroso.</li>
+</ul>
+<div class="tw"><table>
+  <thead><tr><th>Formato</th><th>Qué es</th><th>Cuándo usarlo</th></tr></thead>
+  <tbody>
+    <tr><td><b>JPG</b></td><td>Comprimido, sin transparencia. Pesa poco.</td><td>Fotos para web y redes.</td></tr>
+    <tr><td><b>PNG</b></td><td>Sin pérdida, admite transparencia. Pesa más.</td><td>Logos, gráficos, capturas de pantalla.</td></tr>
+    <tr><td><b>WebP</b></td><td>Formato moderno para web: muy liviano.</td><td>Imágenes del sitio, si la herramienta lo acepta.</td></tr>
+    <tr><td><b>HEIC</b></td><td>Formato de los iPhone.</td><td>Convertilo a JPG antes de usarlo (Photopea lo abre).</td></tr>
+    <tr><td><b>RAW</b></td><td>Datos crudos del sensor, sin procesar.</td><td>Edición avanzada. No hace falta en este curso.</td></tr>
+  </tbody>
+</table></div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-conceptos"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-luz">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Iluminación</h3></div>
+  <div class="topic-body"><p>La luz es lo que más cambia una foto. Para fotos de producto, la mejor es gratis: la de una <b>ventana</b>.</p>
+<div class="grid2">
+  <div><b>Luz difusa</b><p>Suave, sin sombras duras. Día nublado o ventana con cortina fina. Ideal para productos.</p></div>
+  <div><b>Luz dura</b><p>Sol directo o foco. Sombras marcadas. Sirve para un estilo dramático, pero cuesta más.</p></div>
+  <div><b>Contraluz</b><p>La luz viene de atrás del objeto. Queda oscuro si no compensás. Lindo para siluetas o bebidas.</p></div>
+  <div><b>Rebote</b><p>Una cartulina blanca del lado opuesto a la ventana "rellena" las sombras.</p></div>
+</div>
+<ul>
+  <li><b>Apagá el flash</b> y las luces del techo: mezclan colores y dan sombras feas.</li>
+  <li>En el celular, tocá el producto en la pantalla para enfocar y deslizá el sol (o la barra) para ajustar la <b>exposición</b> antes de sacar.</li>
+  <li>Al aire libre, la <b>hora dorada</b> (la primera y la última hora de sol) da una luz cálida y suave.</li>
+</ul>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-luz"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-ambiente">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Ambiente de trabajo y encuadre</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>Fondo limpio:</b> una cartulina blanca o de un color de la marca, curvada contra la pared ("fondo infinito"), para que no se vea el borde.</li>
+  <li><b>Mesa al lado de la ventana</b>, con la luz entrando de costado.</li>
+  <li><b>Estabilidad:</b> apoyá el celular en una pila de libros o un trípode y usá el temporizador de 3 segundos.</li>
+  <li><b>Orden:</b> sacá de cuadro todo lo que no suma. Si agregás objetos, que cuenten algo de la marca.</li>
+</ol>
+<h4>Regla de tercios y ángulos</h4>
+<p>Activá la <b>cuadrícula</b> en la configuración de la cámara. Ubicá el producto sobre una de las líneas o cruces, no siempre en el centro, y dejá aire del otro lado para poner texto después.</p>
+<div class="figs">
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Encuadre con cuadrícula de tercios y el producto sobre un cruce"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><line class="gl3" x1="40" y1="2" x2="40" y2="78"/><line class="gl3" x1="80" y1="2" x2="80" y2="78"/><line class="gl3" x1="2" y1="27" x2="118" y2="27"/><line class="gl3" x1="2" y1="53" x2="118" y2="53"/><rect class="pp" x="31" y="34" width="18" height="30" rx="3"/></svg><figcaption>Regla de tercios<small>el producto sobre un cruce</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Vista desde arriba de un producto redondo"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><circle class="pp" cx="60" cy="40" r="20"/><circle cx="60" cy="40" r="9" fill="var(--paper)"/></svg><figcaption>Cenital<small>desde arriba: comida, objetos planos</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Producto visto en diagonal"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><path class="pp" d="M42 30 L62 22 L82 30 L82 62 L62 70 L42 62 Z"/><path d="M42 30 L62 38 L82 30 M62 38 L62 70" stroke="var(--paper)" stroke-width="2" fill="none"/></svg><figcaption>A 45°<small>muestra frente y volumen</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Producto de frente a la altura de la cámara"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><rect class="pp" x="47" y="18" width="26" height="50" rx="4"/></svg><figcaption>Frontal<small>a la altura del producto</small></figcaption></figure>
+</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-ambiente"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-lista">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Qué fotos sacar: la lista de tomas</h3></div>
+  <div class="topic-body"><p>Antes de fotografiar, armen una <b>lista de tomas</b>. Para el kit necesitan 6 fotos distintas:</p>
+<div class="tw"><table>
+  <thead><tr><th>#</th><th>Toma</th><th>Para qué sirve</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Producto solo, fondo limpio</td><td>Sitio, catálogo, publicaciones</td></tr>
+    <tr><td>2</td><td>Producto en uso</td><td>Muestra para qué sirve</td></tr>
+    <tr><td>3</td><td>Detalle (textura, etiqueta, ingrediente)</td><td>Transmite calidad</td></tr>
+    <tr><td>4</td><td>Con manos o personas</td><td>Hace la marca cercana (pedí permiso)</td></tr>
+    <tr><td>5</td><td>El lugar o el ambiente</td><td>Cuenta dónde está la marca</td></tr>
+    <tr><td>6</td><td>Foto con espacio libre para texto</td><td>Portada del sitio y piezas de redes</td></tr>
+  </tbody>
+</table></div>
+<div class="idea"><b>Sacá de más:</b> de unas 30 tomas salen 6 buenas. Probá cada toma en horizontal y en vertical: el sitio usa horizontales y las historias, verticales.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-lista"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-retoque">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Retoque básico en Photopea</h3></div>
+  <div class="topic-body"><p>Abrí <a href="https://www.photopea.com" target="_blank" rel="noopener">Photopea</a> y arrastrá la foto a la ventana. El retoque mejora la foto sin que se note: si se nota, te pasaste.</p>
+<ol class="pasos">
+  <li><b>Trabajá sobre una copia:</b> duplicá la capa con <kbd>Ctrl</kbd> + <kbd>J</kbd> y ocultá la original. Así podés comparar.</li>
+  <li><b>Recortar y enderezar</b> (<kbd>C</kbd>): ajustá el encuadre y la proporción. Arrastrá por fuera de una esquina para enderezar el horizonte.</li>
+  <li><b>Luz:</b> <span class="ruta">Imagen › Ajustes › Brillo/Contraste</span> o <span class="ruta">Niveles</span> (<kbd>Ctrl</kbd> + <kbd>L</kbd>) para que los blancos sean blancos.</li>
+  <li><b>Color:</b> si la foto está muy amarilla o azul, <span class="ruta">Imagen › Ajustes › Balance de color</span>. Para dar vida, <span class="ruta">Tono/Saturación</span> con poca saturación.</li>
+  <li><b>Limpiar:</b> el <b>pincel corrector puntual</b> (<kbd>J</kbd>) borra manchas, pelusas o migas con un clic.</li>
+  <li><b>Guardar el original editable:</b> <span class="ruta">Archivo › Guardar como PSD</span>, en la carpeta del equipo.</li>
+</ol>
+<div class="tip"><b>Mismo estilo en las 6:</b> si aplicaste un ajuste que te gustó, usá los mismos valores en todas. Así el kit se ve como una sola campaña.</div>
+<p class="more"><b>Para saber más:</b> <a href="https://www.photopea.com/learn/adjustments-filters" target="_blank" rel="noopener">Ajustes y filtros (manual de Photopea)</a> · <a href="https://www.photopea.com/learn/layers" target="_blank" rel="noopener">Capas</a></p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-retoque"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-exportar">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Exportar para web y redes</h3></div>
+  <div class="topic-body"><p>Una foto del celular puede pesar 4 MB. En un sitio eso lo hace lento. Exportá versiones del tamaño justo:</p>
+<div class="tw"><table>
+  <thead><tr><th>Uso</th><th>Tamaño en píxeles</th><th>Formato</th></tr></thead>
+  <tbody>
+    <tr><td>Sitio web</td><td>1920 de ancho (lado mayor)</td><td>JPG calidad 80 % o WebP</td></tr>
+    <tr><td>Publicación cuadrada</td><td>1080 × 1080</td><td>JPG</td></tr>
+    <tr><td>Publicación vertical</td><td>1080 × 1350</td><td>JPG</td></tr>
+    <tr><td>Historia o reel</td><td>1080 × 1920</td><td>JPG</td></tr>
+  </tbody>
+</table></div>
+<ol class="pasos">
+  <li>En Photopea, <span class="ruta">Imagen › Tamaño de imagen</span> para achicar, o recortá con la proporción exacta (<kbd>C</kbd> y escribí la medida arriba).</li>
+  <li><span class="ruta">Archivo › Exportar como › JPG</span>, calidad cerca de 80 %. Abajo ves cuánto va a pesar.</li>
+  <li>Para achicar varias rápido, también sirve <a href="https://squoosh.app" target="_blank" rel="noopener">Squoosh</a>: arrastrás la foto, elegís tamaño y calidad, y la descargás.</li>
+</ol>
+<p>Apuntá a que cada foto web pese <b>menos de 500 KB</b>.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-exportar"> Lo leí</label></div>
+</article>
+<article class="topic" id="foto-a-video">
+  <div class="topic-head"><span class="unit">Fotografía</span><h3>Crear videos con fotografías</h3></div>
+  <div class="topic-body"><p>El programa pide crear videos con fotos. Es un buen primer paso hacia el spot:</p>
+<ol class="pasos">
+  <li>En <a href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>, <span class="ruta">Crear un diseño › Video</span> (o <b>Video para Instagram Reels</b> si es vertical).</li>
+  <li>Subí tus fotos en <span class="ruta">Subidos</span> y arrastralas a la línea de tiempo de abajo, una por escena.</li>
+  <li>Ajustá cuánto dura cada una arrastrando el borde del clip (2 a 3 segundos por foto).</li>
+  <li>Pasá el mouse entre dos escenas y tocá el <b>+</b> o el ícono de <b>transición</b>. Usá siempre la misma, suave.</li>
+  <li>Sumá el eslogan como texto y música gratuita desde <span class="ruta">Audio</span> (sin coronita).</li>
+</ol>
+<p>Esto lo podés usar dentro del spot (Entrega 2) o como pieza de redes (Entrega 4).</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="foto-a-video"> Lo leí</label></div>
+</article>
+      <div class="exercises"><h3 class="ex-h">Entrega</h3>
+<details class="exd" id="ex-e1" data-ex="e1">
+  <summary><span class="ex-num">Entrega 1</span><span class="ex-title">Brief y kit fotográfico</span><span class="ex-tag">Celular · Photopea</span><span class="ex-due" data-fecha-corta="e1">mié 4 nov</span><span class="ex-state" data-state="e1">Pendiente</span></summary>
+  <div class="ex-body">
+    <p><b>Fecha de entrega:</b> <span data-fecha-larga="e1">miércoles 4 de noviembre</span>. Es una entrega por equipo.</p>
+    <h5>Paso a paso</h5>
+    <ul class="check">
+      <li><label><input type="checkbox" data-k="e1-1"><span>Completamos el brief con Publicidad: marca, público, objetivo, mensaje, tono, paleta (con códigos HEX) y llamado a la acción.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-2"><span>Armamos la lista de 6 tomas.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-3"><span>Sacamos las fotos con luz natural, probando al menos 2 condiciones de luz.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-4"><span>Elegimos las 6 mejores y las retocamos en Photopea sobre una copia de la capa.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-5"><span>Guardamos cada foto retocada en PSD.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-6"><span>Exportamos cada foto en versión web (1920 px) y en versión redes (1080 × 1080 o 1080 × 1350).</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-7"><span>Escribimos una ficha por foto: luz, ángulo y retoques aplicados.</span></label></li>
+      <li><label><input type="checkbox" data-k="e1-8"><span>Todo está en la carpeta 1-fotos del Drive del equipo, compartida con el docente.</span></label></li>
+    </ul>
+    <div class="deliver"><b>Suben:</b> el brief en PDF (<code>equipo_brief.pdf</code>) y el enlace a la carpeta <code>1-fotos</code>, con <code>equipo_foto1_web.jpg</code>, <code>equipo_foto1_redes.jpg</code> y así hasta la 6, más las fichas.</div>
+    <details class="hint"><summary>Pista</summary><p>Hagan la sesión de fotos todos juntos, de día y al lado de una ventana. Saquen muchas más de las que necesitan: elegir es parte del trabajo.</p></details>
+    <div class="notes"><label for="n-e1">Nuestro brief en pocas palabras</label><textarea id="n-e1" data-n="n-e1" placeholder="Marca, público, mensaje, tres palabras de tono, colores…"></textarea><small>Se guarda solo en este navegador.</small></div>
+    <div class="submit">
+      <div class="submit-actions">
+        <a class="btn ghost" href="https://www.photopea.com" target="_blank" rel="noopener">Abrir Photopea ↗</a>
+        <a class="btn main send" data-send="e1" href="#entregas" target="_blank" rel="noopener">Entregar en Drive ↗</a>
+      </div>
+      <div class="submit-checks">
+        <label class="tick"><input type="checkbox" data-done="e1"> Terminamos esta entrega</label>
+        <label class="tick"><input type="checkbox" data-sent="e1"> Ya la subimos al formulario</label>
+      </div>
+      <p class="toast" data-toast="e1" role="status"></p>
+    </div>
+  </div>
+</details></div>
+    </div>
+  </div>
+</section>
+<section class="panel nv-video" id="video" data-panel="video" role="tabpanel" aria-labelledby="tab-video" hidden>
+  <div class="panel-head">
+    <span class="eyebrow">Tema 3 de 6 · Unidad 1 · Videos</span>
+    <h2>El spot de video</h2>
+    <p class="goal"><b>En este tema vas a aprender a:</b> escribir un guion, grabar con el celular, editar en Canva, comprimir y publicar el spot.</p>
+    <div class="meta"><span class="chip">Canva o Clipchamp + YouTube</span><span class="chip">Entrega 2</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Video">
+      <h4>En este tema</h4>
+      <ol><li><a href="#video-guion" data-toc="video-guion"><span>01</span>Del guion literario al guion técnico</a></li><li><a href="#video-planos" data-toc="video-planos"><span>02</span>Planos y movimientos de cámara</a></li><li><a href="#video-grabacion" data-toc="video-grabacion"><span>03</span>Grabar con el celular</a></li><li><a href="#video-normas" data-toc="video-normas"><span>04</span>Normas y formatos por plataforma</a></li><li><a href="#video-compresion" data-toc="video-compresion"><span>05</span>Compresión: que el video pese poco y se vea bien</a></li><li><a href="#video-edicion" data-toc="video-edicion"><span>06</span>Edición en Canva</a></li><li><a href="#video-sonido" data-toc="video-sonido"><span>07</span>Sonido: música y locución</a></li><li><a href="#video-publicacion" data-toc="video-publicacion"><span>08</span>Publicar el spot</a></li><li><a href="#ex-e2" data-toc-ex="e2"><span>EN</span>Spot de video</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="video-guion">
+  <div class="topic-head"><span class="unit">Video</span><h3>Del guion literario al guion técnico</h3></div>
+  <div class="topic-body"><p>Un spot de 30 a 60 segundos se planifica antes de grabar. Se hace en dos pasos:</p>
+<div class="grid2">
+  <div><b>Guion literario</b><p>Cuenta la historia en palabras: qué pasa, quién aparece y qué se dice. Media página.</p></div>
+  <div><b>Guion técnico</b><p>Lo convierte en una tabla, toma por toma, para saber exactamente qué grabar.</p></div>
+</div>
+<h4>Estructura de un spot</h4>
+<ol class="pasos">
+  <li><b>Gancho (0 a 3 s):</b> una imagen o frase que haga frenar el dedo.</li>
+  <li><b>Problema o deseo:</b> qué necesita tu público.</li>
+  <li><b>La marca como respuesta:</b> el producto en acción.</li>
+  <li><b>Cierre:</b> eslogan, llamado a la acción y logo.</li>
+</ol>
+<h4>Guion técnico de ejemplo</h4>
+<div class="tw"><table>
+  <thead><tr><th>Toma</th><th>Plano</th><th>Duración</th><th>Imagen</th><th>Audio</th><th>Texto en pantalla</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Detalle</td><td>3 s</td><td>Manos abriendo el frasco</td><td>Música arranca</td><td>¿Antojo de algo rico?</td></tr>
+    <tr><td>2</td><td>Medio</td><td>5 s</td><td>Persona probando, sonríe</td><td>Música</td><td>—</td></tr>
+    <tr><td>3</td><td>General</td><td>4 s</td><td>El local con gente</td><td>Locución: "Hecho en el barrio"</td><td>Hecho en el barrio</td></tr>
+    <tr><td>4</td><td>—</td><td>4 s</td><td>Logo sobre fondo de marca</td><td>Música cierra</td><td>Pedí por WhatsApp</td></tr>
+  </tbody>
+</table></div>
+<p>Armá la tabla en <a href="https://sheets.new" target="_blank" rel="noopener">Google Sheets</a> o <a href="https://docs.new" target="_blank" rel="noopener">Google Docs</a> para que todo el equipo la edite.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-guion"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-planos">
+  <div class="topic-head"><span class="unit">Video</span><h3>Planos y movimientos de cámara</h3></div>
+  <div class="topic-body"><p>Cambiar de plano mantiene la atención. Un spot combina varios:</p>
+<div class="figs">
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Plano general: persona pequeña en el paisaje"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><line x1="2" y1="62" x2="118" y2="62" stroke="var(--muted)"/><circle class="pp" cx="60" cy="40" r="4"/><rect class="pp" x="56" y="45" width="8" height="17" rx="2"/></svg><figcaption>General<small>ubica el lugar</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Plano medio: persona de la cintura para arriba"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><circle class="pp" cx="60" cy="28" r="12"/><rect class="pp" x="40" y="43" width="40" height="35" rx="8"/></svg><figcaption>Medio<small>de la cintura para arriba</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Primer plano: rostro que llena el cuadro"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><circle class="pp" cx="60" cy="34" r="20"/><path class="pp" d="M24 78 C28 58 44 54 60 54 C76 54 92 58 96 78 Z"/></svg><figcaption>Primer plano<small>emoción, rostro</small></figcaption></figure>
+  <figure><svg viewBox="0 0 120 80" role="img" aria-label="Plano detalle: un objeto muy cerca"><rect class="fr" x="2" y="2" width="116" height="76" rx="3"/><rect class="pp" x="10" y="14" width="100" height="52" rx="6"/><circle cx="60" cy="40" r="12" fill="var(--paper)"/></svg><figcaption>Detalle<small>textura, producto</small></figcaption></figure>
+</div>
+<ul>
+  <li><b>Paneo:</b> girar la cámara de costado, despacio, sin moverte de lugar.</li>
+  <li><b>Travelling:</b> caminar con la cámara, acercándote o acompañando a alguien. Con el celular, caminá con las rodillas flojas.</li>
+  <li><b>Fijo:</b> el celular apoyado. Es la toma más prolija y la más fácil.</li>
+</ul>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-planos"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-grabacion">
+  <div class="topic-head"><span class="unit">Video</span><h3>Grabar con el celular</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>Elegí la orientación antes de grabar:</b> horizontal para YouTube y el sitio, vertical para Reels, TikTok e historias. No se puede cambiar después sin recortar.</li>
+  <li><b>Configurá la cámara</b> en 1080p a 30 cuadros por segundo (fps). Más resolución pesa más y no hace falta.</li>
+  <li><b>Luz:</b> las mismas reglas que en fotografía. La persona mirando hacia la ventana, nunca de espaldas.</li>
+  <li><b>Estabilidad:</b> apoyá el celular o sostenelo con las dos manos y los codos pegados al cuerpo.</li>
+  <li><b>Grabá de más:</b> 2 segundos antes y después de cada acción, y varias tomas de cada plano.</li>
+  <li><b>Sonido:</b> grabá la voz en un lugar silencioso, cerca de la boca. Unos auriculares con micrófono mejoran mucho.</li>
+</ol>
+<div class="warn"><b>Personas en cámara:</b> pedí permiso a cada persona que aparezca y anotalo. Lo vas a necesitar para la Entrega 4.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-grabacion"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-normas">
+  <div class="topic-head"><span class="unit">Video</span><h3>Normas y formatos por plataforma</h3></div>
+  <div class="topic-body"><p>Cada plataforma tiene su formato. Elegí una principal según tu público:</p>
+<div class="tw"><table>
+  <thead><tr><th>Plataforma</th><th>Proporción</th><th>Tamaño</th><th>Duración para el spot</th></tr></thead>
+  <tbody>
+    <tr><td>YouTube y sitio web</td><td>16:9 horizontal</td><td>1920 × 1080</td><td>30 a 60 s</td></tr>
+    <tr><td>Instagram Reels, TikTok, YouTube Shorts</td><td>9:16 vertical</td><td>1080 × 1920</td><td>15 a 60 s</td></tr>
+    <tr><td>Publicación de Instagram o Facebook</td><td>4:5 vertical o 1:1</td><td>1080 × 1350</td><td>15 a 30 s</td></tr>
+  </tbody>
+</table></div>
+<ul>
+  <li><b>Subtítulos:</b> mucha gente mira sin sonido. Poné el mensaje también como texto.</li>
+  <li><b>Zona segura:</b> en vertical, dejá libres arriba y abajo: ahí la app pone el nombre de la cuenta, los botones y la descripción.</li>
+  <li><b>Logo al final:</b> 2 a 3 segundos, con el llamado a la acción.</li>
+</ul>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-normas"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-compresion">
+  <div class="topic-head"><span class="unit">Video</span><h3>Compresión: que el video pese poco y se vea bien</h3></div>
+  <div class="topic-body"><p>Un video es una sucesión de imágenes (fotogramas). Sin comprimir, un minuto en 1080p pesaría varios gigas. La <b>compresión</b> lo achica quitando información que el ojo casi no nota.</p>
+<div class="grid2">
+  <div><b>Resolución</b><p>Cantidad de píxeles de cada cuadro: 1920 × 1080 (1080p) alcanza.</p></div>
+  <div><b>Cuadros por segundo (fps)</b><p>25 o 30 fps para un spot. 60 solo para cámara lenta.</p></div>
+  <div><b>Códec</b><p>La forma de comprimir. El estándar es <b>H.264</b>, dentro de un archivo <b>MP4</b>.</p></div>
+  <div><b>Tasa de bits (bitrate)</b><p>Cuánta información por segundo. Más bitrate, más calidad y más peso.</p></div>
+</div>
+<p>Canva y Clipchamp exportan en MP4 con H.264 automáticamente. Solo tenés que elegir <b>1080p</b> al descargar. Un spot de 30 segundos debería pesar entre 10 y 40 MB.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-compresion"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-edicion">
+  <div class="topic-head"><span class="unit">Video</span><h3>Edición en Canva</h3></div>
+  <div class="topic-body"><p>Usamos el editor de video de <a href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>, que ya conocés. Si preferís otro, <a href="https://app.clipchamp.com" target="_blank" rel="noopener">Clipchamp</a> también es gratis, funciona en Chrome o Edge y exporta en 1080p (pide cuenta de Microsoft).</p>
+<ol class="pasos">
+  <li><b>Selección de material:</b> mirá todas las tomas y quedate solo con las mejores. Nombralas por número de toma.</li>
+  <li><b>Crear el proyecto:</b> <span class="ruta">Crear un diseño › Video</span> (horizontal) o <b>Video para Reels</b> (vertical). Subí los clips en <span class="ruta">Subidos</span>.</li>
+  <li><b>Armar la línea de tiempo</b> en el orden del guion técnico. Arrastrá los bordes de cada clip para recortar el principio y el final.</li>
+  <li><b>Cortar:</b> para dividir un clip, ubicá la línea de reproducción, hacé clic derecho sobre el clip y elegí <b>Dividir</b> (o la tecla <kbd>S</kbd>).</li>
+  <li><b>Transiciones:</b> entre clips, el corte directo es lo más profesional. Usá una transición suave solo al cambiar de momento.</li>
+  <li><b>Texto:</b> con los colores y la tipografía de la marca. Que se lea en un celular: grande, corto y con contraste.</li>
+  <li><b>Efectos</b> con medida: un filtro igual para todo el video, velocidad para cámara lenta o rápida.</li>
+</ol>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-edicion"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-sonido">
+  <div class="topic-head"><span class="unit">Video</span><h3>Sonido: música y locución</h3></div>
+  <div class="topic-body"><ul>
+  <li><b>Música:</b> en Canva, <span class="ruta">Audio</span> tiene pistas gratis (sin coronita). Fuera de Canva: la <b>Biblioteca de audio</b> de <a href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a> y <a href="https://pixabay.com/es/music/" target="_blank" rel="noopener">Pixabay Música</a>.</li>
+  <li><b>Locución:</b> grabala con el celular en un lugar silencioso y subila como audio. En Canva también podés grabarte desde <span class="ruta">Subidos › Grabarte</span>.</li>
+  <li><b>Volumen:</b> si hay voz, bajá la música a un 20 o 30 % para que se entienda lo que se dice.</li>
+  <li><b>Cierre:</b> que la música termine con el logo, no cortada de golpe. Usá el desvanecido de salida.</li>
+</ul>
+<div class="warn"><b>Música comercial no:</b> una canción de un artista conocido hace que YouTube o Instagram bloqueen el video o le saquen el audio. Usá música con licencia libre y anotala en el registro.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-sonido"> Lo leí</label></div>
+</article>
+<article class="topic" id="video-publicacion">
+  <div class="topic-head"><span class="unit">Video</span><h3>Publicar el spot</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>Exportar:</b> en Canva, <span class="ruta">Compartir › Descargar › MP4</span>, calidad <b>1080p</b>.</li>
+  <li><b>Subir a YouTube:</b> entrá a <a href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a> con tu cuenta de Google (la primera vez te pide crear un canal) y tocá <b>Crear › Subir videos</b>.</li>
+  <li><b>Título y descripción:</b> nombre de la marca y el mensaje. En la descripción poné el llamado a la acción y, cuando lo tengas, el enlace al sitio.</li>
+  <li><b>Miniatura:</b> elegí un cuadro claro o subí una imagen hecha en Canva (1280 × 720).</li>
+  <li><b>Visibilidad:</b> <b>No listado</b> (solo lo ve quien tiene el enlace) mientras es un trabajo de clase. <b>Público</b> si la marca quiere difundirlo.</li>
+</ol>
+<div class="tip"><b>Sin YouTube:</b> también vale subir el MP4 a la carpeta de Drive y compartirlo con <span class="ruta">Cualquier persona con el enlace › Lector</span>.</div>
+<p class="more"><b>Para saber más:</b> <a href="https://support.google.com/youtube/answer/57407?hl=es-419" target="_blank" rel="noopener">Cómo subir videos a YouTube (ayuda oficial)</a> · <a href="https://www.canva.com/es_419/help/" target="_blank" rel="noopener">Centro de ayuda de Canva</a></p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="video-publicacion"> Lo leí</label></div>
+</article>
+      <div class="exercises"><h3 class="ex-h">Entrega</h3>
+<details class="exd" id="ex-e2" data-ex="e2">
+  <summary><span class="ex-num">Entrega 2</span><span class="ex-title">Spot de video</span><span class="ex-tag">Canva · YouTube</span><span class="ex-due" data-fecha-corta="e2">mar 10 nov</span><span class="ex-state" data-state="e2">Pendiente</span></summary>
+  <div class="ex-body">
+    <p><b>Fecha de entrega:</b> <span data-fecha-larga="e2">martes 10 de noviembre</span>. Es una entrega por equipo.</p>
+    <h5>Paso a paso</h5>
+    <ul class="check">
+      <li><label><input type="checkbox" data-k="e2-1"><span>Escribimos el guion literario.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-2"><span>Armamos el guion técnico en una tabla: toma, plano, duración, imagen, audio y texto.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-3"><span>Grabamos las tomas en el formato de la plataforma elegida (16:9 o 9:16), a 1080p.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-4"><span>Seleccionamos el material y editamos un spot de 30 a 60 segundos.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-5"><span>Combinamos tomas de video con fotos de la Entrega 1.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-6"><span>Agregamos música o locución con licencia libre, textos, subtítulos y el logo al final.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-7"><span>Exportamos en MP4 a 1080p.</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-8"><span>Lo publicamos en YouTube como No listado (o en Drive con enlace de lectura).</span></label></li>
+      <li><label><input type="checkbox" data-k="e2-9"><span>Anotamos la música y todo recurso ajeno en el registro de licencias.</span></label></li>
+    </ul>
+    <div class="deliver"><b>Suben:</b> el guion técnico en PDF (<code>equipo_guion.pdf</code>) y el enlace del video publicado.</div>
+    <details class="hint"><summary>Pista</summary><p>Si el video dura más de 60 segundos, sobra algo. Mirenlo sin sonido: si igual se entiende el mensaje, los textos están bien.</p></details>
+    <div class="notes"><label for="n-e2">Ideas para el gancho de los primeros 3 segundos</label><textarea id="n-e2" data-n="n-e2" placeholder="Una imagen o frase que haga frenar el dedo…"></textarea><small>Se guarda solo en este navegador.</small></div>
+    <div class="submit">
+      <div class="submit-actions">
+        <a class="btn ghost" href="https://www.canva.com" target="_blank" rel="noopener">Abrir Canva ↗</a>
+        <a class="btn main send" data-send="e2" href="#entregas" target="_blank" rel="noopener">Entregar en Drive ↗</a>
+      </div>
+      <div class="submit-checks">
+        <label class="tick"><input type="checkbox" data-done="e2"> Terminamos esta entrega</label>
+        <label class="tick"><input type="checkbox" data-sent="e2"> Ya la subimos al formulario</label>
+      </div>
+      <p class="toast" data-toast="e2" role="status"></p>
+    </div>
+  </div>
+</details></div>
+    </div>
+  </div>
+</section>
+<section class="panel nv-web" id="web" data-panel="web" role="tabpanel" aria-labelledby="tab-web" hidden>
+  <div class="panel-head">
+    <span class="eyebrow">Tema 4 de 6 · Unidad 3 · Marketing web</span>
+    <h2>El sitio de la campaña</h2>
+    <p class="goal"><b>En este tema vas a aprender a:</b> entender cómo funciona Internet y los buscadores, y publicar el sitio de tu campaña con Google Sites.</p>
+    <div class="meta"><span class="chip">Google Sites</span><span class="chip">Entrega 3</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Sitio web">
+      <h4>En este tema</h4>
+      <ol><li><a href="#web-internet" data-toc="web-internet"><span>01</span>Internet en pocas palabras</a></li><li><a href="#web-seo" data-toc="web-seo"><span>02</span>Cómo te encuentra un buscador</a></li><li><a href="#web-componentes" data-toc="web-componentes"><span>03</span>Componentes de una página y de un sitio</a></li><li><a href="#web-sites" data-toc="web-sites"><span>04</span>Diseño one click con Google Sites</a></li><li><a href="#web-insertar" data-toc="web-insertar"><span>05</span>Video, botones, redes y texto alternativo</a></li><li><a href="#web-publicar" data-toc="web-publicar"><span>06</span>Publicar el sitio</a></li><li><a href="#ex-e3" data-toc-ex="e3"><span>EN</span>Sitio web de la campaña</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="web-internet">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Internet en pocas palabras</h3></div>
+  <div class="topic-body"><p>Internet es una red de computadoras conectadas. Para encontrar una página, el navegador necesita su dirección:</p>
+<div class="url" aria-label="Partes de una dirección web"><span class="u1">https://</span><span class="u2">sites.google.com</span><span class="u3">/view/sabores-del-barrio</span><span class="u4">/contacto</span></div>
+<div class="url-key">
+  <div><i class="u1"></i><span><b>Protocolo:</b> cómo se comunican. La <b>s</b> de https quiere decir conexión segura.</span></div>
+  <div><i class="u2"></i><span><b>Dominio:</b> el nombre del servidor donde está el sitio.</span></div>
+  <div><i class="u3"></i><span><b>Sitio:</b> la carpeta de tu sitio dentro de ese servidor.</span></div>
+  <div><i class="u4"></i><span><b>Página:</b> una página dentro del sitio.</span></div>
+</div>
+<div class="grid2">
+  <div><b>URL</b><p>La dirección completa de una página, como la de arriba.</p></div>
+  <div><b>IP</b><p>El número que identifica a cada computadora en la red, por ejemplo 142.250.79.46. Los dominios existen para no tener que recordar números.</p></div>
+  <div><b>DNS</b><p>La "guía telefónica" de Internet: traduce el dominio a su IP.</p></div>
+  <div><b>Hiperenlace</b><p>Texto, imagen o botón que lleva a otra página. Es lo que hace a la web una "red".</p></div>
+  <div><b>Buscador</b><p>Un programa que recorre la web, guarda las páginas y las ordena para responder búsquedas: Google, Bing.</p></div>
+  <div><b>PageRank</b><p>La idea con la que nació Google: una página es importante si otras páginas importantes la enlazan.</p></div>
+</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-internet"> Lo leí</label></div>
+</article>
+<article class="topic" id="web-seo">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Cómo te encuentra un buscador</h3></div>
+  <div class="topic-body"><p><b>SEO</b> (optimización para buscadores) es hacer que tu sitio aparezca cuando alguien busca lo que ofrecés. <b>SEM</b> es pagar anuncios en el buscador; en este curso trabajamos el SEO, que es gratis.</p>
+<ol class="pasos">
+  <li><b>Palabras clave:</b> anotá 3 a 5 frases que buscaría tu público. Por ejemplo "alfajores artesanales Paysandú", no solo "alfajores".</li>
+  <li><b>Título del sitio y de cada página</b> con esas palabras.</li>
+  <li><b>Encabezados y texto:</b> usá las palabras clave de forma natural en títulos y párrafos. Nada de repetirlas sin sentido.</li>
+  <li><b>Texto alternativo</b> en cada imagen: describe la foto para buscadores y para personas que usan lectores de pantalla.</li>
+  <li><b>Enlaces que llegan al sitio:</b> poné la URL en la descripción del video, en la biografía de las redes y en el perfil de Google de la marca, si tiene.</li>
+  <li><b>Que cargue rápido:</b> fotos livianas (lo viste en Fotografía).</li>
+</ol>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-seo"> Lo leí</label></div>
+</article>
+<article class="topic" id="web-componentes">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Componentes de una página y de un sitio</h3></div>
+  <div class="topic-body"><div class="wire-wrap">
+  <div class="wire" aria-label="Esquema de una página de campaña">
+    <div class="w-h"><span>LOGO</span><span>menú ≡</span></div>
+    <div class="w-hero"><span>imagen + mensaje</span></div>
+    <div class="w-cta">llamado a la acción</div>
+    <div class="w-c"><span>foto</span><span>foto</span><span>foto</span></div>
+    <div class="w-v">video</div>
+    <div class="w-f">contacto · redes</div>
+  </div>
+  <div>
+    <p><b>Una página</b> tiene, de arriba hacia abajo:</p>
+    <ol>
+      <li><b>Encabezado:</b> logo y menú.</li>
+      <li><b>Portada (hero):</b> foto grande con el mensaje principal.</li>
+      <li><b>Llamado a la acción:</b> un botón visible: "Pedí por WhatsApp".</li>
+      <li><b>Contenido:</b> productos, fotos, video, beneficios.</li>
+      <li><b>Pie:</b> contacto, dirección, horario y redes.</li>
+    </ol>
+    <p><b>Un sitio</b> son varias páginas unidas por el menú. Para una campaña alcanza con una página larga (<b>landing page</b>) o 3 páginas: Inicio, Productos y Contacto.</p>
+  </div>
+</div>
+<p>Antes de abrir la computadora, dibujen en papel el <b>mapa del sitio</b> (qué páginas hay) y un boceto de la portada.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-componentes"> Lo leí</label></div>
+</article>
+<article class="topic" id="web-sites">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Diseño one click con Google Sites</h3></div>
+  <div class="topic-body"><p>"One click" quiere decir armar un sitio sin programar: elegís bloques, los acomodás y publicás. Usamos <a href="https://sites.google.com/new" target="_blank" rel="noopener">Google Sites</a>: es gratis, funciona en el navegador y se entra con la cuenta de Google.</p>
+<ol class="pasos">
+  <li>Entrá a <a href="https://sites.google.com/new" target="_blank" rel="noopener">sites.google.com/new</a> y elegí <b>Sitio en blanco</b>.</li>
+  <li>Arriba a la izquierda, escribí el <b>nombre del sitio</b>. Tocá el título de la página para escribir el mensaje principal.</li>
+  <li>En el panel de la derecha, <b>Temas</b>: elegí uno simple y cambiá el color al de tu marca con <b>+</b> (personalizado, pegás el código HEX).</li>
+  <li><b>Insertar › Diseños</b> agrega bloques ya armados de imagen y texto. Cambiá las imágenes por las de tu kit.</li>
+  <li><b>Páginas</b>: agregá páginas con <b>+</b>. El menú se arma solo.</li>
+  <li>Compartí el sitio con tu equipo como <b>editores</b> con el ícono de persona con +, arriba.</li>
+</ol>
+<div class="idea"><b>Alternativa:</b> Canva también publica sitios gratis: <span class="ruta">Crear un diseño › Sitio web</span> y después <b>Publicar sitio web</b>. Elegí una sola herramienta por equipo.</div>
+<p class="more"><b>Para saber más:</b> <a href="https://support.google.com/sites/answer/90538?hl=es-419" target="_blank" rel="noopener">Agregar texto e imágenes en Google Sites</a> · <a href="https://support.google.com/sites/?hl=es-419" target="_blank" rel="noopener">Centro de ayuda de Google Sites</a></p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-sites"> Lo leí</label></div>
+</article>
+<article class="topic" id="web-insertar">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Video, botones, redes y texto alternativo</h3></div>
+  <div class="topic-body"><ul>
+  <li><b>Video:</b> <span class="ruta">Insertar › YouTube</span> y pegá el enlace del spot.</li>
+  <li><b>Botón:</b> <span class="ruta">Insertar › Botón</span>. Para WhatsApp, el enlace es <code>https://wa.me/598</code> seguido del número sin el 0 (por ejemplo <code>https://wa.me/59899123456</code>).</li>
+  <li><b>Redes:</b> <span class="ruta">Insertar › Vínculos sociales</span> y pegá las direcciones de los perfiles.</li>
+  <li><b>Formulario o mapa:</b> <span class="ruta">Insertar › Formularios</span> (un Google Form de contacto) o <span class="ruta">Insertar › Mapa</span>.</li>
+  <li><b>Texto alternativo:</b> hacé clic en la imagen, en los tres puntos (<b>Más opciones</b>) y elegí <b>Agregar texto alternativo</b>. Describí lo que se ve: "Frasco de dulce de leche casero sobre mesa de madera".</li>
+</ul>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-insertar"> Lo leí</label></div>
+</article>
+<article class="topic" id="web-publicar">
+  <div class="topic-head"><span class="unit">Sitio web</span><h3>Publicar el sitio</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>Vista previa</b> (ícono de pantalla, arriba): mirá el sitio como teléfono, tablet y computadora. Corregí lo que se vea mal en el celular.</li>
+  <li><b>Publicar</b> (botón arriba a la derecha): la primera vez elegís la dirección, por ejemplo <code>sites.google.com/view/sabores-del-barrio</code>.</li>
+  <li>Abrí la dirección desde un celular y en una ventana de incógnito: si se ve sin iniciar sesión, está bien publicado.</li>
+  <li>Cada cambio que hagas después necesita <b>Publicar</b> de nuevo.</li>
+</ol>
+<h4>Formas de publicación</h4>
+<div class="grid2">
+  <div><b>Página</b><p>Una sola página larga. Rápida y efectiva para una campaña.</p></div>
+  <div><b>Sitio</b><p>Varias páginas con menú. Para marcas con varios productos.</p></div>
+  <div><b>Revista digital</b><p>Un diseño de varias páginas que se "hojea", por ejemplo un catálogo hecho en Canva y compartido con un enlace de solo vista.</p></div>
+</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="web-publicar"> Lo leí</label></div>
+</article>
+      <div class="exercises"><h3 class="ex-h">Entrega</h3>
+<details class="exd" id="ex-e3" data-ex="e3">
+  <summary><span class="ex-num">Entrega 3</span><span class="ex-title">Sitio web de la campaña</span><span class="ex-tag">Google Sites</span><span class="ex-due" data-fecha-corta="e3">vie 13 nov</span><span class="ex-state" data-state="e3">Pendiente</span></summary>
+  <div class="ex-body">
+    <p><b>Fecha de entrega:</b> <span data-fecha-larga="e3">viernes 13 de noviembre</span>. Es una entrega por equipo.</p>
+    <h5>Paso a paso</h5>
+    <ul class="check">
+      <li><label><input type="checkbox" data-k="e3-1"><span>Dibujamos el mapa del sitio y un boceto de la portada.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-2"><span>Definimos 3 a 5 palabras clave y las usamos en el título y los textos.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-3"><span>Creamos el sitio con los colores y la tipografía de la marca.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-4"><span>La portada tiene logo, imagen principal, mensaje y un botón de llamado a la acción.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-5"><span>Hay una sección con las fotos del kit y el spot insertado.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-6"><span>Agregamos contacto (WhatsApp, correo o formulario) y vínculos a las redes.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-7"><span>Todas las imágenes tienen texto alternativo.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-8"><span>Revisamos la vista previa en celular y corregimos.</span></label></li>
+      <li><label><input type="checkbox" data-k="e3-9"><span>Publicamos y probamos la URL en una ventana de incógnito y desde un celular.</span></label></li>
+    </ul>
+    <div class="deliver"><b>Suben:</b> la URL del sitio, la foto del boceto en papel y dos capturas: una en computadora y otra en celular.</div>
+    <details class="hint"><summary>Pista</summary><p>Empiecen por la portada: si en 5 segundos alguien entiende qué es la marca y qué tiene que hacer, el resto es más fácil.</p></details>
+    <div class="notes"><label for="n-e3">Nuestras palabras clave</label><textarea id="n-e3" data-n="n-e3" placeholder="Las frases que buscaría nuestro público…"></textarea><small>Se guarda solo en este navegador.</small></div>
+    <div class="submit">
+      <div class="submit-actions">
+        <a class="btn ghost" href="https://sites.google.com/new" target="_blank" rel="noopener">Abrir Google Sites ↗</a>
+        <a class="btn main send" data-send="e3" href="#entregas" target="_blank" rel="noopener">Entregar en Drive ↗</a>
+      </div>
+      <div class="submit-checks">
+        <label class="tick"><input type="checkbox" data-done="e3"> Terminamos esta entrega</label>
+        <label class="tick"><input type="checkbox" data-sent="e3"> Ya la subimos al formulario</label>
+      </div>
+      <p class="toast" data-toast="e3" role="status"></p>
+    </div>
+  </div>
+</details></div>
+    </div>
+  </div>
+</section>
+<section class="panel nv-redes" id="redes" data-panel="redes" role="tabpanel" aria-labelledby="tab-redes" hidden>
+  <div class="panel-head">
+    <span class="eyebrow">Tema 5 de 6 · Unidad 4 · Redes sociales</span>
+    <h2>Redes sociales, derechos de autor y netiqueta</h2>
+    <p class="goal"><b>En este tema vas a aprender a:</b> elegir redes según tu público, planificar publicaciones, diseñar piezas y usar contenido de forma legal y respetuosa.</p>
+    <div class="meta"><span class="chip">Canva + Google Sheets</span><span class="chip">Entrega 4</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Redes">
+      <h4>En este tema</h4>
+      <ol><li><a href="#redes-conceptos" data-toc="redes-conceptos"><span>01</span>Conceptos básicos de redes</a></li><li><a href="#redes-elegir" data-toc="redes-elegir"><span>02</span>Elegir la red según el público</a></li><li><a href="#redes-plan" data-toc="redes-plan"><span>03</span>Plan y calendario de contenidos</a></li><li><a href="#redes-escribir" data-toc="redes-escribir"><span>04</span>Escribir para redes</a></li><li><a href="#redes-piezas" data-toc="redes-piezas"><span>05</span>Diseñar las piezas en Canva</a></li><li><a href="#redes-derechos" data-toc="redes-derechos"><span>06</span>Derechos de autor</a></li><li><a href="#redes-licencias" data-toc="redes-licencias"><span>07</span>El registro de licencias</a></li><li><a href="#redes-netiqueta" data-toc="redes-netiqueta"><span>08</span>Netiqueta: cómo se comporta una marca</a></li><li><a href="#ex-e4" data-toc-ex="e4"><span>EN</span>Plan de redes y licencias</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="redes-conceptos">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Conceptos básicos de redes</h3></div>
+  <div class="topic-body"><div class="grid2">
+  <div><b>Perfil personal y de empresa</b><p>Las cuentas profesionales o de empresa muestran estadísticas y botones de contacto. Una marca usa siempre estas.</p></div>
+  <div><b>Alcance e impresiones</b><p>Alcance: cuántas personas distintas vieron la publicación. Impresiones: cuántas veces se vio en total.</p></div>
+  <div><b>Interacción (engagement)</b><p>Me gusta, comentarios, compartidos y guardados. Muestra si el contenido importa.</p></div>
+  <div><b>Algoritmo</b><p>Las reglas con las que la red decide qué mostrarle a cada persona. Premia lo que genera interacción.</p></div>
+  <div><b>Formatos</b><p>Publicación, carrusel (varias imágenes), historia (dura 24 h) y video corto (reel).</p></div>
+  <div><b>Hashtag</b><p>Palabra con # que agrupa publicaciones de un tema: #HechoEnUruguay.</p></div>
+</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-conceptos"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-elegir">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Elegir la red según el público</h3></div>
+  <div class="topic-body"><p>No hace falta estar en todas. Mejor 1 o 2 redes bien atendidas que 5 abandonadas.</p>
+<div class="tw"><table>
+  <thead><tr><th>Red</th><th>Para qué es fuerte</th><th>Formato principal</th></tr></thead>
+  <tbody>
+    <tr><td><b>Instagram</b></td><td>Productos visuales, gastronomía, moda, emprendimientos locales.</td><td>Fotos, carruseles, reels, historias</td></tr>
+    <tr><td><b>TikTok</b></td><td>Público joven, humor, tendencias, mostrar el proceso.</td><td>Video vertical corto</td></tr>
+    <tr><td><b>Facebook</b></td><td>Público adulto, comunidades del barrio, eventos.</td><td>Publicaciones, grupos, eventos</td></tr>
+    <tr><td><b>WhatsApp Business</b></td><td>Atención y ventas directas, catálogo.</td><td>Mensajes, estados, catálogo</td></tr>
+    <tr><td><b>LinkedIn</b></td><td>Servicios profesionales y empresas.</td><td>Textos y publicaciones profesionales</td></tr>
+    <tr><td><b>YouTube</b></td><td>Videos largos, tutoriales, el spot.</td><td>Video horizontal y Shorts</td></tr>
+  </tbody>
+</table></div>
+<p>Justificá la elección con lo que dice el brief sobre tu público.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-elegir"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-plan">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Plan y calendario de contenidos</h3></div>
+  <div class="topic-body"><p>Publicar "cuando se puede" no funciona. Armá un calendario de <b>2 semanas</b> en <a href="https://sheets.new" target="_blank" rel="noopener">Google Sheets</a> con estas columnas:</p>
+<div class="tw"><table>
+  <thead><tr><th>Fecha</th><th>Red</th><th>Formato</th><th>Objetivo</th><th>Texto</th><th>Hashtags</th><th>Pieza</th></tr></thead>
+  <tbody>
+    <tr><td>Lun 16/11</td><td>Instagram</td><td>Carrusel</td><td>Mostrar</td><td>Así nace cada frasco…</td><td>#HechoEnUruguay</td><td>enlace a Canva</td></tr>
+    <tr><td>Mié 18/11</td><td>Instagram</td><td>Reel</td><td>Entretener</td><td>¿Cuántas cucharadas aguantás?</td><td>#DulceDeLeche</td><td>spot vertical</td></tr>
+  </tbody>
+</table></div>
+<p>Variá los objetivos para no vender todo el tiempo:</p>
+<div class="grid2">
+  <div><b>Mostrar</b><p>El producto, el proceso, el equipo detrás.</p></div>
+  <div><b>Enseñar</b><p>Un consejo, una receta, cómo se usa.</p></div>
+  <div><b>Entretener</b><p>Humor, preguntas, encuestas, tendencias.</p></div>
+  <div><b>Vender</b><p>Precio, promoción, cómo comprar. Siempre con llamado a la acción.</p></div>
+</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-plan"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-escribir">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Escribir para redes</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>La primera línea es el gancho:</b> es lo único que se ve antes del "más".</li>
+  <li><b>Corto y en el tono de la marca:</b> frases breves, como si le hablaras a una persona.</li>
+  <li><b>Un llamado a la acción:</b> "Escribinos al WhatsApp del perfil", "Guardalo para después".</li>
+  <li><b>3 a 5 hashtags</b> relevantes: uno de la marca, uno del lugar y algunos del tema.</li>
+  <li><b>Accesible:</b> agregá texto alternativo a las imágenes y subtítulos a los videos.</li>
+</ol>
+<div class="idea"><b>Revisá la ortografía</b> antes de publicar. Un error en una marca se nota más que en una cuenta personal.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-escribir"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-piezas">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Diseñar las piezas en Canva</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li>En <a href="https://www.canva.com" target="_blank" rel="noopener">Canva</a>, creá cada pieza con el tamaño de la red: <b>Publicación de Instagram</b> (1080 × 1080 o 1080 × 1350), <b>Historia</b> (1080 × 1920), <b>Reel</b> para video.</li>
+  <li>Usá <b>tus fotos</b> del kit, tus colores y tus tipografías. Todas las piezas tienen que verse de la misma marca.</li>
+  <li><b>Carrusel:</b> un diseño con varias páginas. La primera atrapa, las del medio cuentan, la última llama a la acción.</li>
+  <li>Poco texto en la imagen: el detalle va en la descripción.</li>
+  <li>Descargá en PNG (imágenes) o MP4 (video) y guardá todo en la carpeta <code>4-redes</code>.</li>
+</ol>
+<div class="tip"><b>Mismo diseño, otro tamaño:</b> en la versión gratis de Canva no se puede cambiar el tamaño de un diseño. Creá uno nuevo con la medida y copiá y pegá los elementos.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-piezas"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-derechos">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Derechos de autor</h3></div>
+  <div class="topic-body"><p>El <b>derecho de autor</b> protege toda obra original (fotos, textos, música, videos, ilustraciones) desde el momento en que se crea, sin necesidad de registrarla. En Uruguay lo regula la <b>Ley 9.739</b>. Usar una obra sin permiso, aunque no se cobre, puede ser una infracción.</p>
+<h4>Licencias Creative Commons</h4>
+<p>Algunos autores dejan usar sus obras con condiciones. Las más comunes:</p>
+<div class="tw"><table>
+  <thead><tr><th>Licencia</th><th>Podés…</th><th>Condición</th></tr></thead>
+  <tbody>
+    <tr><td class="k"><b>CC0</b></td><td>Usarla para lo que quieras.</td><td>Ninguna: es como dominio público.</td></tr>
+    <tr><td class="k"><b>CC BY</b></td><td>Usarla y modificarla, también con fines comerciales.</td><td>Nombrar al autor.</td></tr>
+    <tr><td class="k"><b>CC BY-SA</b></td><td>Usarla y modificarla.</td><td>Nombrar al autor y compartir lo tuyo con la misma licencia.</td></tr>
+    <tr><td class="k"><b>… NC</b></td><td>Usarla.</td><td><b>No comercial:</b> no sirve para una marca que vende.</td></tr>
+    <tr><td class="k"><b>… ND</b></td><td>Usarla tal cual.</td><td><b>Sin obras derivadas:</b> no se puede editar.</td></tr>
+  </tbody>
+</table></div>
+<p>Para buscar material con licencia: <a href="https://openverse.org/es" target="_blank" rel="noopener">Openverse</a> (imágenes y audio Creative Commons). Bancos como Pexels, Unsplash y Pixabay tienen licencias propias que permiten uso gratuito; leé las condiciones de cada uno.</p>
+<h4>Cómo dar crédito</h4>
+<p><code>Foto: "Título" de Autor, en Openverse, licencia CC BY 4.0.</code> Va en la descripción de la publicación o al pie del sitio.</p>
+<h4>Imagen de las personas</h4>
+<p>La cara de una persona también es un dato protegido. Para publicar fotos o videos donde se reconoce a alguien, pedí una <b>autorización por escrito</b> (puede ser un formulario de Google o un mensaje guardado).</p>
+<div class="warn"><b>Nunca:</b> logos o personajes de otras marcas, canciones comerciales, fotos sacadas de Google o de perfiles ajenos, ni personas sin permiso.</div>
+<p class="more"><b>Para saber más:</b> <a href="https://creativecommons.org/licenses/?lang=es" target="_blank" rel="noopener">Licencias Creative Commons (sitio oficial)</a> · <a href="https://creativecommons.org/chooser/" target="_blank" rel="noopener">Elegí una licencia para tu obra</a></p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-derechos"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-licencias">
+  <div class="topic-head"><span class="unit">Redes</span><h3>El registro de licencias</h3></div>
+  <div class="topic-body"><p>Una hoja en la misma planilla del calendario. Una fila por cada recurso que <b>no hizo</b> el equipo, en cualquier pieza de la campaña:</p>
+<div class="tw"><table>
+  <thead><tr><th>Recurso</th><th>Dónde se usa</th><th>Autor</th><th>Fuente (enlace)</th><th>Licencia</th></tr></thead>
+  <tbody>
+    <tr><td>Música "Sunny Day"</td><td>Spot</td><td>Autor X</td><td>Biblioteca de audio de YouTube</td><td>Uso libre sin atribución</td></tr>
+    <tr><td>Tipografía Poppins</td><td>Todas las piezas</td><td>Indian Type Foundry</td><td>Google Fonts</td><td>SIL Open Font License</td></tr>
+    <tr><td>Foto de mate</td><td>Sitio, sección "Nosotros"</td><td>Autora Y</td><td>Openverse</td><td>CC BY 4.0</td></tr>
+  </tbody>
+</table></div>
+<p>Al lado, una hoja de <b>autorizaciones</b>: nombre de cada persona que aparece, en qué pieza y dónde está guardado su permiso.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-licencias"> Lo leí</label></div>
+</article>
+<article class="topic" id="redes-netiqueta">
+  <div class="topic-head"><span class="unit">Redes</span><h3>Netiqueta: cómo se comporta una marca</h3></div>
+  <div class="topic-body"><p>La <b>netiqueta</b> son las normas de buena convivencia en Internet. Para una marca, además, cuidan su reputación.</p>
+<ol class="pasos">
+  <li><b>Tono propio y respetuoso:</b> el de tu brief, sin insultos, burlas ni temas que dividan.</li>
+  <li><b>Responder rápido:</b> consultas y mensajes dentro del día. Un "gracias" a quien comenta.</li>
+  <li><b>Críticas:</b> agradecer, disculparse si corresponde y pasar a mensaje privado para resolver. No borrar críticas legítimas ni discutir en público.</li>
+  <li><b>Trolls y agresiones:</b> no responder. Ocultar o denunciar los comentarios ofensivos.</li>
+  <li><b>No hacer spam:</b> nada de etiquetar a desconocidos ni mandar mensajes masivos.</li>
+  <li><b>Privacidad:</b> no publicar datos ni capturas de conversaciones de clientes.</li>
+</ol>
+<p>Con esto armen una <b>guía de netiqueta</b> de una página para la marca: tono, cómo responder consultas, cómo manejar críticas y qué no se publica nunca.</p>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="redes-netiqueta"> Lo leí</label></div>
+</article>
+      <div class="exercises"><h3 class="ex-h">Entrega</h3>
+<details class="exd" id="ex-e4" data-ex="e4">
+  <summary><span class="ex-num">Entrega 4</span><span class="ex-title">Plan de redes y licencias</span><span class="ex-tag">Canva · Google Sheets</span><span class="ex-due" data-fecha-corta="e4">mar 17 nov</span><span class="ex-state" data-state="e4">Pendiente</span></summary>
+  <div class="ex-body">
+    <p><b>Fecha de entrega:</b> <span data-fecha-larga="e4">martes 17 de noviembre</span>. Es una entrega por equipo.</p>
+    <h5>Paso a paso</h5>
+    <ul class="check">
+      <li><label><input type="checkbox" data-k="e4-1"><span>Elegimos 1 o 2 redes y justificamos la elección según el público del brief.</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-2"><span>Armamos el calendario de 2 semanas en Google Sheets.</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-3"><span>Diseñamos 6 piezas (publicaciones, carrusel, historias o reels) con material propio.</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-4"><span>Escribimos el texto de cada pieza, con gancho, llamado a la acción y hashtags.</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-5"><span>Redactamos la guía de netiqueta de la marca (una página).</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-6"><span>Completamos el registro de licencias de toda la campaña.</span></label></li>
+      <li><label><input type="checkbox" data-k="e4-7"><span>Juntamos las autorizaciones de imagen de las personas que aparecen.</span></label></li>
+    </ul>
+    <div class="deliver"><b>Suben:</b> el enlace a la planilla (hojas Calendario, Licencias y Autorizaciones), las 6 piezas en PNG o MP4 en la carpeta <code>4-redes</code> y la guía de netiqueta en PDF.</div>
+    <details class="hint"><summary>Pista</summary><p>Repasen pieza por pieza de toda la campaña: cada foto, tipografía, música o ícono que no hicieron ustedes va al registro.</p></details>
+    <div class="notes"><label for="n-e4">Por qué elegimos estas redes</label><textarea id="n-e4" data-n="n-e4" placeholder="Nuestro público está en…"></textarea><small>Se guarda solo en este navegador.</small></div>
+    <div class="submit">
+      <div class="submit-actions">
+        <a class="btn ghost" href="https://sheets.new" target="_blank" rel="noopener">Abrir Google Sheets ↗</a>
+        <a class="btn main send" data-send="e4" href="#entregas" target="_blank" rel="noopener">Entregar en Drive ↗</a>
+      </div>
+      <div class="submit-checks">
+        <label class="tick"><input type="checkbox" data-done="e4"> Terminamos esta entrega</label>
+        <label class="tick"><input type="checkbox" data-sent="e4"> Ya la subimos al formulario</label>
+      </div>
+      <p class="toast" data-toast="e4" role="status"></p>
+    </div>
+  </div>
+</details></div>
+    </div>
+  </div>
+</section>
+<section class="panel nv-final" id="final" data-panel="final" role="tabpanel" aria-labelledby="tab-final" hidden>
+  <div class="panel-head">
+    <span class="eyebrow">Tema 6 de 6 · Defensa final</span>
+    <h2>Campaña integrada y defensa</h2>
+    <p class="goal"><b>En este tema:</b> juntás todas las piezas, revisás que estén conectadas entre sí y presentás la campaña en equipo.</p>
+    <div class="meta"><span class="chip">Defensa oral en equipo</span></div>
+  </div>
+  <div class="layout">
+    <nav class="toc" aria-label="Contenidos de Proyecto final">
+      <h4>En este tema</h4>
+      <ol><li><a href="#final-programa" data-toc="final-programa"><span>01</span>Qué pide el programa</a></li><li><a href="#final-entregas" data-toc="final-entregas"><span>02</span>Lo que entregan</a></li><li><a href="#final-defensa" data-toc="final-defensa"><span>03</span>Guion de la defensa (10 minutos + 5 de preguntas)</a></li><li><a href="#final-evaluacion" data-toc="final-evaluacion"><span>04</span>Cómo se evalúa (orientativo)</a></li><li><a href="#ex-final" data-toc-ex="final"><span>PF</span>Campaña integrada y defensa</a></li></ol>
+    </nav>
+    <div class="topics">
+<article class="topic" id="final-programa">
+  <div class="topic-head"><span class="unit">Proyecto final</span><h3>Qué pide el programa</h3></div>
+  <div class="topic-body"><ul>
+  <li>Un <b>proyecto final en equipo</b>, con productos que se puedan difundir y publicar en la web.</li>
+  <li>Trabajado <b>en coordinación con Publicidad</b>: la estrategia sale de ahí.</li>
+  <li><b>Entregas parciales</b> con devolución antes de la final.</li>
+  <li>Una <b>defensa final</b> donde presentan en público sus creaciones.</li>
+  <li>Evaluación <b>individual y por equipo</b>.</li>
+</ul>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="final-programa"> Lo leí</label></div>
+</article>
+<article class="topic" id="final-entregas">
+  <div class="topic-head"><span class="unit">Proyecto final</span><h3>Lo que entregan</h3></div>
+  <div class="topic-body"><div class="tw"><table>
+  <thead><tr><th>Pieza</th><th>Herramienta</th><th>Qué se entrega</th></tr></thead>
+  <tbody>
+    <tr><td><b>Brief</b></td><td>Google Docs</td><td>PDF de una página</td></tr>
+    <tr><td><b>Kit fotográfico</b></td><td>Celular + Photopea</td><td>6 fotos en versión web y redes, en la carpeta de Drive</td></tr>
+    <tr><td><b>Spot</b></td><td>Canva o Clipchamp + YouTube</td><td>Enlace del video publicado y guion técnico</td></tr>
+    <tr><td><b>Sitio web</b></td><td>Google Sites</td><td>URL pública</td></tr>
+    <tr><td><b>Redes</b></td><td>Canva + Google Sheets</td><td>6 piezas, calendario y guía de netiqueta</td></tr>
+    <tr><td><b>Registro de licencias</b></td><td>Google Sheets</td><td>Planilla completa y autorizaciones</td></tr>
+  </tbody>
+</table></div>
+<div class="tip"><b>Todo conectado:</b> el sitio muestra las fotos y el video y enlaza a las redes; el video y las redes llevan al sitio. Probalo como si fueras un cliente.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="final-entregas"> Lo leí</label></div>
+</article>
+<article class="topic" id="final-defensa">
+  <div class="topic-head"><span class="unit">Proyecto final</span><h3>Guion de la defensa (10 minutos + 5 de preguntas)</h3></div>
+  <div class="topic-body"><ol class="pasos">
+  <li><b>La marca y el público</b> (1 min): qué ofrece y a quién le habla.</li>
+  <li><b>La estrategia</b> (1 min): objetivo, mensaje y por qué esas redes.</li>
+  <li><b>Fotos y video</b> (3 min): muestran el spot y explican luz, planos y edición.</li>
+  <li><b>El sitio en vivo</b> (2 min): lo recorren desde la URL pública.</li>
+  <li><b>Redes y derechos</b> (2 min): el calendario, dos piezas y el registro de licencias.</li>
+  <li><b>Cierre</b> (1 min): qué aprendieron y qué mejorarían.</li>
+</ol>
+<div class="idea"><b>Cada integrante habla</b> y tiene que poder responder sobre cualquier pieza. Prueben los enlaces y el sonido antes de empezar.</div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="final-defensa"> Lo leí</label></div>
+</article>
+<article class="topic" id="final-evaluacion">
+  <div class="topic-head"><span class="unit">Proyecto final</span><h3>Cómo se evalúa (orientativo)</h3></div>
+  <div class="topic-body"><div class="tw"><table>
+  <thead><tr><th>Criterio</th><th>Qué se mira</th></tr></thead>
+  <tbody>
+    <tr><td>Coherencia de campaña</td><td>Todas las piezas comunican el mismo mensaje, tono y estética del brief.</td></tr>
+    <tr><td>Fotografía</td><td>Luz, encuadre y retoque cuidados; formatos y pesos correctos.</td></tr>
+    <tr><td>Video</td><td>Guion claro, edición fluida, buen sonido, formato adecuado y publicado.</td></tr>
+    <tr><td>Sitio web</td><td>Publicado, completo, se ve bien en el celular, con SEO básico y texto alternativo.</td></tr>
+    <tr><td>Redes y netiqueta</td><td>Plan realista, piezas de la marca, textos con llamado a la acción, guía de netiqueta.</td></tr>
+    <tr><td>Derechos de autor</td><td>Registro completo, licencias válidas y autorizaciones de imagen.</td></tr>
+    <tr><td>Entregas parciales</td><td>Entregaron a tiempo y aplicaron las devoluciones.</td></tr>
+    <tr><td>Defensa</td><td>Presentación clara y en tiempo; cada integrante explica y responde.</td></tr>
+  </tbody>
+</table></div>
+  </div>
+  <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="final-evaluacion"> Lo leí</label></div>
+</article>
+      <div class="exercises"><h3 class="ex-h">Entrega</h3>
+<details class="exd" id="ex-final" data-ex="final">
+  <summary><span class="ex-num">Proyecto final</span><span class="ex-title">Campaña integrada y defensa</span><span class="ex-tag">Todas las herramientas</span><span class="ex-due" data-fecha-corta="final">vie 20 nov</span><span class="ex-state" data-state="final">Pendiente</span></summary>
+  <div class="ex-body">
+    <p><b>Fecha de entrega:</b> <span data-fecha-larga="final">viernes 20 de noviembre</span>. Es una entrega por equipo.</p>
+    <h5>Paso a paso</h5>
+    <ul class="check">
+      <li><label><input type="checkbox" data-k="final-1"><span>Aplicamos las devoluciones de las 4 entregas.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-2"><span>El sitio muestra las fotos y el video, y enlaza a las redes.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-3"><span>La descripción del video y la biografía de las redes llevan al sitio.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-4"><span>Probamos todos los enlaces en una ventana de incógnito.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-5"><span>Revisamos la ortografía de todas las piezas.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-6"><span>El registro de licencias y las autorizaciones están completos.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-7"><span>Preparamos 4 a 6 diapositivas de apoyo y repartimos las partes de la defensa.</span></label></li>
+      <li><label><input type="checkbox" data-k="final-8"><span>Ensayamos y la defensa dura 10 minutos.</span></label></li>
+    </ul>
+    <div class="deliver"><b>Suben:</b> un documento de una página con todos los enlaces (carpeta de Drive, video, sitio, planilla y piezas) y la presentación de la defensa.</div>
+    <details class="hint"><summary>Pista</summary><p>Ensayen con cronómetro. Lleven los enlaces abiertos en pestañas y el video descargado por si falla la conexión.</p></details>
+    <div class="notes"><label for="n-final">Ayuda memoria para la defensa</label><textarea id="n-final" data-n="n-final" placeholder="Lo que me toca decir y las ideas clave…"></textarea><small>Se guarda solo en este navegador.</small></div>
+    <div class="submit">
+      <div class="submit-actions">
+        
+        <a class="btn main send" data-send="final" href="#entregas" target="_blank" rel="noopener">Entregar en Drive ↗</a>
+      </div>
+      <div class="submit-checks">
+        <label class="tick"><input type="checkbox" data-done="final"> Terminamos esta entrega</label>
+        <label class="tick"><input type="checkbox" data-sent="final"> Ya la subimos al formulario</label>
+      </div>
+      <p class="toast" data-toast="final" role="status"></p>
+    </div>
+  </div>
+</details></div>
+    </div>
+  </div>
+</section>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="entregas">
+      <span class="eyebrow">Portafolio del equipo</span>
+      <h2>Mis entregas</h2>
+      <p class="lead">Escribí el nombre del equipo y los integrantes una sola vez: se carga solo en el formulario cada vez que entregan. Acá ven qué entregas terminaron y cuáles ya subieron.</p>
+      <div class="field">
+        <label for="alumno">Equipo e integrantes</label>
+        <input id="alumno" type="text" placeholder="Ej.: Equipo Sol · Sofía Pereira, Juan Silva, Ana Díaz, Leo Rodríguez" autocomplete="off">
+      </div>
+      <p class="toast formstate" id="formState" role="status"></p>
+      <div class="deliveries"><table class="dl"><thead><tr><th>Entrega</th><th>Tema</th><th>Fecha</th><th>Estado</th></tr></thead><tbody><tr data-row="e1"><td><a href="#ex-e1">Entrega 1 · Brief y kit fotográfico</a></td><td><span class="pill nv-foto">Fotografía</span></td><td data-fecha-corta="e1">mié 4 nov</td><td class="st" data-st="e1">Pendiente</td></tr><tr data-row="e2"><td><a href="#ex-e2">Entrega 2 · Spot de video</a></td><td><span class="pill nv-video">Video</span></td><td data-fecha-corta="e2">mar 10 nov</td><td class="st" data-st="e2">Pendiente</td></tr><tr data-row="e3"><td><a href="#ex-e3">Entrega 3 · Sitio web de la campaña</a></td><td><span class="pill nv-web">Sitio web</span></td><td data-fecha-corta="e3">vie 13 nov</td><td class="st" data-st="e3">Pendiente</td></tr><tr data-row="e4"><td><a href="#ex-e4">Entrega 4 · Plan de redes y registro de licencias</a></td><td><span class="pill nv-redes">Redes</span></td><td data-fecha-corta="e4">mar 17 nov</td><td class="st" data-st="e4">Pendiente</td></tr><tr data-row="final"><td><a href="#ex-final">Proyecto final · Campaña integrada y defensa</a></td><td><span class="pill nv-final">Proyecto final</span></td><td data-fecha-corta="final">vie 20 nov</td><td class="st" data-st="final">Pendiente</td></tr></tbody></table></div>
+      <div class="dl-actions">
+        <button type="button" class="btn main" id="copyReport">Copiar resumen</button>
+        <button type="button" class="btn ghost" id="resetAll">Borrar mi progreso</button>
+        <span class="toast" id="dlToast" role="status"></span>
+      </div>
+      <textarea id="reportFallback" hidden readonly aria-label="Resumen para copiar"></textarea>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="consulta">
+      <span class="eyebrow">Material de consulta</span>
+      <h2>Para cuando te tranques</h2>
+      <div class="consulta-grid nv-campana">
+<article class="topic" id="c-problemas">
+  <div class="topic-head"><span class="unit">Consulta</span><h3>Problemas frecuentes</h3></div>
+  <div class="topic-body">
+  <details><summary>Cerré Photopea y perdí el trabajo</summary><p>Photopea no guarda solo. Guardá seguido con <kbd>Ctrl</kbd> + <kbd>S</kbd> (PSD) y subilo a la carpeta del equipo. A veces, al volver a abrir Photopea, el trabajo anterior aparece en la pantalla de inicio.</p></details>
+  <details><summary>La foto pesa mucho o el sitio carga lento</summary><p>Exportala más chica: 1920 px de ancho para web, calidad 80 %. Podés achicarla rápido en <a href="https://squoosh.app" target="_blank" rel="noopener">Squoosh</a>.</p></details>
+  <details><summary>Las fotos del iPhone no se abren</summary><p>Son HEIC. Abrilas en Photopea y exportalas como JPG, o en el iPhone elegí <span class="ruta">Ajustes › Cámara › Formatos › Más compatible</span> antes de sacar.</p></details>
+  <details><summary>Canva me pide pagar un elemento o una música</summary><p>Lo que tiene coronita es pago. Filtrá para ver solo lo gratuito o usá tus fotos y música de la Biblioteca de audio de YouTube.</p></details>
+  <details><summary>La descarga del video tarda mucho o falla</summary><p>Revisá que estés descargando en 1080p y no en 4K. Cerrá otras pestañas y no apagues la computadora mientras descarga. Si falla, probá en Chrome o Edge.</p></details>
+  <details><summary>YouTube silenció el audio o bloqueó el video</summary><p>Detectó música con derechos. Cambiala por música de la Biblioteca de audio de YouTube y volvé a subir el video.</p></details>
+  <details><summary>Hice cambios en Google Sites y no se ven</summary><p>Tenés que tocar <b>Publicar</b> otra vez. Después recargá la página publicada.</p></details>
+  <details><summary>El sitio pide iniciar sesión para verlo</summary><p>Tocá el ícono de compartir (persona con +) y revisá que en <b>Sitio publicado</b> pueda verlo cualquier persona. Si usás una cuenta institucional, puede que solo se vea dentro de la institución: probá con una cuenta personal.</p></details>
+  <details><summary>El botón de WhatsApp no funciona</summary><p>El enlace va así: <code>https://wa.me/598</code> y el número sin el 0 inicial ni espacios, por ejemplo <code>https://wa.me/59899123456</code>.</p></details>
+  </div>
+</article>
+<article class="topic" id="c-atajos">
+  <div class="topic-head"><span class="unit">Consulta</span><h3>Atajos de teclado</h3></div>
+  <div class="topic-body"><div class="tw"><table>
+    <thead><tr><th>Atajo</th><th>Qué hace</th><th>Dónde</th></tr></thead>
+    <tbody>
+      <tr><td class="k"><kbd>Ctrl</kbd> + <kbd>Z</kbd></td><td>Deshacer</td><td>Todos</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd> + <kbd>S</kbd></td><td>Guardar</td><td>Photopea</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd> + <kbd>J</kbd></td><td>Duplicar capa</td><td>Photopea</td></tr>
+      <tr><td class="k"><kbd>C</kbd></td><td>Recortar</td><td>Photopea</td></tr>
+      <tr><td class="k"><kbd>J</kbd></td><td>Pincel corrector puntual</td><td>Photopea</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd> + <kbd>L</kbd></td><td>Niveles</td><td>Photopea</td></tr>
+      <tr><td class="k"><kbd>Barra espaciadora</kbd></td><td>Reproducir y pausar el video</td><td>Canva</td></tr>
+      <tr><td class="k"><kbd>S</kbd></td><td>Dividir el clip en la línea de reproducción</td><td>Canva</td></tr>
+      <tr><td class="k"><kbd>Ctrl</kbd> + <kbd>K</kbd></td><td>Agregar un enlace al texto seleccionado</td><td>Google Sites y Docs</td></tr>
+    </tbody>
+  </table></div></div>
+</article>
+<article class="topic" id="ampliar">
+  <div class="topic-head"><span class="unit">Consulta</span><h3>Para ampliar: ayudas oficiales</h3></div>
+  <div class="topic-body">
+  <div class="tip"><b>Si una página está en inglés:</b> en Chrome, clic derecho y <b>Traducir al español</b>.</div>
+  <div class="grid2">
+    <div><b>Fotografía</b><ul>
+      <li><a href="https://www.photopea.com/learn/adjustments-filters" target="_blank" rel="noopener">Ajustes y filtros en Photopea</a></li>
+      <li><a href="https://www.photopea.com/learn/layers" target="_blank" rel="noopener">Capas en Photopea</a></li>
+      <li><a href="https://www.photopea.com/learn/opening-saving" target="_blank" rel="noopener">Abrir y guardar en Photopea</a></li>
+    </ul></div>
+    <div><b>Video</b><ul>
+      <li><a href="https://www.canva.com/es_419/help/" target="_blank" rel="noopener">Centro de ayuda de Canva</a></li>
+      <li><a href="https://support.google.com/youtube/answer/57407?hl=es-419" target="_blank" rel="noopener">Subir videos a YouTube</a></li>
+    </ul></div>
+    <div><b>Sitio web</b><ul>
+      <li><a href="https://support.google.com/sites/?hl=es-419" target="_blank" rel="noopener">Centro de ayuda de Google Sites</a></li>
+      <li><a href="https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=es-419" target="_blank" rel="noopener">Guía de SEO para principiantes (Google)</a></li>
+    </ul></div>
+    <div><b>Redes y derechos</b><ul>
+      <li><a href="https://creativecommons.org/licenses/?lang=es" target="_blank" rel="noopener">Licencias Creative Commons</a></li>
+      <li><a href="https://www.canva.com/es_419/design-school/" target="_blank" rel="noopener">Canva Design School</a></li>
+    </ul></div>
+  </div></div>
+</article>
+<article class="topic" id="c-recursos">
+  <div class="topic-head"><span class="unit">Consulta</span><h3>Recursos gratuitos</h3></div>
+  <div class="topic-body"><div class="grid2">
+    <div><b>Fotos y video</b><p><a href="https://www.pexels.com/es-es/" target="_blank" rel="noopener">Pexels</a>, <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a>, <a href="https://pixabay.com/es/" target="_blank" rel="noopener">Pixabay</a> y <a href="https://openverse.org/es" target="_blank" rel="noopener">Openverse</a>.</p></div>
+    <div><b>Música y efectos</b><p>Biblioteca de audio de <a href="https://studio.youtube.com" target="_blank" rel="noopener">YouTube Studio</a> y <a href="https://pixabay.com/es/music/" target="_blank" rel="noopener">Pixabay Música</a>.</p></div>
+    <div><b>Tipografías e íconos</b><p><a href="https://fonts.google.com" target="_blank" rel="noopener">Google Fonts</a> y sus <a href="https://fonts.google.com/icons" target="_blank" rel="noopener">íconos</a>.</p></div>
+    <div><b>Color</b><p><a href="https://coolors.co" target="_blank" rel="noopener">Coolors</a> y <a href="https://color.adobe.com/es/create/color-wheel" target="_blank" rel="noopener">Adobe Color</a>.</p></div>
+    <div><b>Achicar imágenes</b><p><a href="https://squoosh.app" target="_blank" rel="noopener">Squoosh</a>: cambia tamaño y peso en el navegador.</p></div>
+  </div>
+  <div class="warn"><b>Antes de usar cualquier recurso:</b> leé la licencia y anotalo en el registro de licencias.</div></div>
+</article>
+      </div>
+    </section>
+  </div>
+
+  <div class="shell">
+    <section class="block" id="glosario">
+      <span class="eyebrow">Siempre a mano</span>
+      <h2>Glosario</h2>
+      <label for="glSearch" class="eyebrow" style="margin-top:1rem">Buscar un término</label>
+      <input id="glSearch" class="gl-search" type="search" placeholder="Ej.: bitrate, SEO, licencia">
+      <div class="glossary" id="glossary"><details class="gl"><summary>Brief</summary><p>Resumen de una página con la marca, el público, el objetivo y el mensaje de la campaña.</p></details><details class="gl"><summary>Público objetivo</summary><p>Grupo de personas a las que se dirige la campaña.</p></details><details class="gl"><summary>Llamado a la acción</summary><p>Frase o botón que invita a hacer algo: comprar, escribir, seguir.</p></details><details class="gl"><summary>Resolución</summary><p>Cantidad de píxeles de una imagen o de cada cuadro de un video, por ejemplo 1920 × 1080.</p></details><details class="gl"><summary>Megapíxel</summary><p>Un millón de píxeles. Mide la resolución de una cámara.</p></details><details class="gl"><summary>Exposición</summary><p>Cuánta luz recibe la foto: sobreexpuesta es muy clara, subexpuesta muy oscura.</p></details><details class="gl"><summary>Luz difusa / dura</summary><p>Difusa: suave y sin sombras marcadas. Dura: directa, con sombras fuertes.</p></details><details class="gl"><summary>Contraluz</summary><p>La luz viene de atrás del sujeto.</p></details><details class="gl"><summary>Balance de blancos</summary><p>Ajuste que hace que los blancos se vean blancos y no amarillos o azules.</p></details><details class="gl"><summary>Regla de tercios</summary><p>Dividir el cuadro en 3 × 3 y ubicar lo importante sobre las líneas o cruces.</p></details><details class="gl"><summary>JPG / PNG / WebP / HEIC / RAW</summary><p>Formatos de foto: JPG comprimido, PNG con transparencia, WebP liviano para web, HEIC de iPhone, RAW sin procesar.</p></details><details class="gl"><summary>Guion literario</summary><p>La historia del video contada en palabras.</p></details><details class="gl"><summary>Guion técnico</summary><p>Tabla toma por toma con plano, duración, imagen, audio y texto.</p></details><details class="gl"><summary>Plano</summary><p>Cuánto se ve en el cuadro: general, medio, primer plano, detalle.</p></details><details class="gl"><summary>Toma</summary><p>Lo que se graba sin cortar, desde que empieza hasta que termina la grabación.</p></details><details class="gl"><summary>Fotogramas por segundo (fps)</summary><p>Cantidad de imágenes por segundo de un video: 25 o 30 es lo común.</p></details><details class="gl"><summary>Relación de aspecto</summary><p>Proporción entre ancho y alto: 16:9 horizontal, 9:16 vertical, 1:1 cuadrado.</p></details><details class="gl"><summary>Códec / H.264 / MP4</summary><p>Códec: forma de comprimir video. H.264 es el más usado y va dentro de un archivo MP4.</p></details><details class="gl"><summary>Bitrate</summary><p>Cantidad de información por segundo de un video. Más bitrate, más calidad y más peso.</p></details><details class="gl"><summary>Compresión</summary><p>Achicar el peso de un archivo quitando información que casi no se nota.</p></details><details class="gl"><summary>Exportar</summary><p>Convertir el proyecto editable en un archivo final: JPG, MP4, PDF.</p></details><details class="gl"><summary>No listado</summary><p>Video de YouTube que solo ve quien tiene el enlace.</p></details><details class="gl"><summary>URL</summary><p>Dirección completa de una página web.</p></details><details class="gl"><summary>IP</summary><p>Número que identifica a cada equipo conectado a Internet.</p></details><details class="gl"><summary>Dominio / DNS</summary><p>Dominio: nombre de un sitio. DNS: sistema que traduce el dominio a su IP.</p></details><details class="gl"><summary>Hiperenlace</summary><p>Texto, imagen o botón que lleva a otra página.</p></details><details class="gl"><summary>Buscador</summary><p>Programa que recorre la web y ordena las páginas para responder búsquedas.</p></details><details class="gl"><summary>PageRank</summary><p>Método de Google que valora una página según cuántas páginas importantes la enlazan.</p></details><details class="gl"><summary>SEO / SEM</summary><p>SEO: aparecer en los buscadores sin pagar. SEM: anuncios pagos en buscadores.</p></details><details class="gl"><summary>Palabra clave</summary><p>Frase que la gente escribe en el buscador para encontrar algo.</p></details><details class="gl"><summary>Landing page</summary><p>Página única de campaña pensada para que la persona haga una acción.</p></details><details class="gl"><summary>Diseño one click</summary><p>Armar un sitio con bloques prediseñados, sin programar.</p></details><details class="gl"><summary>Texto alternativo</summary><p>Descripción de una imagen para buscadores y lectores de pantalla.</p></details><details class="gl"><summary>Alcance / impresiones</summary><p>Alcance: personas distintas que vieron algo. Impresiones: veces que se vio en total.</p></details><details class="gl"><summary>Interacción (engagement)</summary><p>Me gusta, comentarios, compartidos y guardados de una publicación.</p></details><details class="gl"><summary>Algoritmo</summary><p>Reglas con las que una red decide qué contenido mostrar a cada persona.</p></details><details class="gl"><summary>Hashtag</summary><p>Palabra con # que agrupa publicaciones de un mismo tema.</p></details><details class="gl"><summary>Carrusel / historia / reel</summary><p>Publicación con varias imágenes / contenido que dura 24 h / video vertical corto.</p></details><details class="gl"><summary>Calendario de contenidos</summary><p>Planilla con qué se publica, dónde y cuándo.</p></details><details class="gl"><summary>Derecho de autor</summary><p>Protección que tiene toda obra original desde que se crea. En Uruguay, Ley 9.739.</p></details><details class="gl"><summary>Creative Commons</summary><p>Licencias con las que un autor permite usar su obra con ciertas condiciones.</p></details><details class="gl"><summary>Dominio público</summary><p>Obras que se pueden usar libremente, sin pedir permiso.</p></details><details class="gl"><summary>Atribución</summary><p>Nombrar al autor y la licencia de una obra que usás.</p></details><details class="gl"><summary>Netiqueta</summary><p>Normas de buena convivencia y respeto en Internet.</p></details><details class="gl"><summary>Troll</summary><p>Persona que comenta para provocar o molestar.</p></details></div>
+      <p class="gl-empty" id="glEmpty" hidden>No hay términos con esa palabra.</p>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="shell">
+    <p><b>Ed. Téc. Laura Castro</b> · Informática Aplicada II · Curso Técnico Terciario en Marketing · Plan 2019 · Área Diseño Gráfico y Web.</p>
+    <p>Para docentes: las fechas de entrega y el enlace del formulario se cambian en <code>CALENDARIO</code> y <code>FORMULARIO</code>, al principio del código JavaScript de <code>index.html</code>. Las opciones del desplegable "Entrega" del formulario tienen que llamarse exactamente así:</p>
+    <ul><li><code>Entrega 1 · Brief y kit fotográfico</code></li><li><code>Entrega 2 · Spot de video</code></li><li><code>Entrega 3 · Sitio web de la campaña</code></li><li><code>Entrega 4 · Plan de redes y registro de licencias</code></li><li><code>Proyecto final · Campaña integrada y defensa</code></li></ul>
+  </div>
+</footer>
+
+<script>
+/* =====================================================================
+ *  CALENDARIO DE ENTREGAS: año-mes-día. Cambiá solo las fechas.
+ * ===================================================================== */
+var CALENDARIO = {
+  e1: '2026-11-04',   // Entrega 1 · Brief y kit fotográfico
+  e2: '2026-11-10',   // Entrega 2 · Spot de video
+  e3: '2026-11-13',   // Entrega 3 · Sitio web de la campaña
+  e4: '2026-11-17',   // Entrega 4 · Plan de redes y registro de licencias
+  final: '2026-11-20'    // Proyecto final · Campaña integrada y defensa
+};
+
+/* =====================================================================
+ *  FORMULARIO DE ENTREGAS (Google Forms)
+ *  1. url: el enlace del formulario, el que termina en /viewform
+ *  2. campoEquipo y campoEntrega: los números "entry.123456789" que
+ *     aparecen en el "vínculo previamente completado" del formulario.
+ *  Si dejás campoEquipo y campoEntrega vacíos, el botón abre el
+ *  formulario igual, pero sin datos precargados.
+ * ===================================================================== */
+var FORMULARIO = {
+  url: '',
+  campoEquipo: '',
+  campoEntrega: ''
+};
+
+var EJERCICIOS = {"e1": {"nombre": "Entrega 1 · Brief y kit fotográfico", "tema": "foto"}, "e2": {"nombre": "Entrega 2 · Spot de video", "tema": "video"}, "e3": {"nombre": "Entrega 3 · Sitio web de la campaña", "tema": "web"}, "e4": {"nombre": "Entrega 4 · Plan de redes y registro de licencias", "tema": "redes"}, "final": {"nombre": "Proyecto final · Campaña integrada y defensa", "tema": "final"}};
+
+(function () {
+  var KEY = 'ia2-guia';
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { state = {}; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  var $ = function (q, el) { return (el || document).querySelector(q); };
+  var $$ = function (q, el) { return Array.prototype.slice.call((el || document).querySelectorAll(q)); };
+
+  /* ---------- fechas ---------- */
+  var DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+  var MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  function fecha(id) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(CALENDARIO[id] || '').trim());
+    return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
+  }
+  function larga(d) { return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()]; }
+  function corta(d) { return DIAS[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MESES[d.getMonth()].slice(0, 3); }
+  Object.keys(EJERCICIOS).forEach(function (id) {
+    var d = fecha(id); if (!d) return;
+    $$('[data-fecha-larga="' + id + '"]').forEach(function (el) { el.textContent = larga(d); });
+    $$('[data-fecha-corta="' + id + '"]').forEach(function (el) { el.textContent = corta(d); });
+  });
+
+  /* ---------- pestañas y navegación ---------- */
+  var panels = $$('[data-panel]');
+  var tabs = $$('[data-tab]');
+  function openPanel(key) {
+    panels.forEach(function (p) { p.hidden = p.dataset.panel !== key; });
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === key ? 'true' : 'false'); });
+    $$('[data-nav]').forEach(function (a) { if (a.dataset.nav === key) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    state._tab = key; save();
+  }
+  function go(id, smooth) {
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el) return;
+    var panel = el.closest('[data-panel]');
+    if (panel) openPanel(panel.dataset.panel);
+    var det = el.closest('details.exd');
+    if (det) det.open = true;
+    if (el.tagName === 'DETAILS') el.open = true;
+    var target = el.matches('[data-panel]') ? $('#temas') : el;
+    var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    requestAnimationFrame(function () { target.scrollIntoView({ behavior: smooth && !calm ? 'smooth' : 'auto', block: 'start' }); });
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () { openPanel(t.dataset.tab); });
+    t.addEventListener('keydown', function (e) {
+      var i = tabs.indexOf(t);
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        n.focus(); openPanel(n.dataset.tab);
+      }
+    });
+  });
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || a.hasAttribute('data-send')) return;
+    var id = a.getAttribute('href').slice(1);
+    if (!id || !document.getElementById(id)) return;
+    e.preventDefault();
+    go(id, true);
+    try { history.replaceState(null, '', '#' + id); } catch (err) {}
+  });
+
+  /* ---------- casillas y notas ---------- */
+  function bind(sel, attr, onChange) {
+    $$(sel).forEach(function (b) {
+      var k = attr(b);
+      b.checked = !!state[k];
+      b.addEventListener('change', function () { state[k] = b.checked; save(); onChange && onChange(b); refresh(); });
+    });
+  }
+  bind('input[data-k]', function (b) { return b.dataset.k; });
+  bind('input[data-read]', function (b) { return 'read:' + b.dataset.read; });
+  bind('input[data-done]', function (b) { return 'done:' + b.dataset.done; });
+  bind('input[data-sent]', function (b) { return 'sent:' + b.dataset.sent; }, function (b) {
+    if (b.checked) { state['done:' + b.dataset.sent] = true; save(); var d = $('input[data-done="' + b.dataset.sent + '"]'); if (d) d.checked = true; }
+  });
+  $$('textarea[data-n]').forEach(function (t) {
+    t.value = state[t.dataset.n] || '';
+    t.addEventListener('input', function () { state[t.dataset.n] = t.value; save(); });
+  });
+
+  /* ---------- estados, progreso y próxima entrega ---------- */
+  var STATE_TXT = ['Pendiente', 'Terminada', 'Subida ✓'];
+  function exState(id) { return state['sent:' + id] ? 2 : (state['done:' + id] ? 1 : 0); }
+  function nextDue() {
+    var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    var ids = Object.keys(EJERCICIOS), pend = null, quedan = false;
+    ids.forEach(function (id) {
+      var d = fecha(id); if (!d) return;
+      if (d >= hoy) quedan = true;
+      if (!pend && d >= hoy && exState(id) < 2) pend = id;
+    });
+    var box = $('#calNext');
+    $$('[data-cal]').forEach(function (li) { li.classList.toggle('is-next', li.dataset.cal === pend); });
+    if (!box) return;
+    if (!pend) {
+      box.textContent = quedan ? '¡Ya subieron todas las entregas que quedaban!' : 'Ya pasaron todas las fechas de entrega.';
+      return;
+    }
+    var d = fecha(pend), dias = Math.round((d - hoy) / 86400000);
+    var cuando = dias === 0 ? 'es hoy' : dias === 1 ? 'es mañana' : 'faltan ' + dias + ' días';
+    box.innerHTML = '';
+    box.appendChild(document.createTextNode('Próxima: ' + EJERCICIOS[pend].nombre + ', el ' + larga(d) + ' · '));
+    var s = document.createElement('span'); s.textContent = cuando; box.appendChild(s);
+  }
+  function refresh() {
+    Object.keys(EJERCICIOS).forEach(function (id) {
+      var st = exState(id);
+      var tag = $('[data-state="' + id + '"]');
+      if (tag) { tag.textContent = STATE_TXT[st]; tag.className = 'ex-state' + (st === 2 ? ' st-sent' : st === 1 ? ' st-done' : ''); }
+      var cell = $('[data-st="' + id + '"]');
+      if (cell) { cell.textContent = STATE_TXT[st]; cell.className = 'st st-' + st; }
+      var mini = $('[data-st-mini="' + id + '"]');
+      if (mini) mini.textContent = STATE_TXT[st];
+      var toc = $('[data-toc-ex="' + id + '"]');
+      if (toc) toc.classList.toggle('done', st > 0);
+    });
+    panels.forEach(function (p) {
+      var key = p.dataset.panel;
+      var reads = $$('input[data-read]', p);
+      var exs = $$('[data-ex]', p).map(function (d) { return d.dataset.ex; });
+      var total = reads.length + exs.length, done = 0;
+      reads.forEach(function (r) {
+        if (state['read:' + r.dataset.read]) done++;
+        var t = $('[data-toc="' + r.dataset.read + '"]');
+        if (t) t.classList.toggle('done', !!state['read:' + r.dataset.read]);
+      });
+      exs.forEach(function (id) { if (exState(id) > 0) done++; });
+      var pct = total ? Math.round(done / total * 100) : 0;
+      var m = $('[data-meter="' + key + '"]'); if (m) m.style.width = pct + '%';
+      var ml = $('[data-meter-label="' + key + '"]'); if (ml) ml.textContent = pct + ' % hecho';
+      var c = $('[data-cnt="' + key + '"]'); if (c) c.textContent = done + '/' + total;
+    });
+    nextDue();
+    updateLinks();
+  }
+
+  /* ---------- formulario de entregas ---------- */
+  var alumno = $('#alumno');
+  alumno.value = state.alumno || '';
+  alumno.addEventListener('input', function () { state.alumno = alumno.value.trim(); save(); updateLinks(); });
+  function entry(c) { c = String(c || '').trim(); if (!c) return ''; return c.indexOf('entry.') === 0 ? c : 'entry.' + c; }
+  function formLink(id) {
+    var base = (FORMULARIO.url || '').trim();
+    if (!base) return '';
+    var params = [];
+    var nombre = (state.alumno || '').trim();
+    if (entry(FORMULARIO.campoEquipo) && nombre) params.push(entry(FORMULARIO.campoEquipo) + '=' + encodeURIComponent(nombre));
+    if (entry(FORMULARIO.campoEntrega)) params.push(entry(FORMULARIO.campoEntrega) + '=' + encodeURIComponent(EJERCICIOS[id].nombre));
+    if (!params.length) return base;
+    return base + (base.indexOf('?') >= 0 ? '&' : '?') + 'usp=pp_url&' + params.join('&');
+  }
+  function updateLinks() {
+    $$('a[data-send]').forEach(function (a) {
+      var l = formLink(a.dataset.send);
+      a.setAttribute('href', l || '#entregas');
+    });
+    var fs = $('#formState');
+    if (fs) fs.textContent = (FORMULARIO.url || '').trim() ? '' : 'Tu docente todavía no cargó el formulario de entregas. Mientras tanto, guarden todo en la carpeta del equipo con los nombres que indica cada entrega.';
+  }
+  function say(id, msg) { var t = $('[data-toast="' + id + '"]'); if (t) { t.textContent = msg; } }
+  $$('a[data-send]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      var id = a.dataset.send;
+      if (!(FORMULARIO.url || '').trim()) {
+        e.preventDefault();
+        say(id, 'Tu docente todavía no cargó el formulario de entregas. Guarden todo en la carpeta del equipo y entreguen cuando esté listo.');
+        return;
+      }
+      if (!(state.alumno || '').trim()) {
+        e.preventDefault();
+        say(id, 'Primero escribí el equipo y los integrantes en Mis entregas.');
+        go('entregas', true);
+        setTimeout(function () { alumno.focus(); }, 400);
+        return;
+      }
+      say(id, 'Se abrió el formulario en otra pestaña. Cuando lo envíen, marcá "Ya la subimos al formulario".');
+    });
+  });
+
+  /* ---------- resumen y borrado ---------- */
+  function report() {
+    var lines = ['Informática Aplicada II · Entregas del equipo', 'Equipo: ' + (state.alumno || '(sin nombre)'), ''];
+    Object.keys(EJERCICIOS).forEach(function (id) { lines.push('- ' + EJERCICIOS[id].nombre + ': ' + STATE_TXT[exState(id)].replace(' ✓', '')); });
+    return lines.join('\n');
+  }
+  var toast = $('#dlToast');
+  $('#copyReport').addEventListener('click', function () {
+    var txt = report();
+    var fb = $('#reportFallback');
+    function fallback() { fb.hidden = false; fb.value = txt; fb.focus(); fb.select(); toast.textContent = 'Seleccioná el texto y copialo con Ctrl + C.'; }
+    try {
+      navigator.clipboard.writeText(txt).then(function () { toast.textContent = 'Resumen copiado.'; }, fallback);
+    } catch (e) { fallback(); }
+  });
+  var armed = false, rb = $('#resetAll');
+  rb.addEventListener('click', function () {
+    if (!armed) { armed = true; rb.textContent = 'Tocá otra vez para borrar todo'; toast.textContent = ''; return; }
+    var tab = state._tab; state = { _tab: tab }; save();
+    $$('input[type="checkbox"]').forEach(function (b) { b.checked = false; });
+    $$('textarea[data-n]').forEach(function (t) { t.value = ''; });
+    alumno.value = '';
+    armed = false; rb.textContent = 'Borrar mi progreso'; toast.textContent = 'Listo, se borró tu progreso.';
+    refresh();
+  });
+
+  /* ---------- glosario ---------- */
+  var gs = $('#glSearch');
+  function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+  gs.addEventListener('input', function () {
+    var q = norm(gs.value.trim());
+    var shown = 0;
+    $$('#glossary details').forEach(function (d) {
+      var ok = !q || norm(d.textContent).indexOf(q) >= 0;
+      d.hidden = !ok; if (ok) shown++;
+    });
+    $('#glEmpty').hidden = shown > 0;
+  });
+
+  /* ---------- inicio ---------- */
+  openPanel(state._tab && document.getElementById(state._tab) ? state._tab : panels[0].dataset.panel);
+  refresh();
+  var h = (location.hash || '').slice(1);
+  if (h && document.getElementById(h)) go(h, false);
+})();
+</script>
+
+</body>
+</html>
