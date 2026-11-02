@@ -6,11 +6,12 @@
 <title>Guía Informática Aplicada II</title>
 <meta name="description" content="Guía didáctica de Informática Aplicada II para 1.er año de la Tecnicatura en Marketing: fotografía, video, sitio web y redes sociales de la campaña, con herramientas online gratuitas.">
 <script>try{var s=JSON.parse(localStorage.getItem('ia2-guia'))||{};if(s._fs)document.documentElement.setAttribute('data-fs',s._fs);if(s._theme)document.documentElement.setAttribute('data-theme',s._theme);if(s._lvl==='a')document.documentElement.setAttribute('data-lvl','a');}catch(e){}</script>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2714%27 fill=%27%2320364B%27/%3E%3Crect x=%2712%27 y=%2712%27 width=%2718%27 height=%2718%27 rx=%274%27 fill=%27%232E6A8E%27/%3E%3Crect x=%2734%27 y=%2712%27 width=%2718%27 height=%2718%27 rx=%274%27 fill=%27%23F16B59%27/%3E%3Crect x=%2712%27 y=%2734%27 width=%2718%27 height=%2718%27 rx=%274%27 fill=%27%23F2C75C%27/%3E%3Crect x=%2734%27 y=%2734%27 width=%2718%27 height=%2718%27 rx=%274%27 fill=%27%236D927D%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Manrope:wght@600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Paleta "Mar y bosque". Cada tema lleva un color: Tu campaña = gris azulado, Fotografía = azul, Video = violeta, Sitio web = naranja tostado, Redes = verde, Proyecto final = azul noche (también la barra). Todos los textos de color tienen un contraste de 4,5:1 o más sobre el fondo. */
+/* Colores base. Más abajo, la sección "Identidad" define la paleta que se ve (crema, azul tinta, coral, mostaza, salvia). */
 :root{
   --paper:#FBFAFF; --card:#FFFFFF; --ink:#1E2B3A; --muted:#5A6470; --line:#DCDFE6;
   --cyan:#1F6FB2; --magenta:#7A4FA3; --yellow:#B0461A; --yellow-mark:#B0461A; --green:#2E7D5B; --key:#1E2B3A;
@@ -57,7 +58,6 @@ kbd{font-family:var(--mono);font-size:.82em;background:var(--key-soft);border:1p
 .ruta{font-family:var(--mono);font-size:.85em;background:var(--key-soft);padding:.1em .4em;border-radius:4px}
 .shell{max-width:var(--shell);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .eyebrow{display:block;font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.dot{width:.7rem;height:.7rem;border-radius:50%;flex:0 0 auto;display:inline-block}
 
 /* colores por unidad */
 .nv-campana{--nv:var(--muted);--nv-fill:var(--muted);--nv-t:var(--key-soft);--nv-on:var(--paper)}
@@ -78,8 +78,6 @@ kbd{font-family:var(--mono);font-size:.82em;background:var(--key-soft);border:1p
 .brand .strip{margin:0;height:12px;width:48px;max-width:48px}
 .bar nav{display:flex;gap:.2rem;flex-wrap:wrap;margin-left:auto}
 .bar nav a{color:inherit;text-decoration:none;font-size:.9rem;font-weight:700;padding:.28rem .65rem;border-radius:999px;display:inline-flex;align-items:center;gap:.4rem}
-.bar nav a .dot{width:.6rem;height:.6rem;background:color-mix(in srgb,var(--nv-fill) 55%,#fff)}
-.bar nav a.nv-final .dot{background:var(--paper);box-shadow:0 0 0 1px var(--ink)}
 .bar nav a:hover{background:color-mix(in srgb,var(--paper) 16%,transparent)}
 .bar nav a[aria-current="true"]{background:var(--paper);color:var(--ink)}
 @media (max-width:700px){
@@ -93,35 +91,10 @@ kbd{font-family:var(--mono);font-size:.82em;background:var(--key-soft);border:1p
 
 /* portada */
 .portada{padding-block:clamp(2rem,6vw,3.6rem) 1.6rem}
-.byline{font-family:var(--display);font-weight:700;font-size:1rem;margin-bottom:.35rem;padding-bottom:.5rem;border-bottom:1px solid var(--line);display:inline-block}
 .portada h1{font-size:clamp(2.3rem,7vw,4.2rem);font-weight:800;letter-spacing:-.02em;max-width:17ch;margin-top:.4rem}
 .portada .lead{font-size:1.15rem;max-width:62ch}
 .ficha{display:flex;flex-wrap:wrap;gap:.45rem;list-style:none;padding:0;margin:1.2rem 0 0}
 .ficha li{margin:0;font-size:.88rem;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:.2rem .75rem}
-.levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:1.8rem}
-.lv-card{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--nv-fill);border-radius:10px;padding:.9rem 1rem 1rem;text-decoration:none;color:var(--ink);display:flex;flex-direction:column;gap:.3rem;min-width:0}
-.lv-card:hover{box-shadow:0 0 0 2px var(--nv-fill)}
-.lv-card b{font-family:var(--display);font-size:1.2rem;color:var(--nv)}
-.lv-card small{color:var(--muted);font-size:.9rem;line-height:1.4}
-.meter{height:7px;border-radius:99px;background:var(--nv-t);overflow:hidden;margin-top:auto}
-.meter i{display:block;height:100%;width:0;background:var(--nv-fill);transition:width .4s}
-.meter-label{font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
-@media (max-width:820px){.levels{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:440px){.levels{grid-template-columns:minmax(0,1fr)}}
-
-/* calendario de entregas */
-.cal{margin-top:2rem}
-.cal-next{font-family:var(--display);font-weight:700;font-size:1.1rem;margin:.3rem 0 .8rem}
-.cal-next span{color:var(--magenta)}
-.cal ol{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.6rem;counter-reset:c}
-.cal li{margin:0;background:var(--card);border:1px solid var(--line);border-top:6px solid var(--nv-fill);border-radius:10px;padding:.7rem .8rem;display:flex;flex-direction:column;gap:.15rem;min-width:0;position:relative}
-.cal li a{color:var(--ink);text-decoration:none;font-family:var(--display);font-weight:700;line-height:1.25}
-.cal li a:hover{text-decoration:underline}
-.cal .when{font-family:var(--mono);font-size:.78rem;color:var(--nv);text-transform:uppercase;letter-spacing:.04em}
-.nv-web .when{color:var(--yellow)}
-.cal .st-mini{font-size:.8rem;color:var(--muted);margin-top:auto}
-.cal li.is-next{box-shadow:0 0 0 2px var(--nv-fill)}
-@media (max-width:900px){.cal ol{grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr))}}
 
 /* bloques */
 .block{padding-block:2.6rem;border-top:1px solid var(--line);scroll-margin-top:4rem}
@@ -132,11 +105,6 @@ kbd{font-family:var(--mono);font-size:.82em;background:var(--key-soft);border:1p
 .route .who{font-size:.92rem;color:var(--muted);margin:.3rem 0 .6rem}
 .route ol{padding-left:1.2rem;margin:0 0 .7rem;font-size:.95rem}
 .route .btn{margin-top:auto;align-self:flex-start}
-.howto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin-top:1rem}
-.howto>div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem 1.1rem;min-width:0}
-.howto h3{margin:0 0 .4rem;font-size:1.1rem}
-.howto ul,.howto ol{margin:0;padding-left:1.2rem}
-@media (max-width:700px){.howto{grid-template-columns:minmax(0,1fr)}}
 .map-box{overflow-x:auto;margin-top:1rem;background:var(--card);border:1px solid var(--line);border-radius:10px}
 table.map{min-width:620px}
 table.map td:first-child{font-family:var(--mono);font-size:.8rem;color:var(--muted);white-space:nowrap}
@@ -200,21 +168,12 @@ details[open] summary{border-bottom:1px solid var(--line);margin-bottom:.4rem}
 .w-v{background:var(--mag-soft);height:46px}
 .w-f{background:var(--key-soft)}
 @media (max-width:560px){.wire-wrap{grid-template-columns:1fr}.wire{max-width:240px}}
-.ph-frame{position:relative}
-
-/* pestañas y paneles */
-.tabs{display:flex;gap:.4rem;flex-wrap:wrap}
-.tabs button{font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;border:2px solid var(--nv-fill);color:var(--nv);background:var(--card);padding:.4rem .95rem;border-radius:999px;display:inline-flex;align-items:center;gap:.45rem}
-.tabs button[aria-selected="true"]{background:var(--nv-fill);color:var(--nv-on)}
-.tabs .cnt{font-family:var(--mono);font-size:.72rem;font-weight:500;opacity:.85}
 .panel{padding-top:1.4rem}
 .panel-head{border-top:6px solid var(--nv-fill);padding-top:1rem}
 .panel-head h2{color:var(--nv);margin-top:.2rem}
 .nv-web .panel-head h2{color:var(--yellow)}
 .goal{margin:.5rem 0 0;max-width:68ch}
 .goal b{font-family:var(--display)}
-.meta{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.6rem}
-.chip{font-size:.85rem;border:1px solid var(--line);border-radius:999px;padding:.15rem .65rem;background:var(--card);color:var(--muted)}
 .layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:1.6rem;margin-top:1.4rem;align-items:start}
 .toc{position:sticky;top:calc(3.6rem + env(safe-area-inset-top,0px));background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.9rem;max-height:calc(100vh - 5rem);overflow-y:auto}
 .toc h4{margin:0 0 .5rem;font-size:.9rem}
@@ -238,11 +197,6 @@ details[open] summary{border-bottom:1px solid var(--line);margin-bottom:.4rem}
 .tick{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;cursor:pointer;font-size:.95rem}
 .tick input{width:1.2rem;height:1.2rem;accent-color:var(--nv-fill,var(--ink))}
 @media (max-width:980px){.layout{grid-template-columns:minmax(0,1fr)}.toc{position:static;max-height:none}.toc ol{grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}}
-
-/* entregas dentro de cada unidad */
-.exercises{display:grid;gap:.8rem;margin-top:.6rem}
-.ex-h{margin:.6rem 0 0;font-size:1.4rem;color:var(--nv)}
-.nv-web .ex-h{color:var(--yellow)}
 details.exd{border:2px solid var(--line);border-radius:12px;background:var(--card);padding:0;margin:0;scroll-margin-top:4.2rem}
 details.exd[open]{border-color:var(--nv-fill)}
 details.exd>summary,details.exd[open]>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:.5rem .7rem;padding:.85rem 1rem;font-family:var(--display);font-weight:700;flex-wrap:wrap;border:0;margin:0}
@@ -252,8 +206,6 @@ details.exd[open]>summary::before{content:"−"}
 .ex-num{font-family:var(--mono);font-size:.75rem;color:var(--nv);text-transform:uppercase;letter-spacing:.06em}
 .nv-web .ex-num{color:var(--yellow)}
 .ex-title{flex:1 1 14rem;font-size:1.1rem}
-.ex-tag{font-family:var(--mono);font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.04em;padding:.1rem .45rem;border-radius:4px;border:1px solid var(--nv-fill);color:var(--nv)}
-.nv-web .ex-tag{color:var(--yellow)}
 .ex-due{font-family:var(--body);font-size:.82rem;font-weight:700;background:var(--nv-fill);color:var(--nv-on);padding:.05rem .55rem;border-radius:999px}
 .ex-state{font-family:var(--body);font-size:.82rem;font-weight:700;color:var(--muted)}
 .ex-state.st-done{color:var(--nv)}
@@ -275,7 +227,6 @@ details.hint>summary,details.hint[open]>summary{font-family:var(--display);font-
 .notes textarea{width:100%;min-height:90px;font:inherit;font-size:.95rem;padding:.6rem;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);resize:vertical}
 .notes small{color:var(--muted);font-size:.82rem}
 .submit{margin-top:1rem;padding-top:1rem;border-top:1px dashed var(--line);display:grid;gap:.7rem}
-.submit-actions,.submit-checks{display:flex;flex-wrap:wrap;gap:.5rem 1.2rem;align-items:center}
 .btn{font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;border-radius:999px;padding:.45rem 1rem;border:2px solid var(--ink);background:var(--card);color:var(--ink);text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
 .btn.main{background:var(--nv-fill,var(--ink));border-color:var(--nv-fill,var(--ink));color:var(--nv-on,var(--paper))}
 .btn.ghost{border-color:var(--line)}
@@ -286,12 +237,6 @@ details.hint>summary,details.hint[open]>summary{font-family:var(--display);font-
 .field{display:grid;gap:.3rem;max-width:480px;margin-top:1rem}
 .field label{font-family:var(--display);font-weight:700}
 .field input{font:inherit;padding:.5rem .7rem;border-radius:8px;border:2px solid var(--line);background:var(--card);color:var(--ink)}
-.deliveries{background:var(--card);border:1px solid var(--line);border-radius:10px;margin-top:1.1rem;overflow-x:auto}
-table.dl{min-width:640px}
-table.dl td.st{font-weight:700;white-space:nowrap}
-.st-0{color:var(--muted)} .st-1{color:var(--cyan)} .st-2{color:var(--green)}
-.dl-actions{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem;align-items:center}
-.formstate{margin-top:1rem}
 #reportFallback{width:100%;min-height:140px;font:inherit;font-size:.9rem;margin-top:.6rem;padding:.6rem;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 
 /* consulta y glosario */
@@ -306,11 +251,9 @@ footer{padding-block:2rem 3rem;color:var(--muted);font-size:.9rem;border-top:1px
 footer .shell{display:grid;gap:.6rem}
 footer p{margin:0;max-width:80ch}
 
-
 /* ===== Navegación simplificada (v2) ===== */
 .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:.6rem 1rem;z-index:20;border-radius:0 0 8px 0}
 .skip:focus{left:0}
-.soft{color:var(--muted)}
 .num{display:inline-grid;place-items:center;min-width:1.45rem;height:1.45rem;border-radius:50%;font-family:var(--display);font-weight:800;font-size:.8rem;background:var(--nv-fill,var(--muted));color:var(--nv-on,var(--paper))}
 
 .bar nav a{min-height:2.4rem}
@@ -321,45 +264,16 @@ footer p{margin:0;max-width:80ch}
 .fs button[data-fs="2"]{font-size:1.25rem}
 .fs button[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
 .portada h1{font-size:clamp(2.1rem,6vw,3.6rem)}
-.sn{display:inline-grid;place-items:center;width:1.9rem;height:1.9rem;border-radius:50%;background:var(--ink);color:var(--paper);font-family:var(--display);font-weight:800;font-size:1rem;flex:0 0 auto}
 
 /* lo que te toca ahora */
 .ahora{margin-top:1.6rem;background:var(--card);border:3px solid var(--magenta);border-radius:14px;padding:clamp(1rem,3vw,1.6rem)}
 .ahora h2{font-size:clamp(1.4rem,3.6vw,2rem);margin-top:.3rem}
-.ahora-when{font-size:1.05rem;margin:.5rem 0 1rem}
-.ahora-when.late{color:var(--magenta);font-weight:700}
-.ahora-steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}
-.ahora-steps li{margin:0}
-.ahora-steps .btn{width:100%;justify-content:flex-start;font-size:1.05rem;padding:.75rem 1rem;border-radius:12px}
-.ahora-steps .btn.main{--nv-fill:var(--magenta);--nv-on:#fff}
-.ahora-steps .btn.main .sn{background:#fff;color:var(--magenta)}
-@media (max-width:700px){.ahora-steps{grid-template-columns:minmax(0,1fr)}}
 
 /* cómo funciona */
 .como{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;margin-top:1rem}
 .como div{display:flex;gap:.7rem;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.8rem .9rem;font-size:1rem;min-width:0}
 @media (max-width:700px){.como{grid-template-columns:minmax(0,1fr)}}
-
-/* recorrido */
-.h-rec{font-size:clamp(1.3rem,3vw,1.7rem);margin-top:2.2rem}
-.recorrido{list-style:none;padding:0;margin:1rem 0 0;display:grid;gap:.6rem}
-.rc{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:.9rem;align-items:center;background:var(--card);border:1px solid var(--line);border-left:8px solid var(--nv-fill);border-radius:12px;padding:.8rem 1rem}
-.rc.is-next{box-shadow:0 0 0 3px var(--nv-fill)}
-.rc-n{display:grid;place-items:center;width:2.6rem;height:2.6rem;border-radius:50%;background:var(--nv-fill);color:var(--nv-on);font-family:var(--display);font-weight:800;font-size:1.3rem}
-.rc-body{display:grid;gap:.15rem;min-width:0}
-.rc-t{font-family:var(--display);font-weight:800;font-size:1.25rem;color:var(--ink);text-decoration:none}
-.rc-t:hover{text-decoration:underline}
-.rc-d{color:var(--muted);font-size:.98rem}
-.rc-ent{font-size:.95rem}
-.rc .meter{margin-top:.35rem;max-width:340px}
-.rc-go{font-size:1rem}
-@media (max-width:560px){.rc{grid-template-columns:auto minmax(0,1fr)}.rc-go{grid-column:1/-1;justify-content:center}}
 .saved-note{font-size:.95rem;color:var(--muted);margin-top:1rem}
-
-/* pestañas con número */
-.tabs button{min-height:2.8rem}
-.tabs button .num{width:1.45rem}
-.tabs button[aria-selected="true"] .num{background:var(--nv-on);color:var(--nv-fill)}
 
 /* plan del tema */
 .plan{margin-top:1.2rem;background:var(--nv-t);border:2px solid var(--nv-fill);border-radius:14px;padding:1rem 1.2rem}
@@ -371,7 +285,6 @@ footer p{margin:0;max-width:80ch}
 /* partes */
 .topic-head .unit{font-size:.78rem}
 .topic-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.7rem 1.2rem}
-.next{font-family:var(--display);font-weight:700;font-size:1rem;color:var(--ink);text-decoration:underline;text-underline-offset:3px}
 .tick{font-size:1.02rem}
 .tick input,.check input{width:1.5rem;height:1.5rem}
 .btn{min-height:2.75rem;padding:.55rem 1.15rem;font-size:1rem}
@@ -400,16 +313,12 @@ footer p{margin:0;max-width:80ch}
 
 /* ir arriba */
 .to-top{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:8;background:var(--ink);color:var(--paper);font-family:var(--display);font-weight:800;text-decoration:none;padding:.7rem 1.1rem;border-radius:999px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-
-/* mis entregas */
-.pasos.big>li{font-size:1.05rem}
 details.copia{margin-top:1rem}
 details.copia ol{padding-left:1.3rem}
 details.copia label.btn{cursor:pointer}
 details.prog summary{font-size:1.05rem}
 
-
-/* ===== Tema claro/oscuro, nivel y DUA (v4) ===== */
+/* ===== Tema claro/oscuro,nivel y DUA (v4) ===== */
 .theme{border:1px solid var(--line);background:var(--card);color:var(--ink);width:44px;height:44px;border-radius:10px;cursor:pointer;display:grid;place-items:center;flex:none}
 .theme svg{width:20px;height:20px}
 .theme .sun{display:none}
@@ -440,15 +349,8 @@ details.prog summary{font-size:1.05rem}
 
 /* mostrar el nivel que corresponde */
 .lv-b,.lv-a{}
-html:not([data-lvl="a"]) .topic:not(.force-a) .lv-a,
-html:not([data-lvl="a"]) .topic.force-a .lv-b,
-html[data-lvl="a"] .topic:not(.force-b) .lv-b,
-html[data-lvl="a"] .topic.force-b .lv-a{display:none}
-html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:none}
-.lv-bar{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .8rem;margin:.2rem 0 .6rem;font-size:.95rem;color:var(--muted)}
-.lv-swap{font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;background:none;border:0;color:var(--cyan);text-decoration:underline;text-underline-offset:3px;padding:.2rem 0}
-.topic .lv-now.lv-b b{color:var(--lvl-b)}
-.topic .lv-now.lv-a b{color:var(--lvl-a)}
+html:not([data-lvl="a"]) .topic:not(.force-a) .lv-a,html:not([data-lvl="a"]) .topic.force-a .lv-b,html[data-lvl="a"] .topic:not(.force-b) .lv-b,html[data-lvl="a"] .topic.force-b .lv-a{display:none}
+html:not([data-lvl="a"]) .plan .lv-a,html[data-lvl="a"] .plan .lv-b{display:none}
 .lv.lv-a{border-left:4px solid var(--lvl-a);padding-left:.9rem}
 .lv.lv-b{border-left:4px solid var(--lvl-b);padding-left:.9rem}
 .plan-lvl{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-bottom:.6rem;font-size:1rem}
@@ -469,7 +371,7 @@ html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:non
 .ex-lvl{font-weight:700;font-size:.92rem;color:var(--muted)}
 .ex-lvl.on{color:var(--ink)}
 .route h4 small{font-family:var(--body);font-weight:400;font-size:.8rem;color:var(--muted)}
-/* barra en dos filas: marca + nivel + modo arriba, temas abajo */
+/* barra en dos filas: marca + nivel + modo arriba,temas abajo */
 /* caminos de la Entrega 1 */
 .rutas{border:2px solid var(--nv-fill);border-radius:12px;padding:.8rem 1rem 1rem;margin:.6rem 0 .8rem;background:var(--card)}
 .rutas legend{font-family:var(--display);font-weight:800;font-size:1.05rem;padding:0 .4rem}
@@ -481,7 +383,7 @@ html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:non
 .rutas input:checked + span b{color:var(--nv)}
 .rutas-note{margin:.5rem 0 0;font-size:.92rem;color:var(--muted)}
 
-/* nivel, letra y modo oscuro juntos en la portada */
+/* nivel,letra y modo oscuro juntos en la portada */
 .ajustes{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.2rem}
 .top-row{align-items:flex-start}
 :root[data-theme="dark"] .theme .sun,:root:not([data-theme="light"]) .theme.is-dark .sun{display:block}
@@ -572,9 +474,6 @@ html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:non
 .dd.on{background:var(--nv-fill);border-color:var(--nv-fill)}
 .dd.half{border-color:var(--nv-fill);background:linear-gradient(90deg,var(--nv-fill) 50%,transparent 50%)}
 .dw-extra{border-top:1px solid var(--line);padding-top:8px;margin-top:14px}
-
-/* pestañas Básico / Intermedio en cada parte */
-.lv-bar{display:none}
 .topic-head h3{font-size:clamp(1.3rem,2.8vw,1.6rem)}
 .ptabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin-top:.6rem}
 .ptabs button{font:inherit;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid var(--line);border-bottom:0;background:var(--key-soft);border-radius:12px 12px 0 0;padding:.55rem 1rem;display:inline-flex;align-items:center;gap:8px;margin-bottom:-2px;min-height:2.6rem}
@@ -588,13 +487,6 @@ html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:non
 .ppanel .lv{border-left:0;padding-left:0;max-width:72ch}
 .lvl-badge{display:inline-block;font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:.6rem}
 .lvl-badge.b{background:var(--lvl-b-t);color:var(--lvl-b)} .lvl-badge.a{background:var(--lvl-a-t);color:var(--lvl-a)}
-
-/* temas de la barra: solo decoración (no son enlaces) */
-.temas-deco{display:flex;flex-wrap:wrap;gap:.2rem .9rem;margin-left:auto;align-items:center}
-.deco{display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;font-weight:700;cursor:default;user-select:none;opacity:.92}
-.deco .dot{width:.6rem;height:.6rem;border-radius:50%;background:color-mix(in srgb,var(--nv-fill) 55%,#fff)}
-.deco.nv-final .dot{background:#fff}
-@media (max-width:900px){.temas-deco{display:none}}
 /* Ayuda y Glosario: enlaces en la barra */
 .bar-links{display:flex;gap:.3rem;margin-left:.6rem;padding-left:.9rem;border-left:1px solid color-mix(in srgb,var(--paper) 30%,transparent)}
 .bar-links a{color:inherit;font-size:.9rem;font-weight:700;text-decoration:underline;text-underline-offset:3px;padding:.3rem .5rem;border-radius:8px}
@@ -602,9 +494,8 @@ html:not([data-lvl="a"]) .plan .lv-a, html[data-lvl="a"] .plan .lv-b{display:non
 @media (max-width:900px){.bar-links{margin-left:auto;padding-left:0;border-left:0}}
 @media (max-width:520px){.bar-links{display:none}}
 
-
 /* ======================================================================
-   Identidad "agencia creativa": crema, azul tinta, coral, mostaza y salvia.
+   Identidad "agencia creativa": crema,azul tinta,coral,mostaza y salvia.
    Colores de texto ajustados para llegar a 4,5:1 sobre el fondo.
    ====================================================================== */
 :root{
@@ -637,13 +528,9 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar{background:color-mix(in srgb,var(--paper) 94%,transparent);color:var(--ink)}}
 .bar .shell{min-height:68px}
 .brand{gap:.6rem;font-family:var(--display);font-weight:800;color:var(--ink)}
-.brand-mark{width:38px;height:38px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-size:.95rem;font-weight:800;letter-spacing:-.02em;flex:none}
 .brand-txt{display:flex;flex-direction:column;line-height:1.15;font-size:1rem}
 .brand-txt small{font-family:var(--body);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .menu-btn,:root[data-theme="dark"] .menu-btn{border:1px solid var(--line);background:var(--card);color:var(--ink)}
-.deco{color:var(--muted);opacity:1}
-.deco .dot{background:var(--nv-fill)}
-.deco.nv-final .dot{background:var(--ink)}
 .bar-links{border-left:1px solid var(--line)}
 .bar-links a{color:var(--ink)}
 .bar-links a:hover{background:var(--key-soft);color:var(--magenta)}
@@ -658,23 +545,9 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 .hero-card h1{font-family:var(--display);font-weight:800;font-size:clamp(2.3rem,6vw,4.2rem);line-height:1.02;letter-spacing:-.04em;margin:.5rem 0 1rem}
 .hero-card h1 em{font-style:normal;color:var(--magenta)}
 .btn.start{border-radius:6px}
-
-/* panel lateral "Recorrido" en pantallas grandes */
-.recorrido-side{display:none}
 @media (min-width:1280px){
-  .recorrido-side{display:block;position:fixed;top:72px;left:0;bottom:0;width:240px;overflow-y:auto;padding:1.4rem 1rem 2rem 1.6rem;border-right:1px solid var(--line);background:var(--paper);z-index:5}
   main,footer,body>.shell{margin-left:240px}
-  .bar .temas-deco{display:none}
 }
-.rs-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 .8rem .4rem}
-.recorrido-side a{display:flex;align-items:center;gap:.7rem;padding:.55rem .5rem;border-radius:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1rem}
-.recorrido-side a span{font-family:var(--mono);font-size:.78rem;color:var(--nv,var(--muted));min-width:1.6rem}
-.recorrido-side a:hover{background:var(--key-soft)}
-.recorrido-side a[aria-current="true"]{background:var(--card);box-shadow:inset 3px 0 0 var(--nv-fill)}
-.rs-div{border-top:1px solid var(--line);margin:1rem .4rem}
-.rs-callout{margin-top:1.4rem;background:var(--key-soft);border-radius:10px;padding:1rem}
-.rs-callout b{font-family:var(--display);font-size:1rem;display:block;margin-bottom:.3rem}
-.rs-callout p{margin:0;font-size:.92rem;color:var(--muted)}
 
 /* plantillas: pasos para hacer la copia */
 .plant-full{margin:1.4rem 0 0;padding:1.2rem 1.3rem;border:1px solid var(--line);border-left:5px solid var(--yellow-mark);border-radius:10px;background:var(--card)}
@@ -692,9 +565,6 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 .aviso-diseno #avisoTit{font-family:var(--display);font-size:1.15rem}
 .aviso-diseno ul{margin:.3rem 0 .9rem;padding-left:1.3rem}
 .aviso-diseno li{margin:.3rem 0}
-
-/* Recorrido arriba (reemplaza el panel lateral) */
-.recorrido-side{display:none!important}
 @media (min-width:1280px){main,footer,body>.shell{margin-left:0}}
 .recorrido-top{display:none;border-top:1px solid var(--line)}
 .recorrido-top .shell{display:flex;align-items:center;gap:.25rem;min-height:52px;flex-wrap:wrap}
@@ -709,7 +579,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   .reading-progress{top:121px}
 }
 
-/* Franja superior oscura */
+/* Franja superior oscura (como al principio) */
 .bar,:root[data-theme="dark"] .bar{background:#20364B;color:#F5F0E6;border-bottom:0;backdrop-filter:none}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar{background:#0E1A26;color:#F5F0E6}}
 :root[data-theme="dark"] .bar{background:#0E1A26}
@@ -755,7 +625,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <aside class="drawer" id="drawer" aria-label="Índice de la guía">
   <div class="dw-top"><b>Índice</b><button type="button" class="dw-close" id="drawerClose">✕ Cerrar</button></div>
-  <nav aria-label="Temas y partes"><div class="dw-g nv-campana"><a class="dw-h" href="#campana" data-dw-tema="campana"><span class="num">1</span>Tu campaña</a><ul><li><a href="#campana-que-vas-a-hacer"><span class="dn">1.1</span><span class="dt">La campaña digital que vas a hacer</span><span class="dd" data-dw-dot="campana-que-vas-a-hacer"></span></a></li><li><a href="#campana-equipo"><span class="dn">1.2</span><span class="dt">Trabajar en equipo</span><span class="dd" data-dw-dot="campana-equipo"></span></a></li><li><a href="#campana-brief"><span class="dn">1.3</span><span class="dt">El brief de la campaña</span><span class="dd" data-dw-dot="campana-brief"></span></a></li><li><a href="#campana-derechos"><span class="dn">1.4</span><span class="dt">Contenido ajeno: la regla desde el día uno</span><span class="dd" data-dw-dot="campana-derechos"></span></a></li></ul></div><div class="dw-g nv-foto"><a class="dw-h" href="#foto" data-dw-tema="foto"><span class="num">2</span>Fotografía</a><ul><li><a href="#foto-conceptos"><span class="dn">2.1</span><span class="dt">Cámaras, resolución y formatos</span><span class="dd" data-dw-dot="foto-conceptos"></span></a></li><li><a href="#foto-luz"><span class="dn">2.2</span><span class="dt">Iluminación</span><span class="dd" data-dw-dot="foto-luz"></span></a></li><li><a href="#foto-ambiente"><span class="dn">2.3</span><span class="dt">Ambiente de trabajo y encuadre</span><span class="dd" data-dw-dot="foto-ambiente"></span></a></li><li><a href="#foto-lista"><span class="dn">2.4</span><span class="dt">Qué fotos sacar: la lista de tomas</span><span class="dd" data-dw-dot="foto-lista"></span></a></li><li><a href="#foto-retoque"><span class="dn">2.5</span><span class="dt">Retoque básico en Photopea</span><span class="dd" data-dw-dot="foto-retoque"></span></a></li><li><a href="#foto-exportar"><span class="dn">2.6</span><span class="dt">Exportar para web y redes</span><span class="dd" data-dw-dot="foto-exportar"></span></a></li><li><a href="#foto-a-video"><span class="dn">2.7</span><span class="dt">Crear videos con fotografías</span><span class="dd" data-dw-dot="foto-a-video"></span></a></li><li class="dw-ex"><a href="#ex-e1"><span class="dn">✎</span><span class="dt">Entrega 1: Brief y kit fotográfico</span><span class="dd" data-dw-dot-ex="e1"></span></a></li></ul></div><div class="dw-g nv-video"><a class="dw-h" href="#video" data-dw-tema="video"><span class="num">3</span>Video</a><ul><li><a href="#video-guion"><span class="dn">3.1</span><span class="dt">Del guion literario al guion técnico</span><span class="dd" data-dw-dot="video-guion"></span></a></li><li><a href="#video-planos"><span class="dn">3.2</span><span class="dt">Planos y movimientos de cámara</span><span class="dd" data-dw-dot="video-planos"></span></a></li><li><a href="#video-grabacion"><span class="dn">3.3</span><span class="dt">Grabar con el celular</span><span class="dd" data-dw-dot="video-grabacion"></span></a></li><li><a href="#video-normas"><span class="dn">3.4</span><span class="dt">Normas y formatos por plataforma</span><span class="dd" data-dw-dot="video-normas"></span></a></li><li><a href="#video-compresion"><span class="dn">3.5</span><span class="dt">Compresión: que el video pese poco y se vea bien</span><span class="dd" data-dw-dot="video-compresion"></span></a></li><li><a href="#video-edicion"><span class="dn">3.6</span><span class="dt">Edición en Canva</span><span class="dd" data-dw-dot="video-edicion"></span></a></li><li><a href="#video-sonido"><span class="dn">3.7</span><span class="dt">Sonido: música y locución</span><span class="dd" data-dw-dot="video-sonido"></span></a></li><li><a href="#video-publicacion"><span class="dn">3.8</span><span class="dt">Publicar el spot</span><span class="dd" data-dw-dot="video-publicacion"></span></a></li><li class="dw-ex"><a href="#ex-e2"><span class="dn">✎</span><span class="dt">Entrega 2: Spot de video</span><span class="dd" data-dw-dot-ex="e2"></span></a></li></ul></div><div class="dw-g nv-web"><a class="dw-h" href="#web" data-dw-tema="web"><span class="num">4</span>Sitio web</a><ul><li><a href="#web-internet"><span class="dn">4.1</span><span class="dt">Internet en pocas palabras</span><span class="dd" data-dw-dot="web-internet"></span></a></li><li><a href="#web-seo"><span class="dn">4.2</span><span class="dt">Cómo te encuentra un buscador</span><span class="dd" data-dw-dot="web-seo"></span></a></li><li><a href="#web-componentes"><span class="dn">4.3</span><span class="dt">Componentes de una página y de un sitio</span><span class="dd" data-dw-dot="web-componentes"></span></a></li><li><a href="#web-sites"><span class="dn">4.4</span><span class="dt">Diseño one click: armar el sitio</span><span class="dd" data-dw-dot="web-sites"></span></a></li><li><a href="#web-insertar"><span class="dn">4.5</span><span class="dt">Video, botones, redes y texto alternativo</span><span class="dd" data-dw-dot="web-insertar"></span></a></li><li><a href="#web-publicar"><span class="dn">4.6</span><span class="dt">Publicar el sitio</span><span class="dd" data-dw-dot="web-publicar"></span></a></li><li class="dw-ex"><a href="#ex-e3"><span class="dn">✎</span><span class="dt">Entrega 3: Sitio web de la campaña</span><span class="dd" data-dw-dot-ex="e3"></span></a></li></ul></div><div class="dw-g nv-redes"><a class="dw-h" href="#redes" data-dw-tema="redes"><span class="num">5</span>Redes</a><ul><li><a href="#redes-conceptos"><span class="dn">5.1</span><span class="dt">Conceptos básicos de redes</span><span class="dd" data-dw-dot="redes-conceptos"></span></a></li><li><a href="#redes-elegir"><span class="dn">5.2</span><span class="dt">Elegir la red según el público</span><span class="dd" data-dw-dot="redes-elegir"></span></a></li><li><a href="#redes-plan"><span class="dn">5.3</span><span class="dt">Plan y calendario de contenidos</span><span class="dd" data-dw-dot="redes-plan"></span></a></li><li><a href="#redes-escribir"><span class="dn">5.4</span><span class="dt">Escribir para redes</span><span class="dd" data-dw-dot="redes-escribir"></span></a></li><li><a href="#redes-piezas"><span class="dn">5.5</span><span class="dt">Diseñar las piezas en Canva</span><span class="dd" data-dw-dot="redes-piezas"></span></a></li><li><a href="#redes-derechos"><span class="dn">5.6</span><span class="dt">Derechos de autor</span><span class="dd" data-dw-dot="redes-derechos"></span></a></li><li><a href="#redes-ia"><span class="dn">5.7</span><span class="dt">Inteligencia artificial: usarla con honestidad</span><span class="dd" data-dw-dot="redes-ia"></span></a></li><li><a href="#redes-licencias"><span class="dn">5.8</span><span class="dt">El registro de licencias</span><span class="dd" data-dw-dot="redes-licencias"></span></a></li><li><a href="#redes-netiqueta"><span class="dn">5.9</span><span class="dt">Netiqueta: cómo se comporta una marca</span><span class="dd" data-dw-dot="redes-netiqueta"></span></a></li><li class="dw-ex"><a href="#ex-e4"><span class="dn">✎</span><span class="dt">Entrega 4: Plan de redes y licencias</span><span class="dd" data-dw-dot-ex="e4"></span></a></li></ul></div><div class="dw-g nv-final"><a class="dw-h" href="#final" data-dw-tema="final"><span class="num">6</span>Proyecto final</a><ul><li><a href="#final-programa"><span class="dn">6.1</span><span class="dt">Qué pide el programa</span><span class="dd" data-dw-dot="final-programa"></span></a></li><li><a href="#final-entregas"><span class="dn">6.2</span><span class="dt">Lo que entregan</span><span class="dd" data-dw-dot="final-entregas"></span></a></li><li><a href="#final-defensa"><span class="dn">6.3</span><span class="dt">Guion de la defensa (10 minutos + 5 de preguntas)</span><span class="dd" data-dw-dot="final-defensa"></span></a></li><li><a href="#final-evaluacion"><span class="dn">6.4</span><span class="dt">Cómo se evalúa (orientativo)</span><span class="dd" data-dw-dot="final-evaluacion"></span></a></li><li class="dw-ex"><a href="#ex-final"><span class="dn">✎</span><span class="dt">Proyecto final: Campaña integrada y defensa</span><span class="dd" data-dw-dot-ex="final"></span></a></li></ul></div><div class="dw-g dw-extra"><ul><li><a href="#inicio"><span class="dn">⌂</span><span class="dt">Inicio</span></a></li><li><a href="#ayuda"><span class="dn">?</span><span class="dt">Ayuda</span></a></li><li><a href="#glosario"><span class="dn">Aa</span><span class="dt">Glosario</span></a></li></ul></div></nav>
+  <nav aria-label="Temas y partes"><div class="dw-g nv-campana"><a class="dw-h" href="#campana" data-dw-tema="campana"><span class="num">1</span>Tu campaña</a><ul><li><a href="#campana-que-vas-a-hacer"><span class="dn">1.1</span><span class="dt">La campaña digital que vas a realizar</span><span class="dd" data-dw-dot="campana-que-vas-a-hacer"></span></a></li><li><a href="#campana-equipo"><span class="dn">1.2</span><span class="dt">Trabajar en equipo</span><span class="dd" data-dw-dot="campana-equipo"></span></a></li><li><a href="#campana-brief"><span class="dn">1.3</span><span class="dt">El brief de la campaña</span><span class="dd" data-dw-dot="campana-brief"></span></a></li><li><a href="#campana-derechos"><span class="dn">1.4</span><span class="dt">Contenido ajeno: la regla desde el día uno</span><span class="dd" data-dw-dot="campana-derechos"></span></a></li></ul></div><div class="dw-g nv-foto"><a class="dw-h" href="#foto" data-dw-tema="foto"><span class="num">2</span>Fotografía</a><ul><li><a href="#foto-conceptos"><span class="dn">2.1</span><span class="dt">Cámaras, resolución y formatos</span><span class="dd" data-dw-dot="foto-conceptos"></span></a></li><li><a href="#foto-luz"><span class="dn">2.2</span><span class="dt">Iluminación</span><span class="dd" data-dw-dot="foto-luz"></span></a></li><li><a href="#foto-ambiente"><span class="dn">2.3</span><span class="dt">Ambiente de trabajo y encuadre</span><span class="dd" data-dw-dot="foto-ambiente"></span></a></li><li><a href="#foto-lista"><span class="dn">2.4</span><span class="dt">Qué fotos sacar: la lista de tomas</span><span class="dd" data-dw-dot="foto-lista"></span></a></li><li><a href="#foto-retoque"><span class="dn">2.5</span><span class="dt">Retoque básico en Photopea</span><span class="dd" data-dw-dot="foto-retoque"></span></a></li><li><a href="#foto-exportar"><span class="dn">2.6</span><span class="dt">Exportar para web y redes</span><span class="dd" data-dw-dot="foto-exportar"></span></a></li><li><a href="#foto-a-video"><span class="dn">2.7</span><span class="dt">Crear videos con fotografías</span><span class="dd" data-dw-dot="foto-a-video"></span></a></li><li class="dw-ex"><a href="#ex-e1"><span class="dn">✎</span><span class="dt">Entrega 1: Brief y kit fotográfico</span><span class="dd" data-dw-dot-ex="e1"></span></a></li></ul></div><div class="dw-g nv-video"><a class="dw-h" href="#video" data-dw-tema="video"><span class="num">3</span>Video</a><ul><li><a href="#video-guion"><span class="dn">3.1</span><span class="dt">Del guion literario al guion técnico</span><span class="dd" data-dw-dot="video-guion"></span></a></li><li><a href="#video-planos"><span class="dn">3.2</span><span class="dt">Planos y movimientos de cámara</span><span class="dd" data-dw-dot="video-planos"></span></a></li><li><a href="#video-grabacion"><span class="dn">3.3</span><span class="dt">Grabar con el celular</span><span class="dd" data-dw-dot="video-grabacion"></span></a></li><li><a href="#video-normas"><span class="dn">3.4</span><span class="dt">Normas y formatos por plataforma</span><span class="dd" data-dw-dot="video-normas"></span></a></li><li><a href="#video-compresion"><span class="dn">3.5</span><span class="dt">Compresión: que el video pese poco y se vea bien</span><span class="dd" data-dw-dot="video-compresion"></span></a></li><li><a href="#video-edicion"><span class="dn">3.6</span><span class="dt">Edición en Canva</span><span class="dd" data-dw-dot="video-edicion"></span></a></li><li><a href="#video-sonido"><span class="dn">3.7</span><span class="dt">Sonido: música y locución</span><span class="dd" data-dw-dot="video-sonido"></span></a></li><li><a href="#video-publicacion"><span class="dn">3.8</span><span class="dt">Publicar el spot</span><span class="dd" data-dw-dot="video-publicacion"></span></a></li><li class="dw-ex"><a href="#ex-e2"><span class="dn">✎</span><span class="dt">Entrega 2: Spot de video</span><span class="dd" data-dw-dot-ex="e2"></span></a></li></ul></div><div class="dw-g nv-web"><a class="dw-h" href="#web" data-dw-tema="web"><span class="num">4</span>Sitio web</a><ul><li><a href="#web-internet"><span class="dn">4.1</span><span class="dt">Internet en pocas palabras</span><span class="dd" data-dw-dot="web-internet"></span></a></li><li><a href="#web-seo"><span class="dn">4.2</span><span class="dt">Cómo te encuentra un buscador</span><span class="dd" data-dw-dot="web-seo"></span></a></li><li><a href="#web-componentes"><span class="dn">4.3</span><span class="dt">Componentes de una página y de un sitio</span><span class="dd" data-dw-dot="web-componentes"></span></a></li><li><a href="#web-sites"><span class="dn">4.4</span><span class="dt">Diseño one click: armar el sitio</span><span class="dd" data-dw-dot="web-sites"></span></a></li><li><a href="#web-insertar"><span class="dn">4.5</span><span class="dt">Video, botones, redes y texto alternativo</span><span class="dd" data-dw-dot="web-insertar"></span></a></li><li><a href="#web-publicar"><span class="dn">4.6</span><span class="dt">Publicar el sitio</span><span class="dd" data-dw-dot="web-publicar"></span></a></li><li class="dw-ex"><a href="#ex-e3"><span class="dn">✎</span><span class="dt">Entrega 3: Sitio web de la campaña</span><span class="dd" data-dw-dot-ex="e3"></span></a></li></ul></div><div class="dw-g nv-redes"><a class="dw-h" href="#redes" data-dw-tema="redes"><span class="num">5</span>Redes</a><ul><li><a href="#redes-conceptos"><span class="dn">5.1</span><span class="dt">Conceptos básicos de redes</span><span class="dd" data-dw-dot="redes-conceptos"></span></a></li><li><a href="#redes-elegir"><span class="dn">5.2</span><span class="dt">Elegir la red según el público</span><span class="dd" data-dw-dot="redes-elegir"></span></a></li><li><a href="#redes-plan"><span class="dn">5.3</span><span class="dt">Plan y calendario de contenidos</span><span class="dd" data-dw-dot="redes-plan"></span></a></li><li><a href="#redes-escribir"><span class="dn">5.4</span><span class="dt">Escribir para redes</span><span class="dd" data-dw-dot="redes-escribir"></span></a></li><li><a href="#redes-piezas"><span class="dn">5.5</span><span class="dt">Diseñar las piezas en Canva</span><span class="dd" data-dw-dot="redes-piezas"></span></a></li><li><a href="#redes-derechos"><span class="dn">5.6</span><span class="dt">Derechos de autor</span><span class="dd" data-dw-dot="redes-derechos"></span></a></li><li><a href="#redes-ia"><span class="dn">5.7</span><span class="dt">Inteligencia artificial: usarla con honestidad</span><span class="dd" data-dw-dot="redes-ia"></span></a></li><li><a href="#redes-licencias"><span class="dn">5.8</span><span class="dt">El registro de licencias</span><span class="dd" data-dw-dot="redes-licencias"></span></a></li><li><a href="#redes-netiqueta"><span class="dn">5.9</span><span class="dt">Netiqueta: cómo se comporta una marca</span><span class="dd" data-dw-dot="redes-netiqueta"></span></a></li><li class="dw-ex"><a href="#ex-e4"><span class="dn">✎</span><span class="dt">Entrega 4: Plan de redes y licencias</span><span class="dd" data-dw-dot-ex="e4"></span></a></li></ul></div><div class="dw-g nv-final"><a class="dw-h" href="#final" data-dw-tema="final"><span class="num">6</span>Proyecto final</a><ul><li><a href="#final-programa"><span class="dn">6.1</span><span class="dt">Qué pide el programa</span><span class="dd" data-dw-dot="final-programa"></span></a></li><li><a href="#final-entregas"><span class="dn">6.2</span><span class="dt">Lo que entregan</span><span class="dd" data-dw-dot="final-entregas"></span></a></li><li><a href="#final-defensa"><span class="dn">6.3</span><span class="dt">Guion de la defensa (10 minutos + 5 de preguntas)</span><span class="dd" data-dw-dot="final-defensa"></span></a></li><li><a href="#final-evaluacion"><span class="dn">6.4</span><span class="dt">Cómo se evalúa (orientativo)</span><span class="dd" data-dw-dot="final-evaluacion"></span></a></li><li class="dw-ex"><a href="#ex-final"><span class="dn">✎</span><span class="dt">Proyecto final: Campaña integrada y defensa</span><span class="dd" data-dw-dot-ex="final"></span></a></li></ul></div><div class="dw-g dw-extra"><ul><li><a href="#inicio"><span class="dn">⌂</span><span class="dt">Inicio</span></a></li><li><a href="#ayuda"><span class="dn">?</span><span class="dt">Ayuda</span></a></li><li><a href="#glosario"><span class="dn">Aa</span><span class="dt">Glosario</span></a></li></ul></div></nav>
 </aside>
 <div class="dw-overlay" id="drawerOverlay"></div>
 
@@ -785,17 +655,16 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       </div>
       <section class="hero-card" id="nivel" aria-labelledby="h-portada">
         <div class="strip" aria-hidden="true"><span style="background:var(--cyan)"></span><span style="background:var(--magenta)"></span><span style="background:var(--yellow-mark)"></span><span style="background:var(--green)"></span></div>
-        <span class="eyebrow">Tecnicatura en Marketing - 1.er año - 2º semestre</span>
+        <span class="eyebrow">Tecnicatura en Marketing - 1.er año - 2.º semestre</span>
         <p class="kicker">Informática Aplicada II - Del concepto a la publicación</p>
         <h1 id="h-portada">Una idea.<br><em>Una campaña.</em><br>Mil formas de comunicar.</h1>
         <p class="lead">En equipo, van a hacer las <b>fotos</b>, el <b>video</b>, el <b>sitio web</b> y las <b>redes</b> de una campaña publicitaria. Todo se hace en el navegador, gratis y sin instalar nada.</p>
-        <a class="btn main start" href="#campana">Empezar -</a>
+        <a class="btn main start" href="#campana">Empezar</a>
         <h2 class="hero-h">Elegí tu nivel</h2>
         <div class="elegir-opts">
           <button type="button" data-glvl="b"><b>Básico</b><span>Explicaciones cortas, paso a paso. Menos piezas por entrega.</span><small>Canva, Photopea y Google Sites</small></button>
           <button type="button" data-glvl="a"><b>Intermedio</b><span>Explicaciones completas, más técnicas y desafíos extra.</span><small>Photopea, Canva o Clipchamp y Wix</small></button>
         </div>
-    
       </section>
 
       <p class="toast" id="formState" role="status"></p>
@@ -831,7 +700,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
     </nav>
     <div class="topics">
 <article class="topic" id="campana-que-vas-a-hacer">
-  <div class="topic-head"><h3>1.1 - La campaña digital que vas a hacer</h3></div>
+  <div class="topic-head"><h3>1.1 - La campaña digital que vas a realizar</h3></div>
   <div class="ptabs" role="tablist" aria-label="Nivel de la explicación"><button type="button" role="tab" class="ptab-b" data-ptab="b"><span class="ck" aria-hidden="true"></span>Básico</button><button type="button" role="tab" class="ptab-a" data-ptab="a"><span class="ck" aria-hidden="true"></span>Intermedio</button></div>
   <div class="topic-body ppanel">
     <div class="lv lv-b"><span class="lvl-badge b">Nivel básico</span><p>En equipo van a armar la <b>campaña publicitaria digital</b> de una marca, de a una pieza por vez:</p>
@@ -852,7 +721,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <li><b>Trabajo final:</b> muestran todo publicado y conectado. <i>Proyecto final.</i></li>
 </ol>
 <div class="tip"><b>Por qué en este orden:</b> las fotos se usan en el video, el video y las fotos van al sitio, y las redes llevan gente al sitio. Cada entrega es una pieza de la final: nada se hace dos veces.</div>
-<p>La marca puede ser real y cercana: un comercio del barrio, un emprendimiento de alguien que conozcan, su propio emprendimiento, un evento del centro. Si es de otra persona, pídanle permiso antes de publicar.</p></div>
+<p>La marca puede ser real y cercana: un comercio del barrio, su propio emprendimiento, el de alguien que conozcan o un evento del centro. Si es de otra persona, pídanle permiso antes de publicar.</p></div>
   </div>
   <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-que-vas-a-hacer"> Lo leí</label></div>
 </article>
@@ -861,23 +730,26 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="ptabs" role="tablist" aria-label="Nivel de la explicación"><button type="button" role="tab" class="ptab-b" data-ptab="b"><span class="ck" aria-hidden="true"></span>Básico</button><button type="button" role="tab" class="ptab-a" data-ptab="a"><span class="ck" aria-hidden="true"></span>Intermedio</button></div>
   <div class="topic-body ppanel">
     <div class="lv lv-b"><span class="lvl-badge b">Nivel básico</span><p>Trabajan en equipos de <b>hasta 3 personas</b>. Cada uno se encarga de algo, pero todos tienen que poder explicar el trabajo que realizaron.</p>
+<h4>La carpeta del equipo: su repositorio</h4>
+<p>Un <b>repositorio</b> es el lugar donde se guarda todo el trabajo de un proyecto. El de ustedes va a ser una carpeta de Google Drive.</p>
 <ol class="pasos">
-  <li>Una persona crea en <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a> una <b>carpeta</b> con el nombre del equipo.</li>
-  <li>La comparte con los compañeros y con la docente (botón <b>Compartir</b>, escribir el correo).</li>
-  <li>Todo lo que hagan lo guardan ahí.</li>
+  <li>Un estudiante del equipo entra a <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a> y crea una <b>carpeta</b> con el nombre del equipo.</li>
+  <li>Toca <b>Compartir</b>, escribe los correos de sus compañeros y el de la docente, elige <b>Editor</b> y toca <b>Enviar</b>.</li>
+  <li>Todo lo que hagan lo guardan ahí: fotos, videos, documentos y planillas.</li>
 </ol>
 <div class="idea"><b>Consejo:</b> pongan nombres claros a los archivos, por ejemplo <code>foto1.jpg</code> o <code>video-final.mp4</code>.</div></div>
-    <div class="lv lv-a"><span class="lvl-badge a">Nivel intermedio</span><p>El programa propone equipos de <b>unos 4 estudiantes</b>. Repartan roles, pero todos aprenden todo: cada integrante tiene que poder explicar cualquier pieza en la defensa.</p>
+    <div class="lv lv-a"><span class="lvl-badge a">Nivel intermedio</span><p>Trabajan en equipos de <b>hasta 3 personas</b>. Repartan roles, pero todos aprenden todo: cada integrante tiene que poder explicar cualquier pieza en la defensa.</p>
 <div class="grid2">
   <div><b>Coordinación</b><p>Lleva el calendario, revisa que se entregue a tiempo y habla con el docente.</p></div>
   <div><b>Foto y video</b><p>Organiza las sesiones de fotos y la grabación del spot.</p></div>
   <div><b>Web</b><p>Arma el sitio y revisa que todos los enlaces funcionen.</p></div>
   <div><b>Redes y licencias</b><p>Lleva el calendario de publicaciones y el registro de licencias.</p></div>
 </div>
-<h4>Una carpeta compartida para todo</h4>
+<h4>Una carpeta compartida: el repositorio del equipo</h4>
+<p>Un <b>repositorio</b> es el lugar donde se guarda todo el trabajo de un proyecto, ordenado y al alcance de todos. El de ustedes va a ser una carpeta de Google Drive.</p>
 <ol class="pasos">
-  <li>Una persona crea en <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a> una carpeta con el nombre del equipo.</li>
-  <li>La comparte con el resto del equipo como <b>Editor</b> y con el docente como <b>Lector</b>.</li>
+  <li>Un estudiante crea en <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a> una carpeta con el nombre del equipo.</li>
+  <li>La comparte como <b>Editor</b> con el resto del equipo y con la docente.</li>
   <li>Adentro, una carpeta por entrega: <code>1-fotos</code>, <code>2-video</code>, <code>3-web</code>, <code>4-redes</code>, <code>final</code>.</li>
 </ol>
 <div class="tip"><b>Nombres de archivo:</b> sin espacios ni tildes, en minúscula y con el nombre del equipo: <code>equipo-sol_foto3_web.jpg</code>, no <code>IMG_2026 final FINAL.jpg</code>.</div></div>
@@ -901,7 +773,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <b>Plantilla para completar</b>
       <div class="plant-btns"><a class="btn plant" data-plantilla="brief" href="#" target="_blank" rel="noopener">📄 Brief de la campaña: hacer mi copia ↗</a></div>
       <details class="plant-det"><summary>¿Cómo hago mi copia para poder escribir?</summary><ol class="plant-pasos">
-        <li><b>Una sola persona del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
+        <li><b>Un solo estudiante del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
         <li>Aparece un cartel que pregunta si querés <b>copiar el documento</b>. Tocá el botón azul <b>Hacer una copia</b>.</li>
         <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Brief - Equipo Sol</i>.</li>
         <li>Compártanla con el equipo: botón <b>Compartir</b>, escriban los correos de sus compañeros, elijan <b>Editor</b> y toquen <b>Enviar</b>.</li>
@@ -917,7 +789,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <b>Plantilla para completar</b>
       <div class="plant-btns"><a class="btn plant" data-plantilla="brief" href="#" target="_blank" rel="noopener">📄 Brief de la campaña: hacer mi copia ↗</a></div>
       <details class="plant-det"><summary>¿Cómo hago mi copia para poder escribir?</summary><ol class="plant-pasos">
-        <li><b>Una sola persona del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
+        <li><b>Un solo estudiante del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
         <li>Aparece un cartel que pregunta si querés <b>copiar el documento</b>. Tocá el botón azul <b>Hacer una copia</b>.</li>
         <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Brief - Equipo Sol</i>.</li>
         <li>Compártanla con el equipo: botón <b>Compartir</b>, escriban los correos de sus compañeros, elijan <b>Editor</b> y toquen <b>Enviar</b>.</li>
@@ -961,7 +833,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="topic-foot"><label class="tick"><input type="checkbox" data-read="campana-derechos"> Lo leí</label></div>
 </article>
       
-      <nav class="pager" aria-label="Cambiar de tema"><span></span><a class="btn main" href="#foto">Tema 2: Fotografía -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><span></span><a class="btn main" href="#foto">Tema 2: Fotografía</a></nav>
     </div>
   </div>
 </section>
@@ -975,10 +847,10 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="plan">
     <div class="plan-lvl">Tu nivel: <span class="lvlpick small" role="group" aria-label="Cambiar de nivel"><button type="button" data-glvl="b">Básico</button><button type="button" data-glvl="a">Intermedio</button></span></div>
     <h3>Qué hacés en este tema</h3>
-    <ol class="plan-steps"><li><b>Leé</b> las 7 partes del tema <span class="soft">(unos 7 minutos)</span>.</li>
+    <ol class="plan-steps"><li><b>Leé</b> las 7 partes del tema.</li>
 <li><b>Hagan</b> la Entrega 1 siguiendo la lista de pasos.</li>
 <li><b>Súbanla</b> al formulario antes del <b><span data-fecha-larga="e1">miércoles 4 de noviembre</span></b>.</li></ol>
-    <div class="plan-btns"><a class="btn main" href="#foto-conceptos">Empezar a leer ↓</a></div>
+    <div class="plan-btns"><a class="btn main" href="#foto-conceptos">Empezar a leer</a></div>
   </div>
   <div class="layout">
     <nav class="toc" aria-label="Partes de Fotografía">
@@ -1243,7 +1115,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <p>Lo que entregan se completa en estas plantillas. Hagan su copia así:</p>
       <div class="plant-btns"><a class="btn plant" data-plantilla="brief" href="#" target="_blank" rel="noopener">📄 Brief de la campaña: hacer mi copia ↗</a><a class="btn plant" data-plantilla="fotos" href="#" target="_blank" rel="noopener">📄 Ficha de fotos: hacer mi copia ↗</a></div>
       <ol class="plant-pasos">
-        <li><b>Una sola persona del equipo</b> toca el botón de cada plantilla. Si lo pide, inicia sesión con su cuenta de Google.</li>
+        <li><b>Un solo estudiante del equipo</b> toca el botón de cada plantilla. Si lo pide, inicia sesión con su cuenta de Google.</li>
         <li>Aparece un cartel que pregunta si querés <b>copiar el documento</b>. Tocá el botón azul <b>Hacer una copia</b>.</li>
         <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Brief - Equipo Sol</i>.</li>
         <li>Compártanla con el equipo: botón <b>Compartir</b>, escriban los correos de sus compañeros, elijan <b>Editor</b> y toquen <b>Enviar</b>.</li>
@@ -1258,14 +1130,14 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <ol class="submit-steps">
         <li><label class="tick"><input type="checkbox" data-done="e1"> Terminamos esta entrega</label></li>
         <li><div class="field in-task"><label for="al-e1">Equipo e integrantes</label><input id="al-e1" class="alumno-in" type="text" placeholder="Ej.: Equipo Sol - Sofía Pereira, Juan Silva" autocomplete="off"><small>Se escribe una sola vez: aparece solo en todas las entregas.</small></div></li>
-        <li><a class="btn main send" data-send="e1" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega una sola persona por equipo.</small></li>
+        <li><a class="btn main send" data-send="e1" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega un solo estudiante por equipo.</small></li>
         <li><label class="tick"><input type="checkbox" data-sent="e1"> Ya la subimos al formulario</label></li>
       </ol>
       <p class="toast" data-toast="e1" role="status"></p>
     </div>
   </div>
 </section>
-      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#campana">← Tema 1: Tu campaña</a><a class="btn main" href="#video">Tema 3: Video -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#campana">← Tema 1: Tu campaña</a><a class="btn main" href="#video">Tema 3: Video</a></nav>
     </div>
   </div>
 </section>
@@ -1279,10 +1151,10 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="plan">
     <div class="plan-lvl">Tu nivel: <span class="lvlpick small" role="group" aria-label="Cambiar de nivel"><button type="button" data-glvl="b">Básico</button><button type="button" data-glvl="a">Intermedio</button></span></div>
     <h3>Qué hacés en este tema</h3>
-    <ol class="plan-steps"><li><b>Leé</b> las 8 partes del tema <span class="soft">(unos 8 minutos)</span>.</li>
+    <ol class="plan-steps"><li><b>Leé</b> las 8 partes del tema.</li>
 <li><b>Hagan</b> la Entrega 2 siguiendo la lista de pasos.</li>
 <li><b>Súbanla</b> al formulario antes del <b><span data-fecha-larga="e2">martes 10 de noviembre</span></b>.</li></ol>
-    <div class="plan-btns"><a class="btn main" href="#video-guion">Empezar a leer ↓</a></div>
+    <div class="plan-btns"><a class="btn main" href="#video-guion">Empezar a leer</a></div>
   </div>
   <div class="layout">
     <nav class="toc" aria-label="Partes de Video">
@@ -1549,9 +1421,9 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <p>Lo que entregan se completa en esta plantilla. Hagan su copia así:</p>
       <div class="plant-btns"><a class="btn plant" data-plantilla="guion" href="#" target="_blank" rel="noopener">📄 Guion del spot: hacer mi copia ↗</a></div>
       <ol class="plant-pasos">
-        <li><b>Una sola persona del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
+        <li><b>Un solo estudiante del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
         <li>Aparece un cartel que pregunta si querés <b>copiar el documento</b>. Tocá el botón azul <b>Hacer una copia</b>.</li>
-        <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Brief - Equipo Sol</i>.</li>
+        <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Guion - Equipo Sol</i>.</li>
         <li>Compártanla con el equipo: botón <b>Compartir</b>, escriban los correos de sus compañeros, elijan <b>Editor</b> y toquen <b>Enviar</b>.</li>
         <li>Complétenla entre todos. Se guarda sola.</li>
         <li>Para entregarla: <b>Compartir</b> › en «Acceso general» elijan <b>Cualquier persona con el enlace</b> › <b>Copiar enlace</b>. Ese enlace lo pegan en el formulario.</li>
@@ -1564,14 +1436,14 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <ol class="submit-steps">
         <li><label class="tick"><input type="checkbox" data-done="e2"> Terminamos esta entrega</label></li>
         <li><div class="field in-task"><label for="al-e2">Equipo e integrantes</label><input id="al-e2" class="alumno-in" type="text" placeholder="Ej.: Equipo Sol - Sofía Pereira, Juan Silva" autocomplete="off"><small>Se escribe una sola vez: aparece solo en todas las entregas.</small></div></li>
-        <li><a class="btn main send" data-send="e2" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega una sola persona por equipo.</small></li>
+        <li><a class="btn main send" data-send="e2" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega un solo estudiante por equipo.</small></li>
         <li><label class="tick"><input type="checkbox" data-sent="e2"> Ya la subimos al formulario</label></li>
       </ol>
       <p class="toast" data-toast="e2" role="status"></p>
     </div>
   </div>
 </section>
-      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#foto">← Tema 2: Fotografía</a><a class="btn main" href="#web">Tema 4: Sitio web -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#foto">← Tema 2: Fotografía</a><a class="btn main" href="#web">Tema 4: Sitio web</a></nav>
     </div>
   </div>
 </section>
@@ -1585,10 +1457,10 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="plan">
     <div class="plan-lvl">Tu nivel: <span class="lvlpick small" role="group" aria-label="Cambiar de nivel"><button type="button" data-glvl="b">Básico</button><button type="button" data-glvl="a">Intermedio</button></span></div>
     <h3>Qué hacés en este tema</h3>
-    <ol class="plan-steps"><li><b>Leé</b> las 6 partes del tema <span class="soft">(unos 6 minutos)</span>.</li>
+    <ol class="plan-steps"><li><b>Leé</b> las 6 partes del tema.</li>
 <li><b>Hagan</b> la Entrega 3 siguiendo la lista de pasos.</li>
 <li><b>Súbanla</b> al formulario antes del <b><span data-fecha-larga="e3">viernes 13 de noviembre</span></b>.</li></ol>
-    <div class="plan-btns"><a class="btn main" href="#web-internet">Empezar a leer ↓</a></div>
+    <div class="plan-btns"><a class="btn main" href="#web-internet">Empezar a leer</a></div>
   </div>
   <div class="layout">
     <nav class="toc" aria-label="Partes de Sitio web">
@@ -1817,14 +1689,14 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <ol class="submit-steps">
         <li><label class="tick"><input type="checkbox" data-done="e3"> Terminamos esta entrega</label></li>
         <li><div class="field in-task"><label for="al-e3">Equipo e integrantes</label><input id="al-e3" class="alumno-in" type="text" placeholder="Ej.: Equipo Sol - Sofía Pereira, Juan Silva" autocomplete="off"><small>Se escribe una sola vez: aparece solo en todas las entregas.</small></div></li>
-        <li><a class="btn main send" data-send="e3" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega una sola persona por equipo.</small></li>
+        <li><a class="btn main send" data-send="e3" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega un solo estudiante por equipo.</small></li>
         <li><label class="tick"><input type="checkbox" data-sent="e3"> Ya la subimos al formulario</label></li>
       </ol>
       <p class="toast" data-toast="e3" role="status"></p>
     </div>
   </div>
 </section>
-      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#video">← Tema 3: Video</a><a class="btn main" href="#redes">Tema 5: Redes -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#video">← Tema 3: Video</a><a class="btn main" href="#redes">Tema 5: Redes</a></nav>
     </div>
   </div>
 </section>
@@ -1838,10 +1710,10 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="plan">
     <div class="plan-lvl">Tu nivel: <span class="lvlpick small" role="group" aria-label="Cambiar de nivel"><button type="button" data-glvl="b">Básico</button><button type="button" data-glvl="a">Intermedio</button></span></div>
     <h3>Qué hacés en este tema</h3>
-    <ol class="plan-steps"><li><b>Leé</b> las 9 partes del tema <span class="soft">(unos 11 minutos)</span>.</li>
+    <ol class="plan-steps"><li><b>Leé</b> las 9 partes del tema.</li>
 <li><b>Hagan</b> la Entrega 4 siguiendo la lista de pasos.</li>
 <li><b>Súbanla</b> al formulario antes del <b><span data-fecha-larga="e4">martes 17 de noviembre</span></b>.</li></ol>
-    <div class="plan-btns"><a class="btn main" href="#redes-conceptos">Empezar a leer ↓</a></div>
+    <div class="plan-btns"><a class="btn main" href="#redes-conceptos">Empezar a leer</a></div>
   </div>
   <div class="layout">
     <nav class="toc" aria-label="Partes de Redes">
@@ -2148,9 +2020,9 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <p>Lo que entregan se completa en esta plantilla. Hagan su copia así:</p>
       <div class="plant-btns"><a class="btn plant" data-plantilla="redes" href="#" target="_blank" rel="noopener">📄 Planilla de redes: hacer mi copia ↗</a></div>
       <ol class="plant-pasos">
-        <li><b>Una sola persona del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
+        <li><b>Un solo estudiante del equipo</b> toca el botón. Si lo pide, inicia sesión con su cuenta de Google.</li>
         <li>Aparece un cartel que pregunta si querés <b>copiar el documento</b>. Tocá el botón azul <b>Hacer una copia</b>.</li>
-        <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Brief - Equipo Sol</i>.</li>
+        <li>Se abre <b>su copia</b>: esa sí se puede escribir. Arriba a la izquierda, tocá el nombre y cambialo, por ejemplo <i>Redes - Equipo Sol</i>.</li>
         <li>Compártanla con el equipo: botón <b>Compartir</b>, escriban los correos de sus compañeros, elijan <b>Editor</b> y toquen <b>Enviar</b>.</li>
         <li>Complétenla entre todos. Se guarda sola.</li>
         <li>Para entregarla: <b>Compartir</b> › en «Acceso general» elijan <b>Cualquier persona con el enlace</b> › <b>Copiar enlace</b>. Ese enlace lo pegan en el formulario.</li>
@@ -2163,14 +2035,14 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <ol class="submit-steps">
         <li><label class="tick"><input type="checkbox" data-done="e4"> Terminamos esta entrega</label></li>
         <li><div class="field in-task"><label for="al-e4">Equipo e integrantes</label><input id="al-e4" class="alumno-in" type="text" placeholder="Ej.: Equipo Sol - Sofía Pereira, Juan Silva" autocomplete="off"><small>Se escribe una sola vez: aparece solo en todas las entregas.</small></div></li>
-        <li><a class="btn main send" data-send="e4" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega una sola persona por equipo.</small></li>
+        <li><a class="btn main send" data-send="e4" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega un solo estudiante por equipo.</small></li>
         <li><label class="tick"><input type="checkbox" data-sent="e4"> Ya la subimos al formulario</label></li>
       </ol>
       <p class="toast" data-toast="e4" role="status"></p>
     </div>
   </div>
 </section>
-      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#web">← Tema 4: Sitio web</a><a class="btn main" href="#final">Tema 6: Proyecto final -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#web">← Tema 4: Sitio web</a><a class="btn main" href="#final">Tema 6: Proyecto final</a></nav>
     </div>
   </div>
 </section>
@@ -2184,10 +2056,10 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="plan">
     <div class="plan-lvl">Tu nivel: <span class="lvlpick small" role="group" aria-label="Cambiar de nivel"><button type="button" data-glvl="b">Básico</button><button type="button" data-glvl="a">Intermedio</button></span></div>
     <h3>Qué hacés en este tema</h3>
-    <ol class="plan-steps"><li><b>Leé</b> las 4 partes del tema <span class="soft">(unos 4 minutos)</span>.</li>
+    <ol class="plan-steps"><li><b>Leé</b> las 4 partes del tema.</li>
 <li><b>Hagan</b> la entrega final siguiendo la lista de pasos.</li>
 <li><b>Súbanla</b> al formulario antes del <b><span data-fecha-larga="final">viernes 20 de noviembre</span></b>.</li></ol>
-    <div class="plan-btns"><a class="btn main" href="#final-programa">Empezar a leer ↓</a></div>
+    <div class="plan-btns"><a class="btn main" href="#final-programa">Empezar a leer</a></div>
   </div>
   <div class="layout">
     <nav class="toc" aria-label="Partes de Proyecto final">
@@ -2343,14 +2215,14 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <ol class="submit-steps">
         <li><label class="tick"><input type="checkbox" data-done="final"> Terminamos esta entrega</label></li>
         <li><div class="field in-task"><label for="al-final">Equipo e integrantes</label><input id="al-final" class="alumno-in" type="text" placeholder="Ej.: Equipo Sol - Sofía Pereira, Juan Silva" autocomplete="off"><small>Se escribe una sola vez: aparece solo en todas las entregas.</small></div></li>
-        <li><a class="btn main send" data-send="final" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega una sola persona por equipo.</small></li>
+        <li><a class="btn main send" data-send="final" href="#inicio" target="_blank" rel="noopener">Entregar en el formulario ↗</a><small class="send-help">Se abre en otra pestaña con el equipo y la entrega ya escritos. Inicien sesión con Google, peguen los enlaces, adjunten los archivos y toquen <b>Enviar</b>. Entrega un solo estudiante por equipo.</small></li>
         <li><label class="tick"><input type="checkbox" data-sent="final"> Ya la subimos al formulario</label></li>
       </ol>
       <p class="toast" data-toast="final" role="status"></p>
     </div>
   </div>
 </section>
-      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#redes">← Tema 5: Redes</a><a class="btn main" href="#inicio">Volver al inicio -</a></nav>
+      <nav class="pager" aria-label="Cambiar de tema"><a class="btn" href="#redes">← Tema 5: Redes</a><a class="btn main" href="#inicio">Volver al inicio</a></nav>
     </div>
   </div>
 </section>
@@ -2513,7 +2385,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <p class="lead">¿Una palabra que no conocés? Escribila acá.</p>
       <label for="glSearch" class="eyebrow" style="margin-top:1rem">Buscar un término</label>
       <input id="glSearch" class="gl-search" type="search" placeholder="Ej.: bitrate, SEO, licencia">
-      <div class="glossary" id="glossary"><details class="gl"><summary>Brief</summary><p>Resumen de una página con la marca, el público, el objetivo y el mensaje de la campaña.</p></details><details class="gl"><summary>Público objetivo</summary><p>Grupo de personas a las que se dirige la campaña.</p></details><details class="gl"><summary>Llamado a la acción</summary><p>Frase o botón que invita a hacer algo: comprar, escribir, seguir.</p></details><details class="gl"><summary>Resolución</summary><p>Cantidad de píxeles de una imagen o de cada cuadro de un video, por ejemplo 1920 × 1080.</p></details><details class="gl"><summary>Megapíxel</summary><p>Un millón de píxeles. Mide la resolución de una cámara.</p></details><details class="gl"><summary>Exposición</summary><p>Cuánta luz recibe la foto: sobreexpuesta es muy clara, subexpuesta muy oscura.</p></details><details class="gl"><summary>Luz difusa / dura</summary><p>Difusa: suave y sin sombras marcadas. Dura: directa, con sombras fuertes.</p></details><details class="gl"><summary>Contraluz</summary><p>La luz viene de atrás del sujeto.</p></details><details class="gl"><summary>Balance de blancos</summary><p>Ajuste que hace que los blancos se vean blancos y no amarillos o azules.</p></details><details class="gl"><summary>Regla de tercios</summary><p>Dividir el cuadro en 3 × 3 y ubicar lo importante sobre las líneas o cruces.</p></details><details class="gl"><summary>JPG / PNG / WebP / HEIC / RAW</summary><p>Formatos de foto: JPG comprimido, PNG con transparencia, WebP liviano para web, HEIC de iPhone, RAW sin procesar.</p></details><details class="gl"><summary>Guion literario</summary><p>La historia del video contada en palabras.</p></details><details class="gl"><summary>Guion técnico</summary><p>Tabla toma por toma con plano, duración, imagen, audio y texto.</p></details><details class="gl"><summary>Plano</summary><p>Cuánto se ve en el cuadro: general, medio, primer plano, detalle.</p></details><details class="gl"><summary>Toma</summary><p>Lo que se graba sin cortar, desde que empieza hasta que termina la grabación.</p></details><details class="gl"><summary>Fotogramas por segundo (fps)</summary><p>Cantidad de imágenes por segundo de un video: 25 o 30 es lo común.</p></details><details class="gl"><summary>Relación de aspecto</summary><p>Proporción entre ancho y alto: 16:9 horizontal, 9:16 vertical, 1:1 cuadrado.</p></details><details class="gl"><summary>Códec / H.264 / MP4</summary><p>Códec: forma de comprimir video. H.264 es el más usado y va dentro de un archivo MP4.</p></details><details class="gl"><summary>Bitrate</summary><p>Cantidad de información por segundo de un video. Más bitrate, más calidad y más peso.</p></details><details class="gl"><summary>Compresión</summary><p>Achicar el peso de un archivo quitando información que casi no se nota.</p></details><details class="gl"><summary>Exportar</summary><p>Convertir el proyecto editable en un archivo final: JPG, MP4, PDF.</p></details><details class="gl"><summary>Convertir un archivo</summary><p>Cambiarle el formato, por ejemplo de HEIC a JPG o de MOV a MP4. Se hace con Photopea, Squoosh, Canva o un convertidor en línea.</p></details><details class="gl"><summary>Extensión</summary><p>Las letras después del punto en el nombre de un archivo (.jpg, .png, .mp4, .pdf). Indican el formato.</p></details><details class="gl"><summary>No listado</summary><p>Video de YouTube que solo ve quien tiene el enlace.</p></details><details class="gl"><summary>URL</summary><p>Dirección completa de una página web.</p></details><details class="gl"><summary>IP</summary><p>Número que identifica a cada equipo conectado a Internet.</p></details><details class="gl"><summary>Dominio / DNS</summary><p>Dominio: nombre de un sitio. DNS: sistema que traduce el dominio a su IP.</p></details><details class="gl"><summary>Hiperenlace</summary><p>Texto, imagen o botón que lleva a otra página.</p></details><details class="gl"><summary>Buscador</summary><p>Programa que recorre la web y ordena las páginas para responder búsquedas.</p></details><details class="gl"><summary>PageRank</summary><p>Método de Google que valora una página según cuántas páginas importantes la enlazan.</p></details><details class="gl"><summary>SEO / SEM</summary><p>SEO: aparecer en los buscadores sin pagar. SEM: anuncios pagos en buscadores.</p></details><details class="gl"><summary>Palabra clave</summary><p>Frase que la gente escribe en el buscador para encontrar algo.</p></details><details class="gl"><summary>Landing page</summary><p>Página única de campaña pensada para que la persona haga una acción.</p></details><details class="gl"><summary>Diseño one click</summary><p>Armar un sitio con bloques prediseñados, sin programar.</p></details><details class="gl"><summary>Texto alternativo</summary><p>Descripción de una imagen para buscadores y lectores de pantalla.</p></details><details class="gl"><summary>Alcance / impresiones</summary><p>Alcance: personas distintas que vieron algo. Impresiones: veces que se vio en total.</p></details><details class="gl"><summary>Interacción (engagement)</summary><p>Me gusta, comentarios, compartidos y guardados de una publicación.</p></details><details class="gl"><summary>Algoritmo</summary><p>Reglas con las que una red decide qué contenido mostrar a cada persona.</p></details><details class="gl"><summary>Hashtag</summary><p>Palabra con # que agrupa publicaciones de un mismo tema.</p></details><details class="gl"><summary>Carrusel / historia / reel</summary><p>Publicación con varias imágenes / contenido que dura 24 h / video vertical corto.</p></details><details class="gl"><summary>Calendario de contenidos</summary><p>Planilla con qué se publica, dónde y cuándo.</p></details><details class="gl"><summary>Derecho de autor</summary><p>Protección que tiene toda obra original desde que se crea. En Uruguay, Ley 9.739.</p></details><details class="gl"><summary>Creative Commons</summary><p>Licencias con las que un autor permite usar su obra con ciertas condiciones.</p></details><details class="gl"><summary>Dominio público</summary><p>Obras que se pueden usar libremente, sin pedir permiso.</p></details><details class="gl"><summary>Atribución</summary><p>Nombrar al autor y la licencia de una obra que usás.</p></details><details class="gl"><summary>Netiqueta</summary><p>Normas de buena convivencia y respeto en Internet.</p></details><details class="gl"><summary>Troll</summary><p>Persona que comenta para provocar o molestar.</p></details><details class="gl"><summary>Plantilla</summary><p>Diseño ya armado que se usa como punto de partida: se cambian los textos, las fotos y los colores por los propios.</p></details><details class="gl"><summary>Subdominio</summary><p>Dirección gratuita que dan algunas herramientas, por ejemplo usuario.wixsite.com/mi-sitio.</p></details><details class="gl"><summary>DUA</summary><p>Diseño Universal para el Aprendizaje: preparar el material para que todas las personas puedan aprender, con distintas formas de presentar, de hacer y de motivarse.</p></details></div>
+      <div class="glossary" id="glossary"><details class="gl"><summary>Repositorio</summary><p>Lugar donde se guarda todo el trabajo de un proyecto. En este curso, la carpeta de Google Drive del equipo, compartida con la docente como Editor.</p></details><details class="gl"><summary>Brief</summary><p>Resumen de una página con la marca, el público, el objetivo y el mensaje de la campaña.</p></details><details class="gl"><summary>Público objetivo</summary><p>Grupo de personas a las que se dirige la campaña.</p></details><details class="gl"><summary>Llamado a la acción</summary><p>Frase o botón que invita a hacer algo: comprar, escribir, seguir.</p></details><details class="gl"><summary>Resolución</summary><p>Cantidad de píxeles de una imagen o de cada cuadro de un video, por ejemplo 1920 × 1080.</p></details><details class="gl"><summary>Megapíxel</summary><p>Un millón de píxeles. Mide la resolución de una cámara.</p></details><details class="gl"><summary>Exposición</summary><p>Cuánta luz recibe la foto: sobreexpuesta es muy clara, subexpuesta muy oscura.</p></details><details class="gl"><summary>Luz difusa / dura</summary><p>Difusa: suave y sin sombras marcadas. Dura: directa, con sombras fuertes.</p></details><details class="gl"><summary>Contraluz</summary><p>La luz viene de atrás del sujeto.</p></details><details class="gl"><summary>Balance de blancos</summary><p>Ajuste que hace que los blancos se vean blancos y no amarillos o azules.</p></details><details class="gl"><summary>Regla de tercios</summary><p>Dividir el cuadro en 3 × 3 y ubicar lo importante sobre las líneas o cruces.</p></details><details class="gl"><summary>JPG / PNG / WebP / HEIC / RAW</summary><p>Formatos de foto: JPG comprimido, PNG con transparencia, WebP liviano para web, HEIC de iPhone, RAW sin procesar.</p></details><details class="gl"><summary>Guion literario</summary><p>La historia del video contada en palabras.</p></details><details class="gl"><summary>Guion técnico</summary><p>Tabla toma por toma con plano, duración, imagen, audio y texto.</p></details><details class="gl"><summary>Plano</summary><p>Cuánto se ve en el cuadro: general, medio, primer plano, detalle.</p></details><details class="gl"><summary>Toma</summary><p>Lo que se graba sin cortar, desde que empieza hasta que termina la grabación.</p></details><details class="gl"><summary>Fotogramas por segundo (fps)</summary><p>Cantidad de imágenes por segundo de un video: 25 o 30 es lo común.</p></details><details class="gl"><summary>Relación de aspecto</summary><p>Proporción entre ancho y alto: 16:9 horizontal, 9:16 vertical, 1:1 cuadrado.</p></details><details class="gl"><summary>Códec / H.264 / MP4</summary><p>Códec: forma de comprimir video. H.264 es el más usado y va dentro de un archivo MP4.</p></details><details class="gl"><summary>Bitrate</summary><p>Cantidad de información por segundo de un video. Más bitrate, más calidad y más peso.</p></details><details class="gl"><summary>Compresión</summary><p>Achicar el peso de un archivo quitando información que casi no se nota.</p></details><details class="gl"><summary>Exportar</summary><p>Convertir el proyecto editable en un archivo final: JPG, MP4, PDF.</p></details><details class="gl"><summary>Convertir un archivo</summary><p>Cambiarle el formato, por ejemplo de HEIC a JPG o de MOV a MP4. Se hace con Photopea, Squoosh, Canva o un convertidor en línea.</p></details><details class="gl"><summary>Extensión</summary><p>Las letras después del punto en el nombre de un archivo (.jpg, .png, .mp4, .pdf). Indican el formato.</p></details><details class="gl"><summary>No listado</summary><p>Video de YouTube que solo ve quien tiene el enlace.</p></details><details class="gl"><summary>URL</summary><p>Dirección completa de una página web.</p></details><details class="gl"><summary>IP</summary><p>Número que identifica a cada equipo conectado a Internet.</p></details><details class="gl"><summary>Dominio / DNS</summary><p>Dominio: nombre de un sitio. DNS: sistema que traduce el dominio a su IP.</p></details><details class="gl"><summary>Hiperenlace</summary><p>Texto, imagen o botón que lleva a otra página.</p></details><details class="gl"><summary>Buscador</summary><p>Programa que recorre la web y ordena las páginas para responder búsquedas.</p></details><details class="gl"><summary>PageRank</summary><p>Método de Google que valora una página según cuántas páginas importantes la enlazan.</p></details><details class="gl"><summary>SEO / SEM</summary><p>SEO: aparecer en los buscadores sin pagar. SEM: anuncios pagos en buscadores.</p></details><details class="gl"><summary>Palabra clave</summary><p>Frase que la gente escribe en el buscador para encontrar algo.</p></details><details class="gl"><summary>Landing page</summary><p>Página única de campaña pensada para que la persona haga una acción.</p></details><details class="gl"><summary>Diseño one click</summary><p>Armar un sitio con bloques prediseñados, sin programar.</p></details><details class="gl"><summary>Texto alternativo</summary><p>Descripción de una imagen para buscadores y lectores de pantalla.</p></details><details class="gl"><summary>Alcance / impresiones</summary><p>Alcance: personas distintas que vieron algo. Impresiones: veces que se vio en total.</p></details><details class="gl"><summary>Interacción (engagement)</summary><p>Me gusta, comentarios, compartidos y guardados de una publicación.</p></details><details class="gl"><summary>Algoritmo</summary><p>Reglas con las que una red decide qué contenido mostrar a cada persona.</p></details><details class="gl"><summary>Hashtag</summary><p>Palabra con # que agrupa publicaciones de un mismo tema.</p></details><details class="gl"><summary>Carrusel / historia / reel</summary><p>Publicación con varias imágenes / contenido que dura 24 h / video vertical corto.</p></details><details class="gl"><summary>Calendario de contenidos</summary><p>Planilla con qué se publica, dónde y cuándo.</p></details><details class="gl"><summary>Derecho de autor</summary><p>Protección que tiene toda obra original desde que se crea. En Uruguay, Ley 9.739.</p></details><details class="gl"><summary>Creative Commons</summary><p>Licencias con las que un autor permite usar su obra con ciertas condiciones.</p></details><details class="gl"><summary>Dominio público</summary><p>Obras que se pueden usar libremente, sin pedir permiso.</p></details><details class="gl"><summary>Atribución</summary><p>Nombrar al autor y la licencia de una obra que usás.</p></details><details class="gl"><summary>Netiqueta</summary><p>Normas de buena convivencia y respeto en Internet.</p></details><details class="gl"><summary>Troll</summary><p>Persona que comenta para provocar o molestar.</p></details><details class="gl"><summary>Plantilla</summary><p>Diseño ya armado que se usa como punto de partida: se cambian los textos, las fotos y los colores por los propios.</p></details><details class="gl"><summary>Subdominio</summary><p>Dirección gratuita que dan algunas herramientas, por ejemplo usuario.wixsite.com/mi-sitio.</p></details><details class="gl"><summary>DUA</summary><p>Diseño Universal para el Aprendizaje: preparar el material para que todas las personas puedan aprender, con distintas formas de presentar, de hacer y de motivarse.</p></details></div>
       <p class="gl-empty" id="glEmpty" hidden>No hay términos con esa palabra.</p>
     </section>
   </div>
@@ -2523,7 +2395,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
       <details class="prog">
         <summary>Programa oficial: dónde está cada contenido</summary>
         <p class="lead">Empezamos por fotografía, aunque en el programa es la unidad 2, porque las fotos se usan después en el video.</p>
-        <div class="map-box"><table class="map"><thead><tr><th>Unidad</th><th>Contenido del programa</th><th>Tema</th></tr></thead><tbody><tr><td>1. Videos</td><td>Guion</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Grabación: compresión y normas</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Edición: selección de material, edición básica, efectos y sonido</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Publicación</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>2. Fotografía digital</td><td>Conceptos generales, cámaras y formatos; iluminación; ambiente de trabajo</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Retoque fotográfico básico</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Crear videos con fotografías</td><td><a class="pill nv-foto" href="#foto">Fotografía</a> <a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>3. Marketing web</td><td>Internet: URL, IP, hiperenlace, buscador, PageRank</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Componentes de una página y de un sitio; diseño one click</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Publicación web: página, sitio o revista digital</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>4. Redes sociales</td><td>Conceptos; uso y publicación en redes</td><td><a class="pill nv-redes" href="#redes">Redes</a></td></tr><tr><td>4. Redes sociales</td><td>Derechos de autor; netiquette</td><td><a class="pill nv-redes" href="#redes">Redes</a> <a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Metodología</td><td>Proyecto en equipos de 4: una campaña publicitaria digital</td><td><a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Evaluación</td><td>Entregas parciales, devoluciones y defensa final</td><td><a class="pill nv-final" href="#final">Proyecto final</a></td></tr></tbody></table></div>
+        <div class="map-box"><table class="map"><thead><tr><th>Unidad</th><th>Contenido del programa</th><th>Tema</th></tr></thead><tbody><tr><td>1. Videos</td><td>Guion</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Grabación: compresión y normas</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Edición: selección de material, edición básica, efectos y sonido</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>1. Videos</td><td>Publicación</td><td><a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>2. Fotografía digital</td><td>Conceptos generales, cámaras y formatos; iluminación; ambiente de trabajo</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Retoque fotográfico básico</td><td><a class="pill nv-foto" href="#foto">Fotografía</a></td></tr><tr><td>2. Fotografía digital</td><td>Crear videos con fotografías</td><td><a class="pill nv-foto" href="#foto">Fotografía</a> <a class="pill nv-video" href="#video">Video</a></td></tr><tr><td>3. Marketing web</td><td>Internet: URL, IP, hiperenlace, buscador, PageRank</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Componentes de una página y de un sitio; diseño one click</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>3. Marketing web</td><td>Publicación web: página, sitio o revista digital</td><td><a class="pill nv-web" href="#web">Sitio web</a></td></tr><tr><td>4. Redes sociales</td><td>Conceptos; uso y publicación en redes</td><td><a class="pill nv-redes" href="#redes">Redes</a></td></tr><tr><td>4. Redes sociales</td><td>Derechos de autor; netiquette</td><td><a class="pill nv-redes" href="#redes">Redes</a> <a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Metodología</td><td>Proyecto en equipos de hasta 3: una campaña publicitaria digital</td><td><a class="pill nv-campana" href="#campana">Tu campaña</a></td></tr><tr><td>Evaluación</td><td>Entregas parciales, devoluciones y defensa final</td><td><a class="pill nv-final" href="#final">Proyecto final</a></td></tr></tbody></table></div>
       </details>
     </section>
   </div>
@@ -2546,7 +2418,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 <footer>
   <div class="shell">
     <p>Para docentes: las fechas de entrega y el enlace del formulario se cambian en <code>CALENDARIO</code> y <code>FORMULARIO</code>, al principio del código JavaScript de <code>index.html</code>. Las opciones del desplegable "Entrega" del formulario tienen que llamarse exactamente así:</p>
-    <ul><li><code>Entrega 1 - Brief y kit fotográfico</code></li><li><code>Entrega 2 - Spot de video</code></li><li><code>Entrega 3 - Sitio web de la campaña</code></li><li><code>Entrega 4 - Plan de redes y registro de licencias</code></li><li><code>Proyecto final - Campaña integrada y defensa</code></li></ul>
+    <ul><li><code>Entrega 1 · Brief y kit fotográfico</code></li><li><code>Entrega 2 · Spot de video</code></li><li><code>Entrega 3 · Sitio web de la campaña</code></li><li><code>Entrega 4 · Plan de redes y registro de licencias</code></li><li><code>Proyecto final · Campaña integrada y defensa</code></li></ul>
   </div>
 </footer>
 
@@ -2584,7 +2456,7 @@ var FORMULARIO = {
   campoComentario: 'entry.806044886'   // ahí viaja el nivel elegido
 };
 
-var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "corto": "Brief y kit fotográfico", "num": "Entrega 1", "tema": "foto", "temaNum": 2, "temaNombre": "Fotografía"}, "e2": {"nombre": "Entrega 2 - Spot de video", "corto": "Spot de video", "num": "Entrega 2", "tema": "video", "temaNum": 3, "temaNombre": "Video"}, "e3": {"nombre": "Entrega 3 - Sitio web de la campaña", "corto": "Sitio web de la campaña", "num": "Entrega 3", "tema": "web", "temaNum": 4, "temaNombre": "Sitio web"}, "e4": {"nombre": "Entrega 4 - Plan de redes y registro de licencias", "corto": "Plan de redes y licencias", "num": "Entrega 4", "tema": "redes", "temaNum": 5, "temaNombre": "Redes"}, "final": {"nombre": "Proyecto final - Campaña integrada y defensa", "corto": "Campaña integrada y defensa", "num": "Proyecto final", "tema": "final", "temaNum": 6, "temaNombre": "Proyecto final"}};
+var EJERCICIOS = {"e1": {"nombre": "Entrega 1 · Brief y kit fotográfico", "corto": "Brief y kit fotográfico", "num": "Entrega 1", "tema": "foto", "temaNum": 2, "temaNombre": "Fotografía"}, "e2": {"nombre": "Entrega 2 · Spot de video", "corto": "Spot de video", "num": "Entrega 2", "tema": "video", "temaNum": 3, "temaNombre": "Video"}, "e3": {"nombre": "Entrega 3 · Sitio web de la campaña", "corto": "Sitio web de la campaña", "num": "Entrega 3", "tema": "web", "temaNum": 4, "temaNombre": "Sitio web"}, "e4": {"nombre": "Entrega 4 · Plan de redes y registro de licencias", "corto": "Plan de redes y licencias", "num": "Entrega 4", "tema": "redes", "temaNum": 5, "temaNombre": "Redes"}, "final": {"nombre": "Proyecto final · Campaña integrada y defensa", "corto": "Campaña integrada y defensa", "num": "Proyecto final", "tema": "final", "temaNum": 6, "temaNombre": "Proyecto final"}};
 
 (function () {
   /* El avance se guarda con esta clave. No cambiarla: si cambia, los estudiantes pierden sus marcas. */
@@ -2627,20 +2499,15 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null;
   }
   function larga(d) { return DIAS[d.getDay()] + ' ' + d.getDate() + ' de ' + MESES[d.getMonth()]; }
-  function corta(d) { return DIAS[d.getDay()].slice(0, 3) + ' ' + d.getDate() + ' ' + MESES[d.getMonth()].slice(0, 3); }
   Object.keys(EJERCICIOS).forEach(function (id) {
     var d = fecha(id); if (!d) return;
     $$('[data-fecha-larga="' + id + '"]').forEach(function (el) { el.textContent = larga(d); });
-    $$('[data-fecha-corta="' + id + '"]').forEach(function (el) { el.textContent = corta(d); });
   });
 
   /* ---------- pestañas y navegación ---------- */
   var panels = $$('[data-panel]');
-  var tabs = $$('[data-tab]');
   function openPanel(key) {
     panels.forEach(function (p) { p.hidden = p.dataset.panel !== key; });
-    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === key ? 'true' : 'false'); });
-    $$('[data-nav]').forEach(function (a) { if (a.dataset.nav === key) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     $$('[data-dw-tema]').forEach(function (a) { if (a.dataset.dwTema === key) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     $$('[data-rs]').forEach(function (a) { if (a.dataset.rs === key) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
     state._tab = key; save();
@@ -2656,16 +2523,6 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     var target = el.matches('[data-panel]') ? el : el;
     requestAnimationFrame(function () { target.scrollIntoView({ behavior: smooth && !calm ? 'smooth' : 'auto', block: 'start' }); });
   }
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function () { openPanel(t.dataset.tab); });
-    t.addEventListener('keydown', function (e) {
-      var i = tabs.indexOf(t);
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        var n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
-        n.focus(); openPanel(n.dataset.tab);
-      }
-    });
-  });
   document.addEventListener('click', function (e) {
     var a = e.target.closest('a[href^="#"]');
     if (!a || a.hasAttribute('data-send')) return;
@@ -2723,7 +2580,6 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     if (user) { state._lvl = l; save(); }
     document.documentElement.setAttribute('data-lvl', glvl());
     $$('[data-glvl]').forEach(function (b) { b.setAttribute('aria-pressed', state._lvl && b.dataset.glvl === glvl() ? 'true' : 'false'); });
-    var nn = $('#nivelNota'); if (nn) nn.textContent = state._lvl ? 'Elegiste el nivel ' + LVL_TXT[glvl()].toLowerCase() + '. Lo podés cambiar acá o arriba, en "Mi nivel".' : 'Todavía no elegiste: te mostramos el nivel básico.';
     $$('.topic').forEach(function (t) { t.classList.remove('force-a', 'force-b'); if (typeof paintTabs === 'function') paintTabs(t); });
     if (typeof paintLvl === 'function') Object.keys(EJERCICIOS).forEach(paintLvl);
     if (typeof updateLinks === 'function') updateLinks();
@@ -2784,44 +2640,14 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     r.addEventListener('change', function () { if (r.checked) { state[k] = r.value; save(); updateLinks(); } });
   });
 
-  /* ---------- estados, progreso y "lo que te toca ahora" ---------- */
+  /* ---------- estados y progreso ---------- */
   var STATE_TXT = ['Pendiente', 'Terminada', 'Subida ✓'];
   function exState(id) { return state['sent:' + id] ? 2 : (state['done:' + id] ? 1 : 0); }
-  function hoy() { var h = new Date(); h.setHours(0, 0, 0, 0); return h; }
-  function ahora() {
-    var ids = Object.keys(EJERCICIOS), pend = null;
-    ids.forEach(function (id) { if (!pend && exState(id) < 2) pend = id; });
-    $$('[data-rc]').forEach(function (li) { li.classList.toggle('is-next', !!pend && li.dataset.rc === EJERCICIOS[pend].tema); });
-    var tit = $('#ahoraTitulo'), cu = $('#ahoraCuando'), pasos = $('#ahoraPasos');
-    if (!tit) return;
-    if (!pend) {
-      tit.textContent = '¡Subieron todas las entregas!';
-      cu.textContent = 'Preparen la defensa final y repasen las devoluciones de la docente.';
-      pasos.hidden = true;
-      return;
-    }
-    pasos.hidden = false;
-    var ej = EJERCICIOS[pend], d = fecha(pend);
-    tit.textContent = ej.nombre;
-    var txt = '';
-    if (d) {
-      var dias = Math.round((d - hoy()) / 86400000);
-      txt = 'Fecha: ' + larga(d) + ' - ' + (dias < 0 ? 'la fecha ya pasó: súbanla igual y avisen a la docente' : dias === 0 ? 'es hoy' : dias === 1 ? 'es mañana' : 'faltan ' + dias + ' días');
-      cu.classList.toggle('late', dias < 0);
-    }
-    cu.textContent = txt + '. Está en el tema ' + ej.temaNum + ': ' + ej.temaNombre + '.';
-    $('#ahoraLeer').setAttribute('href', '#' + ej.tema);
-    $('#ahoraPasosBtn').setAttribute('href', '#ex-' + pend);
-    $('#ahoraEntregar').setAttribute('data-send', pend);
-  }
   function refresh() {
     Object.keys(EJERCICIOS).forEach(function (id) {
       var st = exState(id);
       var tag = $('[data-state="' + id + '"]');
       if (tag) { tag.textContent = STATE_TXT[st]; tag.className = 'ex-state' + (st === 2 ? ' st-sent' : st === 1 ? ' st-done' : ''); }
-      var cell = $('[data-st="' + id + '"]');
-      if (cell) { cell.textContent = STATE_TXT[st]; cell.className = 'st st-' + st; }
-      $$('[data-st-mini="' + id + '"]').forEach(function (m) { m.textContent = STATE_TXT[st]; });
       var toc = $('[data-toc-ex="' + id + '"]');
       if (toc) toc.classList.toggle('done', st > 0);
       $$('[data-dw-dot-ex="' + id + '"]').forEach(function (d) { d.className = 'dd' + (st === 2 ? ' on' : st === 1 ? ' half' : ''); });
@@ -2829,24 +2655,15 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     panels.forEach(function (p) {
       var key = p.dataset.panel;
       var reads = $$('input[data-read]', p);
-      var exs = $$('[data-ex]', p).map(function (d) { return d.dataset.ex; });
-      var total = reads.length + exs.length, done = 0;
       reads.forEach(function (r) {
-        if (state['read:' + r.dataset.read]) done++;
         var t = $('[data-toc="' + r.dataset.read + '"]');
         if (t) t.classList.toggle('done', !!state['read:' + r.dataset.read]);
         $$('[data-dw-dot="' + r.dataset.read + '"]').forEach(function (d) { d.classList.toggle('on', !!state['read:' + r.dataset.read]); });
       });
-      exs.forEach(function (id) { if (exState(id) > 0) done++; });
-      var pct = total ? Math.round(done / total * 100) : 0;
-      var m = $('[data-meter="' + key + '"]'); if (m) m.style.width = pct + '%';
-      var ml = $('[data-meter-label="' + key + '"]'); if (ml) ml.textContent = pct + ' % hecho';
-      var c = $('[data-cnt="' + key + '"]'); if (c) c.textContent = done + '/' + total;
       var rd = reads.filter(function (r) { return state['read:' + r.dataset.read]; }).length;
       var av = $('[data-avance="' + key + '"]');
       if (av) av.textContent = rd === reads.length ? '✓ Leíste las ' + reads.length + ' partes de este tema.' : 'Llevás ' + rd + ' de ' + reads.length + ' partes leídas.';
     });
-    ahora();
     updateLinks();
   }
 
@@ -2884,7 +2701,7 @@ var EJERCICIOS = {"e1": {"nombre": "Entrega 1 - Brief y kit fotográfico", "cort
     if (fs) fs.textContent = (FORMULARIO.url || '').trim() ? '' : 'Tu docente todavía no cargó el formulario de entregas. Mientras tanto, guarden todo en la carpeta del equipo.';
   }
   function say(a, msg) {
-    var t = a.id === 'ahoraEntregar' ? $('#ahoraToast') : $('[data-toast="' + a.dataset.send + '"]');
+    var t = $('[data-toast="' + a.dataset.send + '"]');
     if (t) t.textContent = msg;
   }
   $$('a[data-send]').forEach(function (a) {
