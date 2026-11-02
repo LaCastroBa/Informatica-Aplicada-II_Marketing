@@ -693,6 +693,46 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
 .aviso-diseno ul{margin:.3rem 0 .9rem;padding-left:1.3rem}
 .aviso-diseno li{margin:.3rem 0}
 
+/* Recorrido arriba (reemplaza el panel lateral) */
+.recorrido-side{display:none!important}
+@media (min-width:1280px){main,footer,body>.shell{margin-left:0}}
+.recorrido-top{display:none;border-top:1px solid var(--line)}
+.recorrido-top .shell{display:flex;align-items:center;gap:.25rem;min-height:52px;flex-wrap:wrap}
+.recorrido-top a{display:inline-flex;align-items:center;gap:.45rem;padding:.4rem .7rem;border-radius:8px;text-decoration:none;color:var(--ink);font-weight:700;font-size:1rem;white-space:nowrap}
+.recorrido-top a span{font-family:var(--mono);font-size:.8rem;color:var(--nv,var(--muted))}
+.recorrido-top a:hover{background:var(--key-soft)}
+.recorrido-top a[aria-current="true"]{background:var(--card);box-shadow:inset 0 -3px 0 var(--nv-fill)}
+.recorrido-top .rt-div{width:1px;height:24px;background:var(--line);margin:0 .5rem}
+@media (min-width:900px){
+  .recorrido-top{display:block}
+  .bar .bar-links{display:none}
+  .reading-progress{top:121px}
+}
+
+/* Franja superior oscura (como al principio) */
+.bar,:root[data-theme="dark"] .bar{background:#20364B;color:#F5F0E6;border-bottom:0;backdrop-filter:none}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bar{background:#0E1A26;color:#F5F0E6}}
+:root[data-theme="dark"] .bar{background:#0E1A26}
+.bar .brand,.bar .brand-txt{color:#F5F0E6}
+.bar .brand-txt small{color:#C9D2DA}
+.bar .menu-btn,:root[data-theme="dark"] .bar .menu-btn{background:transparent;color:#F5F0E6;border:1px solid rgba(245,240,230,.45)}
+.bar .menu-btn:hover{background:rgba(245,240,230,.12)}
+.bar .bar-links{border-left-color:rgba(245,240,230,.3)}
+.bar .bar-links a{color:#F5F0E6}
+.bar .bar-links a:hover{background:rgba(245,240,230,.12);color:#fff}
+.recorrido-top{border-top:1px solid rgba(245,240,230,.18)}
+.recorrido-top a{color:#F5F0E6}
+.recorrido-top a span{color:#C9D2DA}
+.recorrido-top a.nv-foto span{color:#8FC3E3}
+.recorrido-top a.nv-video span{color:#F7A094}
+.recorrido-top a.nv-web span{color:#F2C75C}
+.recorrido-top a.nv-redes span{color:#A3D1B5}
+.recorrido-top a:hover{background:rgba(245,240,230,.12)}
+.recorrido-top a[aria-current="true"]{background:#F5F0E6;color:#20364B;box-shadow:none}
+.recorrido-top a[aria-current="true"] span{color:#20364B}
+.recorrido-top .rt-div{background:rgba(245,240,230,.3)}
+.bar :focus-visible{outline:3px solid #F2C75C;outline-offset:2px}
+
 </style>
 </head>
 <body>
@@ -702,9 +742,15 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <div class="shell">
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="drawer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>Menú</span></button>
     <a class="brand" href="#inicio"><span class="brand-txt">Informática Aplicada II<small>Tecnicatura en Marketing</small></span></a>
-    <div class="temas-deco" aria-hidden="true"><span class="deco nv-campana"><span class="dot"></span>Tu campaña</span><span class="deco nv-foto"><span class="dot"></span>Fotografía</span><span class="deco nv-video"><span class="dot"></span>Video</span><span class="deco nv-web"><span class="dot"></span>Sitio web</span><span class="deco nv-redes"><span class="dot"></span>Redes</span><span class="deco nv-final"><span class="dot"></span>Proyecto final</span></div>
     <div class="bar-links" role="navigation" aria-label="Ayuda y glosario"><a href="#ayuda">Ayuda</a><a href="#glosario">Glosario</a></div>
   </div>
+  <nav class="recorrido-top" aria-label="Recorrido">
+    <div class="shell">
+      <a href="#campana" class="nv-campana" data-rs="campana"><span>01</span>Tu campaña</a><a href="#foto" class="nv-foto" data-rs="foto"><span>02</span>Fotografía</a><a href="#video" class="nv-video" data-rs="video"><span>03</span>Video</a><a href="#web" class="nv-web" data-rs="web"><span>04</span>Sitio web</a><a href="#redes" class="nv-redes" data-rs="redes"><span>05</span>Redes</a><a href="#final" class="nv-final" data-rs="final"><span>06</span>Proyecto final</a>
+      <span class="rt-div" aria-hidden="true"></span>
+      <a href="#ayuda" class="rt-plain">Ayuda</a><a href="#glosario" class="rt-plain">Glosario</a>
+    </div>
+  </nav>
 </header>
 <div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
 <aside class="drawer" id="drawer" aria-label="Índice de la guía">
@@ -712,13 +758,6 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
   <nav aria-label="Temas y partes"><div class="dw-g nv-campana"><a class="dw-h" href="#campana" data-dw-tema="campana"><span class="num">1</span>Tu campaña</a><ul><li><a href="#campana-que-vas-a-hacer"><span class="dn">1.1</span><span class="dt">La campaña digital que vas a hacer</span><span class="dd" data-dw-dot="campana-que-vas-a-hacer"></span></a></li><li><a href="#campana-equipo"><span class="dn">1.2</span><span class="dt">Trabajar en equipo</span><span class="dd" data-dw-dot="campana-equipo"></span></a></li><li><a href="#campana-brief"><span class="dn">1.3</span><span class="dt">El brief de la campaña</span><span class="dd" data-dw-dot="campana-brief"></span></a></li><li><a href="#campana-derechos"><span class="dn">1.4</span><span class="dt">Contenido ajeno: la regla desde el día uno</span><span class="dd" data-dw-dot="campana-derechos"></span></a></li></ul></div><div class="dw-g nv-foto"><a class="dw-h" href="#foto" data-dw-tema="foto"><span class="num">2</span>Fotografía</a><ul><li><a href="#foto-conceptos"><span class="dn">2.1</span><span class="dt">Cámaras, resolución y formatos</span><span class="dd" data-dw-dot="foto-conceptos"></span></a></li><li><a href="#foto-luz"><span class="dn">2.2</span><span class="dt">Iluminación</span><span class="dd" data-dw-dot="foto-luz"></span></a></li><li><a href="#foto-ambiente"><span class="dn">2.3</span><span class="dt">Ambiente de trabajo y encuadre</span><span class="dd" data-dw-dot="foto-ambiente"></span></a></li><li><a href="#foto-lista"><span class="dn">2.4</span><span class="dt">Qué fotos sacar: la lista de tomas</span><span class="dd" data-dw-dot="foto-lista"></span></a></li><li><a href="#foto-retoque"><span class="dn">2.5</span><span class="dt">Retoque básico en Photopea</span><span class="dd" data-dw-dot="foto-retoque"></span></a></li><li><a href="#foto-exportar"><span class="dn">2.6</span><span class="dt">Exportar para web y redes</span><span class="dd" data-dw-dot="foto-exportar"></span></a></li><li><a href="#foto-a-video"><span class="dn">2.7</span><span class="dt">Crear videos con fotografías</span><span class="dd" data-dw-dot="foto-a-video"></span></a></li><li class="dw-ex"><a href="#ex-e1"><span class="dn">✎</span><span class="dt">Entrega 1: Brief y kit fotográfico</span><span class="dd" data-dw-dot-ex="e1"></span></a></li></ul></div><div class="dw-g nv-video"><a class="dw-h" href="#video" data-dw-tema="video"><span class="num">3</span>Video</a><ul><li><a href="#video-guion"><span class="dn">3.1</span><span class="dt">Del guion literario al guion técnico</span><span class="dd" data-dw-dot="video-guion"></span></a></li><li><a href="#video-planos"><span class="dn">3.2</span><span class="dt">Planos y movimientos de cámara</span><span class="dd" data-dw-dot="video-planos"></span></a></li><li><a href="#video-grabacion"><span class="dn">3.3</span><span class="dt">Grabar con el celular</span><span class="dd" data-dw-dot="video-grabacion"></span></a></li><li><a href="#video-normas"><span class="dn">3.4</span><span class="dt">Normas y formatos por plataforma</span><span class="dd" data-dw-dot="video-normas"></span></a></li><li><a href="#video-compresion"><span class="dn">3.5</span><span class="dt">Compresión: que el video pese poco y se vea bien</span><span class="dd" data-dw-dot="video-compresion"></span></a></li><li><a href="#video-edicion"><span class="dn">3.6</span><span class="dt">Edición en Canva</span><span class="dd" data-dw-dot="video-edicion"></span></a></li><li><a href="#video-sonido"><span class="dn">3.7</span><span class="dt">Sonido: música y locución</span><span class="dd" data-dw-dot="video-sonido"></span></a></li><li><a href="#video-publicacion"><span class="dn">3.8</span><span class="dt">Publicar el spot</span><span class="dd" data-dw-dot="video-publicacion"></span></a></li><li class="dw-ex"><a href="#ex-e2"><span class="dn">✎</span><span class="dt">Entrega 2: Spot de video</span><span class="dd" data-dw-dot-ex="e2"></span></a></li></ul></div><div class="dw-g nv-web"><a class="dw-h" href="#web" data-dw-tema="web"><span class="num">4</span>Sitio web</a><ul><li><a href="#web-internet"><span class="dn">4.1</span><span class="dt">Internet en pocas palabras</span><span class="dd" data-dw-dot="web-internet"></span></a></li><li><a href="#web-seo"><span class="dn">4.2</span><span class="dt">Cómo te encuentra un buscador</span><span class="dd" data-dw-dot="web-seo"></span></a></li><li><a href="#web-componentes"><span class="dn">4.3</span><span class="dt">Componentes de una página y de un sitio</span><span class="dd" data-dw-dot="web-componentes"></span></a></li><li><a href="#web-sites"><span class="dn">4.4</span><span class="dt">Diseño one click: armar el sitio</span><span class="dd" data-dw-dot="web-sites"></span></a></li><li><a href="#web-insertar"><span class="dn">4.5</span><span class="dt">Video, botones, redes y texto alternativo</span><span class="dd" data-dw-dot="web-insertar"></span></a></li><li><a href="#web-publicar"><span class="dn">4.6</span><span class="dt">Publicar el sitio</span><span class="dd" data-dw-dot="web-publicar"></span></a></li><li class="dw-ex"><a href="#ex-e3"><span class="dn">✎</span><span class="dt">Entrega 3: Sitio web de la campaña</span><span class="dd" data-dw-dot-ex="e3"></span></a></li></ul></div><div class="dw-g nv-redes"><a class="dw-h" href="#redes" data-dw-tema="redes"><span class="num">5</span>Redes</a><ul><li><a href="#redes-conceptos"><span class="dn">5.1</span><span class="dt">Conceptos básicos de redes</span><span class="dd" data-dw-dot="redes-conceptos"></span></a></li><li><a href="#redes-elegir"><span class="dn">5.2</span><span class="dt">Elegir la red según el público</span><span class="dd" data-dw-dot="redes-elegir"></span></a></li><li><a href="#redes-plan"><span class="dn">5.3</span><span class="dt">Plan y calendario de contenidos</span><span class="dd" data-dw-dot="redes-plan"></span></a></li><li><a href="#redes-escribir"><span class="dn">5.4</span><span class="dt">Escribir para redes</span><span class="dd" data-dw-dot="redes-escribir"></span></a></li><li><a href="#redes-piezas"><span class="dn">5.5</span><span class="dt">Diseñar las piezas en Canva</span><span class="dd" data-dw-dot="redes-piezas"></span></a></li><li><a href="#redes-derechos"><span class="dn">5.6</span><span class="dt">Derechos de autor</span><span class="dd" data-dw-dot="redes-derechos"></span></a></li><li><a href="#redes-ia"><span class="dn">5.7</span><span class="dt">Inteligencia artificial: usarla con honestidad</span><span class="dd" data-dw-dot="redes-ia"></span></a></li><li><a href="#redes-licencias"><span class="dn">5.8</span><span class="dt">El registro de licencias</span><span class="dd" data-dw-dot="redes-licencias"></span></a></li><li><a href="#redes-netiqueta"><span class="dn">5.9</span><span class="dt">Netiqueta: cómo se comporta una marca</span><span class="dd" data-dw-dot="redes-netiqueta"></span></a></li><li class="dw-ex"><a href="#ex-e4"><span class="dn">✎</span><span class="dt">Entrega 4: Plan de redes y licencias</span><span class="dd" data-dw-dot-ex="e4"></span></a></li></ul></div><div class="dw-g nv-final"><a class="dw-h" href="#final" data-dw-tema="final"><span class="num">6</span>Proyecto final</a><ul><li><a href="#final-programa"><span class="dn">6.1</span><span class="dt">Qué pide el programa</span><span class="dd" data-dw-dot="final-programa"></span></a></li><li><a href="#final-entregas"><span class="dn">6.2</span><span class="dt">Lo que entregan</span><span class="dd" data-dw-dot="final-entregas"></span></a></li><li><a href="#final-defensa"><span class="dn">6.3</span><span class="dt">Guion de la defensa (10 minutos + 5 de preguntas)</span><span class="dd" data-dw-dot="final-defensa"></span></a></li><li><a href="#final-evaluacion"><span class="dn">6.4</span><span class="dt">Cómo se evalúa (orientativo)</span><span class="dd" data-dw-dot="final-evaluacion"></span></a></li><li class="dw-ex"><a href="#ex-final"><span class="dn">✎</span><span class="dt">Proyecto final: Campaña integrada y defensa</span><span class="dd" data-dw-dot-ex="final"></span></a></li></ul></div><div class="dw-g dw-extra"><ul><li><a href="#inicio"><span class="dn">⌂</span><span class="dt">Inicio</span></a></li><li><a href="#ayuda"><span class="dn">?</span><span class="dt">Ayuda</span></a></li><li><a href="#glosario"><span class="dn">Aa</span><span class="dt">Glosario</span></a></li></ul></div></nav>
 </aside>
 <div class="dw-overlay" id="drawerOverlay"></div>
-<nav class="recorrido-side" aria-label="Recorrido">
-  <div class="rs-label">Recorrido</div>
-  <a href="#campana" class="nv-campana" data-rs="campana"><span>01</span>Tu campaña</a><a href="#foto" class="nv-foto" data-rs="foto"><span>02</span>Fotografía</a><a href="#video" class="nv-video" data-rs="video"><span>03</span>Video</a><a href="#web" class="nv-web" data-rs="web"><span>04</span>Sitio web</a><a href="#redes" class="nv-redes" data-rs="redes"><span>05</span>Redes</a><a href="#final" class="nv-final" data-rs="final"><span>06</span>Proyecto final</a>
-  <div class="rs-div"></div>
-  <a href="#ayuda" class="rs-plain"><span>?</span>Ayuda</a><a href="#glosario" class="rs-plain"><span>Aa</span>Glosario</a>
-  <div class="rs-callout"><b>¿Listos para crear?</b><p>Cada tema termina con su entrega y las plantillas para completar.</p></div>
-</nav>
 
 <main id="inicio">
   <div class="shell">
@@ -738,7 +777,7 @@ h1,h2,h3,h4,h5{letter-spacing:-.015em}
         <p id="avisoTit"><b>La guía tiene un diseño nuevo</b></p>
         <p>Lo cambiamos para que sea más fácil encontrar los materiales y entregar las actividades:</p>
         <ul>
-          <li>Con el botón <b>Menú</b> (arriba a la izquierda) ves todos los temas y sus partes.</li>
+          <li>En la franja de arriba están los <b>6 temas</b>, <b>Ayuda</b> y <b>Glosario</b>: tocá uno y vas directo. Con el botón <b>Menú</b> ves también las partes de cada tema.</li>
           <li>Cada entrega tiene, al final, su <b>plantilla</b> para hacer una copia y el botón para <b>entregar en el formulario</b>.</li>
           <li><b>Lo que ya habías marcado y escrito sigue guardado</b> en la computadora donde lo hiciste. No perdiste nada.</li>
         </ul>
